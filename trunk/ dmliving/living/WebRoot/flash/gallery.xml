@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simpleviewerGallery maxImageWidth="625" maxImageHeight="865" textColor="0xFFFFFF" frameColor="0xCCCCCC" imageFrameColor="0x333333" frameWidth="0" stagePadding="20" thumbnailColumns="3" thumbnailRows="10" navPosition="right" title="" enableRightClickOpen="true" backgroundImagePath="" imagePath="flash/images/" thumbPath="flash/thumbs/" enableDownloadLink="false">
+<image>
+	<filename>nyt_nov2007_screen.jpg</filename>
+	<caption><![CDATA[New York Times, U.S. - November 2007<br><a href="http://www.deeplymadlyliving.com/flash/images/nyt-nov2007_print.pdf" target="_blank"><u>Click here for full article</u></a>]]></caption>
+</image>
+<image>
+	<filename>forbes-nov2007_screen.jpg</filename>
+	<caption><![CDATA[Forbes, U.S. - November 2007<br><a href="http://www.deeplymadlyliving.com/flash/images/forbes-nov2007_print.pdf" target="_blank"><u>Click here for full article</u></a>]]></caption>
+</image>
+<image>
+	<filename>amny.jpg</filename>
+	<caption><![CDATA[AM New York, U.S. - March 2008<br><a href="http://www.deeplymadlyliving.com/flash/images/amny.pdf" target="_blank"><u>Click here for full article</u></a>]]></caption>
+</image>
+<image>
+	<filename>le-fourquet.jpg</filename>
+	<caption><![CDATA[Le Fourquet, Mexico - March 2008<br><a href="http://www.deeplymadlyliving.com/flash/images/le-fourquet.pdf" target="_blank"><u>Click here for full article</u></a>]]></caption>
+</image>
+<image>
+	<filename>india.jpg</filename>
+	<caption><![CDATA[Society Interiors, India - March 2008<br><a href="http://www.deeplymadlyliving.com/flash/images/india-pdf.pdf" target="_blank"><u>Click here for full article</u></a>]]></caption>
+</image>
+<image>
+	<filename>entr.jpg</filename>
+	<caption><![CDATA[Entrepreneur.com, U.S. - April 2008<br><a href="http://www.deeplymadlyliving.com/flash/images/arti.pdf" target="_blank"><u>Click here for full article</u></a>]]></caption>
+</image>
+<image>
+	<filename>ecan.jpg</filename>
+	<caption><![CDATA[Elemente, Canada - July 2008<br><a href="http://www.deeplymadlyliving.com/flash/images/ecanada.pdf" target="_blank"><u>Click here for full article</u></a>]]></caption>
+</image>
+<image>
+	<filename>ldesign.jpg</filename>
+	<caption><![CDATA[Living Design, Denmark - Sept 2008<br><a href="http://www.deeplymadlyliving.com/flash/images/livingdesign.pdf" target="_blank"><u>Click here for full article</u></a>]]></caption>
+</image>
+<image>
+	<filename>67_RS.jpg</filename>
+	<caption><![CDATA[Rolling Stone, Italy - May 2009<br><a href="http://www.deeplymadlyliving.com/flash/images/67_RS_Doc.pdf" target="_blank"><u>Click here for full article</u></a>]]></caption>
+</image>
+
+<image>
+	<filename>3180_001.jpg</filename>
+	<caption>Architectural Digest, Spain - July 2007</caption>
+</image>
+<image>
+	<filename>arch-digest.jpg</filename>
+	<caption><![CDATA[Architectural Digest, U.S. - April 2008<br><a href="http://www.deeplymadlyliving.com/flash/images/arch-digest.pdf" target="_blank"><u>Click here for full article</u></a>]]></caption>
+</image>
+<image>
+	<filename>be0307_p34nowdesign_R.jpg</filename>
+	<caption>Belle, Australia - June 2007</caption>
+</image>
+<image>
+	<filename>mag_blueprint.jpg</filename>
+	<caption>Blueprint, United Kingdom - April 2007</caption>
+</image>
+<image>
+	<filename>argento.jpg</filename>
+	<caption>Casa di Abitare, Italy - April 2007</caption>
+</image>
+<image>
+	<filename>mag_circe.jpg</filename>
+	<caption>Circe, Germany - April 2007</caption>
+</image>
+<image>
+	<filename>mag_figaro_athens.jpg</filename>
+	<caption>Maison Figaro, Greece - April 2007</caption>
+</image>
+<image>
+	<filename>focus-lifestyle.jpg</filename>
+	<caption>La Mia Casa, Italy - March 2007</caption>
+</image>
+<image>
+	<filename>OPENINGS_Attitude13_lowres.jpg</filename>
+	<caption>Attitude, Portugal - November 2006</caption>
+</image>
+<image>
+	<filename>d+a-Oct-06-ldf.jpg</filename>
+	<caption>D+A, Singapore - October 2006</caption>
+</image>
+<image>
+	<filename>book_fyeo_italy.jpg</filename>
+	<caption>For Your Eyes, Only? Gli occhiali dalla A alla Z, Publisher: Logos</caption>
+</image>
+</simpleviewerGallery>

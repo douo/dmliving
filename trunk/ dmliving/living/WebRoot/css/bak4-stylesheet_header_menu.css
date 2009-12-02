@@ -1,0 +1,64 @@
+body {  
+	behavior: url(includes/csshover.htc);
+	}
+	
+
+/* DML */
+div#dropMenu li.submenu li.submenu:hover, div#dropMenu ul.level2 a:hover {color: #000;background:#00BB12;}
+div#dropMenu li a:hover { color: #FFF;background:#000;}
+
+#dropMenuWrapper {
+	width:243px;
+	height:15px;
+	margin:0;
+	font-size:12px;
+	background: #fff;
+	}
+	
+div#dropMenu {
+  	width:243px;
+  	margin:0 auto;
+    	text-align:center;
+	z-index:1000;
+	position:relative;
+	}
+
+div#dropMenu ul {
+	margin: 0; 
+	padding: 0;
+	}
+	
+div#dropMenu li {
+	position: relative; 
+	list-style: none; 
+	margin: 0; 
+	float: left; 
+	line-height: 1em;
+	}
+	
+div#dropMenu ul.level1 {
+	width: 680px; 
+	margin:0 auto; 
+	text-align:right;
+	background:#000;
+	height:2.17em;
+	z-index:1000;
+	padding: 12px 0px 0px 0px;
+	}
+	
+div#dropMenu li:hover { }
+/*div#dropMenu li.submenu {background: url(../images/dropmenu.gif) 95% 50% no-repeat;} */
+div#dropMenu li.submenu:hover { }
+div#dropMenu li a {display: block; padding: .6em 1.0em .6em .2em;text-decoration: none; text-transform:uppercase; color:#999999; text-align:center; } 
+div#dropMenu>ul a {width: auto;}
+div#dropMenu ul ul {position: absolute; width: 150px;display: none;}
+div#dropMenu ul ul li {width:12em; text-align:right;}
+/*div#dropMenu li.submenu li.submenu {background: url(../images/submenu.gif) 95% 50% no-repeat;} */
+div#dropMenu ul.level1 li.submenu:hover ul.level2, 
+div#dropMenu ul.level2 li.submenu:hover ul.level3,
+div#dropMenu ul.level3 li.submenu:hover ul.level4,
+div#dropMenu ul.level4 li.submenu:hover ul.level5 {display:block;z-index:1000;}
+div#dropMenu ul.level2 {top: 2.17em;background:#00BB12;z-index:1000;}
+div#dropMenu ul.level3, div#dropMenu ul.level4, div#dropMenu ul.level5 {top: 0; left: 12em; background:#00000}
+div#dropMenu ul.level2 a {padding: 0.5em 0.2em 0.5em 0.25em;color: white; text-transform:none; text-align:right;}  /* this is text color on drop-down submenu */
+div#dropMenu ul.level2 a:hover {color:#4f4f4f;}
