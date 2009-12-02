@@ -1,0 +1,71 @@
+body {  
+	behavior: url(includes/csshover.htc);
+	}
+	
+
+/* DML */
+div#dropMenu li.submenu li.submenu:hover, div#dropMenu ul.level2 a:hover {color: #000;background:#00BB12;}
+div#dropMenu li a:hover { color: #00BB12;background:#000;}
+div#dropMenu li.submenu-blue a {color: #1aafec;background:000; }
+div#dropMenu li.submenu-purple a {color: #D79DE4;background:000; }
+
+
+#dropMenuWrapper {
+	/* width:243px; */
+	height:15px;
+	margin:0;
+	font-size:12px;
+	}
+	
+div#dropMenu {
+  	margin:0 auto;
+    	text-align:center;
+	z-index:1000;
+	position:relative;
+	}
+
+div#dropMenu ul {
+	margin: 0; 
+	padding: 0;
+	}
+	
+div#dropMenu li {
+	position: relative; 
+	list-style: none; 
+	margin: 0; 
+	float: left; 
+	line-height: 1em;
+	}
+	
+div#dropMenu ul.level1 {
+	width: 640px; 
+	margin:0 auto; 
+	text-align: right;
+	height:2.17em;
+	z-index:1000;
+	padding: 5px 0px 5px 10px;
+	margin-left: 20px;
+	}
+	
+div#dropMenu li:hover { }
+/*div#dropMenu li.submenu {background: url(../images/dropmenu.gif) 95% 50% no-repeat;} */
+div#dropMenu li.submenu {font-size:11px;}
+div#dropMenu li.submenu-blue {font-size:11px;}
+div#dropMenu li.submenu-purple {font-size:10px; padding-top:2px;}
+/*div#dropMenu li.submenu-purple {background-image:url("http://deeplymadlyliving.com/images/dmlnav_dmd_design_link.jpg");}*/
+div#dropMenu li.submenu:hover { }
+div#dropMenu li.submenu-blue:hover {color:#00BB12;}
+div#dropMenu li.submenu-purple:hover {color:#ac3ac3;}
+div#dropMenu li a {display:block; padding: .6em 1.0em .6em .2em;text-decoration: none; text-transform:uppercase; color:#999999; text-align:right; }
+div#dropMenu>ul a {width: auto;}
+div#dropMenu ul ul {position: absolute; top:12px; width: 150px;display: none;}
+div#dropMenu ul ul li {width:12em; text-align:right;}
+/*div#dropMenu li.submenu li.submenu {background: url(../images/submenu.gif) 95% 50% no-repeat;} */
+div#dropMenu ul.level1 li.submenu:hover ul.level2, 
+div#dropMenu ul.level2 li.submenu:hover ul.level3,
+div#dropMenu ul.level3 li.submenu:hover ul.level4,
+div#dropMenu ul.level4 li.submenu:hover ul.level5 {display:block;z-index:1000;}
+div#dropMenu ul.level2 {width:135px; top: 2.17em;background:#00BB12;color:#000;z-index:1000;position:absolute;left:-80px;}
+div#dropMenu ul.level3, div#dropMenu ul.level4, div#dropMenu ul.level5 {top: 0; left: 12em; background:#00000}
+div#dropMenu ul.level2 a {padding: 0.5em 0.2em 0.5em 0.25em;color: white; text-transform:none; text-align:right;}  /* this is text color on drop-down submenu */
+div#dropMenu ul.level2 a:hover {color:#000;}

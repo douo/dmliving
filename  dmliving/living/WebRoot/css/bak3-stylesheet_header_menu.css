@@ -1,0 +1,73 @@
+body {  
+	behavior: url(includes/csshover.htc);
+	}
+	
+/*green*/
+div#dropMenu li a:hover, div#dropMenu li.submenu li.submenu:hover {color: #4f4f4f!important;background:#D5E88F;}
+
+
+blue
+div#dropMenu li a:hover, div#dropMenu li.submenu li.submenu:hover, div#dropMenu ul.level2 a:hover {color: #ffffff!important;background:#6C99D9;}
+
+
+/*red 
+div#dropMenu li a:hover, div#dropMenu li.submenu li.submenu:hover, div#dropMenu ul.level2 a:hover {color: #ffffff!important;background:#DC262E;}
+*/ 
+
+/*grey 
+div#dropMenu li a:hover, div#dropMenu li.submenu li.submenu:hover, div#dropMenu ul.level2 a:hover {color: #4f4f4f!important;background:#D5D5D5;}
+*/
+	
+#dropMenuWrapper {
+	width:243px;
+	height:15px;
+	margin:0;
+	font-size:12px;
+	background: #fff;
+	}
+	
+div#dropMenu {
+  	width:243px;
+  	margin:0 auto;
+    	text-align:center;
+	z-index:1000;
+	position:relative;
+	}
+
+div#dropMenu ul {
+	margin: 0; 
+	padding: 0;
+	}
+	
+div#dropMenu li {
+	position: relative; 
+	list-style: none; 
+	margin: 0; 
+	float: right; 
+	line-height: 15px;
+	}
+	
+div#dropMenu ul.level1 {
+	width:680px; 
+	margin:0 auto; 
+	background:#000;
+	height:15px;
+	z-index:1000;
+	}
+	
+div#dropMenu li:hover {}
+/*div#dropMenu li.submenu {background: url(../images/dropmenu.gif) 95% 50% no-repeat;} */
+div#dropMenu li.submenu:hover {}
+div#dropMenu li a {display: block; padding:  .6em .2em .6em .7em; text-decoration: none; text-transform:uppercase; color:#999999; text-align:center;} 
+div#dropMenu>ul a {width: auto;}
+div#dropMenu ul ul {position: absolute; width: 12em;display: none;}
+div#dropMenu ul ul li { width:12em;}
+/*div#dropMenu li.submenu li.submenu {background: url(../images/submenu.gif) 95% 50% no-repeat;} */
+div#dropMenu ul.level1 li.submenu:hover ul.level2, 
+div#dropMenu ul.level2 li.submenu:hover ul.level3,
+div#dropMenu ul.level3 li.submenu:hover ul.level4,
+div#dropMenu ul.level4 li.submenu:hover ul.level5 {display:block;z-index:1000;}
+div#dropMenu ul.level2 {top: 2.17em; background:#11B800;z-index:1000;}
+div#dropMenu ul.level3, div#dropMenu ul.level4, div#dropMenu ul.level5 {top: 0; left: 12em; background:#4f4f4f;}
+div#dropMenu ul.level2 a {padding: 2px;color: white; text-transform:none; }  /* this is text color on drop-down submenu */
+div#dropMenu ul.level2 a:hover {color:#11bb00;}
