@@ -12,7 +12,7 @@ margin:0;
 padding:4px 10px;
 }
 ul.nde-menu-system *{
-font-size:10px;
+font-size:12px;
 }
 ul.nde-menu-system li{
 border-right:1px solid #003D00;
@@ -20,7 +20,7 @@ color:#ffffff;
 display:inline;
 font-weight:bold;
 margin:0;
-padding:0 10px;
+padding:0 8px;
 position:relative;
 }
 ul.nde-menu-system li a{
@@ -56,7 +56,7 @@ color:#333333;
 display:block;
 font-weight:normal;
 margin:0;
-padding:3px 5px;
+padding:1px 5px;
 }
 * html ul.nde-menu-system li ul li a{
 width:100%;
