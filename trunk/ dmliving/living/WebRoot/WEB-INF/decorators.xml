@@ -2,12 +2,15 @@
 <decorators defaultdir="/decorators">
 	<!-- Any urls that are excluded will never be decorated by Sitemesh -->
     <excludes>
-        <pattern>/exclude.jsp</pattern>
-        <pattern>/exclude/*</pattern>
+        <pattern>/admin/login.jsp</pattern>
     </excludes>
     
 	<decorator name="main" page="main.jsp">
 		<pattern>/*</pattern>
+	</decorator>
+	
+	<decorator name="admin" page="admin.jsp">
+		<pattern>/admin/*</pattern>
 	</decorator>
 	
 </decorators>
