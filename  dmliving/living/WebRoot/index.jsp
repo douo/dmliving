@@ -15,11 +15,11 @@
         <!-- eof upload alerts -->
         <div style="z-index: 1;" id="intro_movie">Movie</div>
         <script type="text/javascript">
-var so = new SWFObject("flash/home_intro.swf", "movie", "924", "288", "8", "#000000");
-so.addParam("menu", "false");
-so.addParam("wmode", "opaque");
-so.write("intro_movie");
-</script>
+		var so = new SWFObject("flash/home_intro.swf", "movie", "924", "288", "8", "#000000");
+		so.addParam("menu", "false");
+		so.addParam("wmode", "opaque");
+		so.write("intro_movie");
+		</script>
         <!-- <img src="/dml/images/homepage_flash.gif"> -->
         <P> <img src="images/home_intro_statement.gif" alt="" width="924" height="74" border=0 />
         <table width=924 border=0 cellpadding=0 cellspacing=0>
