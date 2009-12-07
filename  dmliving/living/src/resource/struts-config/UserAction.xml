@@ -5,7 +5,7 @@
 <struts>
 	<package name="com.living.action.UserAction" extends="struts-default" namespace="/admin">
 		<action name="adminLogin" class="com.living.action.UserAction" method="adminLogin">
-			<result>/index.jsp</result>
+			<result>/admin/index.jsp</result>
 			<result name="error">/admin/login.jsp</result>
 		</action>
 	</package>
