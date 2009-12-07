@@ -46,6 +46,19 @@
 	<listener>
 		<listener-class>com.living.webapp.listener.BasePathListener</listener-class>
 	</listener>
+	
+	<filter>
+    	<filter-name>sitemesh</filter-name>
+    	<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+	</filter>
+
+	<!-- SiteMesh -->
+	<filter-mapping>
+	    <filter-name>sitemesh</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
