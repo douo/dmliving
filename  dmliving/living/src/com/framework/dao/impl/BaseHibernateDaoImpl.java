@@ -10,6 +10,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Propagation;
@@ -41,6 +42,21 @@ public abstract class BaseHibernateDaoImpl<T> extends HibernateDaoSupport implem
 	
 	public void changeHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		super.setHibernateTemplate(hibernateTemplate);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
+	public T save(Object domain) {
+		try {
+			initHibernateTemplate();
+			getHibernateTemplate().save(domain);
+			return (T)domain;
+		} catch (DataAccessException e) {
+			logger.error(e);
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**

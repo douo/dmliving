@@ -9,8 +9,8 @@ public class UserRole implements java.io.Serializable {
 	// Fields
 
 	private Long userRoleId;
-	private User user;
 	private Role role;
+	private User user;
 
 	// Constructors
 
@@ -19,9 +19,9 @@ public class UserRole implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public UserRole(User user, Role role) {
-		this.user = user;
+	public UserRole(Role role, User user) {
 		this.role = role;
+		this.user = user;
 	}
 
 	// Property accessors
@@ -34,20 +34,20 @@ public class UserRole implements java.io.Serializable {
 		this.userRoleId = userRoleId;
 	}
 
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public Role getRole() {
 		return this.role;
 	}
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

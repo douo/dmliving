@@ -13,6 +13,9 @@
         <many-to-one name="user" class="com.living.model.User" fetch="select">
             <column name="user_id" precision="10" scale="0" />
         </many-to-one>
+        <many-to-one name="country" class="com.living.model.Country" fetch="select">
+            <column name="country_id" precision="10" scale="0" />
+        </many-to-one>
         <property name="firstName" type="java.lang.String">
             <column name="first_name" length="50" />
         </property>
@@ -22,11 +25,11 @@
         <property name="companyName" type="java.lang.String">
             <column name="company_name" length="50" />
         </property>
-        <property name="addressLine1" type="java.lang.String">
-            <column name="address_line1" length="100" />
+        <property name="streetAddress" type="java.lang.String">
+            <column name="street_address" length="100" />
         </property>
-        <property name="addressLine2" type="java.lang.String">
-            <column name="address_line2" length="100" />
+        <property name="suburb" type="java.lang.String">
+            <column name="suburb" length="100" />
         </property>
         <property name="city" type="java.lang.String">
             <column name="city" length="100" />

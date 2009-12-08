@@ -1,5 +1,7 @@
 package com.living.action;
 
+import java.util.Date;
+
 import com.living.model.User;
 import com.living.webapp.action.BaseAction;
 
@@ -10,16 +12,29 @@ public class UserAction extends BaseAction {
 
 	/**
 	 * 管理员登陆
-	 * @return
 	 */
-	public String adminLogin() {
-		System.out.println("adminLogin invoke!" + user);
+	public String login() {
+		System.out.println(";ogin invoke!" + user);
 		user = userService.login(user);
 		if (user != null) {
 			System.out.println("login success!");
 			return SUCCESS;
 		}
 		System.out.println("login failed!");
+		return ERROR;
+	}
+	
+	/**
+	 * 用户注册
+	 */
+	public String register() {
+		System.out.println("register invoke!");
+		if (user != null) {
+			System.out.println("registering...");
+			user.setCreated(new Date());
+			user = (User) userService.save(user);
+			return SUCCESS;
+		}
 		return ERROR;
 	}
 

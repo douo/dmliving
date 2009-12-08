@@ -10,11 +10,12 @@ public class AddressBook implements java.io.Serializable {
 
 	private Long addressbookId;
 	private User user;
+	private Country country;
 	private String firstName;
 	private String lastName;
 	private String companyName;
-	private String addressLine1;
-	private String addressLine2;
+	private String streetAddress;
+	private String suburb;
 	private String city;
 	private String stateProvince;
 	private String postZipCode;
@@ -27,16 +28,17 @@ public class AddressBook implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public AddressBook(User user, String firstName, String lastName,
-			String companyName, String addressLine1, String addressLine2,
-			String city, String stateProvince, String postZipCode,
-			String isactive) {
+	public AddressBook(User user, Country country, String firstName,
+			String lastName, String companyName, String streetAddress,
+			String suburb, String city, String stateProvince,
+			String postZipCode, String isactive) {
 		this.user = user;
+		this.country = country;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.companyName = companyName;
-		this.addressLine1 = addressLine1;
-		this.addressLine2 = addressLine2;
+		this.streetAddress = streetAddress;
+		this.suburb = suburb;
 		this.city = city;
 		this.stateProvince = stateProvince;
 		this.postZipCode = postZipCode;
@@ -59,6 +61,14 @@ public class AddressBook implements java.io.Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Country getCountry() {
+		return this.country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 	public String getFirstName() {
@@ -85,20 +95,20 @@ public class AddressBook implements java.io.Serializable {
 		this.companyName = companyName;
 	}
 
-	public String getAddressLine1() {
-		return this.addressLine1;
+	public String getStreetAddress() {
+		return this.streetAddress;
 	}
 
-	public void setAddressLine1(String addressLine1) {
-		this.addressLine1 = addressLine1;
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
 	}
 
-	public String getAddressLine2() {
-		return this.addressLine2;
+	public String getSuburb() {
+		return this.suburb;
 	}
 
-	public void setAddressLine2(String addressLine2) {
-		this.addressLine2 = addressLine2;
+	public void setSuburb(String suburb) {
+		this.suburb = suburb;
 	}
 
 	public String getCity() {

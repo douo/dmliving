@@ -29,4 +29,9 @@ public class BaseServiceImpl {
 	public List<?> findByProperty(String[] propertyNames, Object[] values, Integer firstResult, Integer size) {
 		return defaultDao.findByProperty(propertyNames, values, firstResult, size);
 	}
+	
+	public Object save(Object domain) {
+		System.out.println("domain: "+domain);
+		return defaultDao.save(domain);
+	}
 }

@@ -12,9 +12,13 @@ public interface BaseHibernateDao<T> {
 	@Transactional(propagation = Propagation.REQUIRED)
 	boolean delete(Object object);
 	
+	@Transactional(propagation = Propagation.REQUIRED)
 	List<T> findByProperty(String[] propertyNames, Object[] values,
 			Integer firstResult, Integer size);
 	
-	public List<T> findByProperty(String propertyName, Object value);
+	@Transactional(propagation = Propagation.REQUIRED)
+	List<T> findByProperty(String propertyName, Object value);
 	
+	@Transactional(propagation = Propagation.REQUIRED)
+	T save(Object domai);
 }
