@@ -7,7 +7,12 @@ create database living;
 
 use living;
 
+/* 表部分 */
 drop table if exists address_book;
+
+drop table if exists authority;
+
+drop table if exists country;
 
 drop table if exists image;
 
@@ -40,16 +45,39 @@ create table address_book
 (
    addressbook_id       numeric(10) not null,
    user_id              numeric(10),
+   country_id           numeric(10),
    first_name           varchar(50),
    last_name            varchar(50),
    company_name         varchar(50),
-   address_line1        varchar(100),
-   address_line2        varchar(100),
+   street_address       varchar(100),
+   suburb               varchar(100),
    city                 varchar(100),
    state_province       varchar(100),
    post_zip_code        varchar(30),
    isactive             char(1),
    primary key (addressbook_id)
+);
+
+/*==============================================================*/
+/* Table: authority                                             */
+/*==============================================================*/
+create table authority
+(
+   authority_id         numeric(10) not null,
+   user_id              numeric(10),
+   authority            varchar(50),
+   primary key (authority_id)
+);
+
+/*==============================================================*/
+/* Table: country                                               */
+/*==============================================================*/
+create table country
+(
+   country_id           numeric(10) not null,
+   country_code         int,
+   name                 varchar(32),
+   primary key (country_id)
 );
 
 /*==============================================================*/
@@ -155,6 +183,7 @@ create table product
    description          varchar(8000),
    item_number          varchar(30),
    price_id             numeric(10),
+   image_url            varchar(50),
    isactive             char,
    stock_quantity       numeric,
    primary key (product_id)
@@ -212,14 +241,25 @@ create table system_log
 create table user
 (
    user_id              numeric(10) not null,
+   cou_country_id       numeric(10),
    first_name           varchar(50) not null,
    last_name            varchar(50) not null,
-   country              varchar(50),
    email                varchar(100) not null,
    password             varchar(36),
+   company_name         varchar(50),
+   street_address       varchar(100),
+   suburb               varchar(100),
+   city                 varchar(100),
+   state_province       varchar(100),
+   post_zip_code        varchar(30),
    phone                varchar(20),
    fax                  varchar(50),
    isnewsletter         char(1),
+   email_format         varchar(10),
+   created              date,
+   created_by           numeric(10),
+   upated               date,
+   update_by            numeric(10),
    isactive             char(1),
    primary key (user_id)
 );
@@ -238,6 +278,12 @@ create table user_role
 );
 
 alter table address_book add constraint FK_Reference_11 foreign key (user_id)
+      references user (user_id) on delete restrict on update restrict;
+
+alter table address_book add constraint FK_Reference_15 foreign key (country_id)
+      references country (country_id) on delete restrict on update restrict;
+
+alter table authority add constraint FK_Reference_14 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
 
 alter table image add constraint FK_Reference_13 foreign key (product_id)
@@ -264,9 +310,11 @@ alter table product add constraint FK_Reference_5 foreign key (price_id)
 alter table system_log add constraint FK_Reference_12 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
 
+alter table user add constraint FK_Reference_16 foreign key (cou_country_id)
+      references country (country_id) on delete restrict on update restrict;
+
 alter table user_role add constraint FK_Reference_10 foreign key (role_id)
       references role (role_id) on delete restrict on update restrict;
 
 alter table user_role add constraint FK_Reference_9 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
-

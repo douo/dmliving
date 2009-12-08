@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
 	<!-- 上下文环境加载器监听器，用于读取 Spring 的配置文件 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -12,6 +13,30 @@
 		<param-value>classpath*:/resource/spring-config/applicationContext*.xml</param-value>
 	</context-param>
 
+
+	<!-- struts-cleanup -->
+	<filter>
+		<filter-name>struts-cleanup</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts-cleanup</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	
+	<!-- SiteMesh -->
+	<filter>
+    	<filter-name>sitemesh</filter-name>
+    	<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+	    <filter-name>sitemesh</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<!-- Struts2 配置 -->
 	<filter>
 		<filter-name>struts2</filter-name>
@@ -30,34 +55,11 @@
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
 
-	<!-- struts-cleanup -->
-	<filter>
-		<filter-name>struts-cleanup</filter-name>
-		<filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>struts-cleanup</filter-name>
-		<url-pattern>/*</url-pattern>
-		<dispatcher>FORWARD</dispatcher>
-		<dispatcher>REQUEST</dispatcher>
-	</filter-mapping>
-
 	<!-- BasePath 监听器 -->
 	<listener>
 		<listener-class>com.living.webapp.listener.BasePathListener</listener-class>
 	</listener>
 	
-	<filter>
-    	<filter-name>sitemesh</filter-name>
-    	<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
-	</filter>
-
-	<!-- SiteMesh -->
-	<filter-mapping>
-	    <filter-name>sitemesh</filter-name>
-	    <url-pattern>/*</url-pattern>
-	</filter-mapping>
-
 	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
