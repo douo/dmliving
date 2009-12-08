@@ -12,16 +12,17 @@ public class Product implements java.io.Serializable {
 	// Fields
 
 	private Long productId;
+	private OptionsName optionsName;
 	private ProductCategory productCategory;
 	private Price price;
-	private OptionsName optionsName;
 	private String name;
 	private String description;
 	private String itemNumber;
+	private String imageUrl;
 	private String isactive;
 	private Long stockQuantity;
-	private Set orderlines = new HashSet(0);
 	private Set images = new HashSet(0);
+	private Set orderlines = new HashSet(0);
 
 	// Constructors
 
@@ -30,20 +31,21 @@ public class Product implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Product(ProductCategory productCategory, Price price,
-			OptionsName optionsName, String name, String description,
-			String itemNumber, String isactive, Long stockQuantity,
-			Set orderlines, Set images) {
+	public Product(OptionsName optionsName, ProductCategory productCategory,
+			Price price, String name, String description, String itemNumber,
+			String imageUrl, String isactive, Long stockQuantity, Set images,
+			Set orderlines) {
+		this.optionsName = optionsName;
 		this.productCategory = productCategory;
 		this.price = price;
-		this.optionsName = optionsName;
 		this.name = name;
 		this.description = description;
 		this.itemNumber = itemNumber;
+		this.imageUrl = imageUrl;
 		this.isactive = isactive;
 		this.stockQuantity = stockQuantity;
-		this.orderlines = orderlines;
 		this.images = images;
+		this.orderlines = orderlines;
 	}
 
 	// Property accessors
@@ -54,6 +56,14 @@ public class Product implements java.io.Serializable {
 
 	public void setProductId(Long productId) {
 		this.productId = productId;
+	}
+
+	public OptionsName getOptionsName() {
+		return this.optionsName;
+	}
+
+	public void setOptionsName(OptionsName optionsName) {
+		this.optionsName = optionsName;
 	}
 
 	public ProductCategory getProductCategory() {
@@ -70,14 +80,6 @@ public class Product implements java.io.Serializable {
 
 	public void setPrice(Price price) {
 		this.price = price;
-	}
-
-	public OptionsName getOptionsName() {
-		return this.optionsName;
-	}
-
-	public void setOptionsName(OptionsName optionsName) {
-		this.optionsName = optionsName;
 	}
 
 	public String getName() {
@@ -104,6 +106,14 @@ public class Product implements java.io.Serializable {
 		this.itemNumber = itemNumber;
 	}
 
+	public String getImageUrl() {
+		return this.imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	public String getIsactive() {
 		return this.isactive;
 	}
@@ -120,20 +130,20 @@ public class Product implements java.io.Serializable {
 		this.stockQuantity = stockQuantity;
 	}
 
-	public Set getOrderlines() {
-		return this.orderlines;
-	}
-
-	public void setOrderlines(Set orderlines) {
-		this.orderlines = orderlines;
-	}
-
 	public Set getImages() {
 		return this.images;
 	}
 
 	public void setImages(Set images) {
 		this.images = images;
+	}
+
+	public Set getOrderlines() {
+		return this.orderlines;
+	}
+
+	public void setOrderlines(Set orderlines) {
+		this.orderlines = orderlines;
 	}
 
 }
