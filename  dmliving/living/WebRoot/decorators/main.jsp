@@ -14,8 +14,8 @@
 </head>
 <body id="indexBody">
 <div id="mainWrapper">
-  <style type="text/css" media="screen">
-.categoryListBoxContents { background-color: #0ce39f; }.centerBoxContentsProducts { background-color: #0ce39f; }.centerBoxContentsProducts { background: url(images/search_product_bg.gif); }
+<style type="text/css" media="screen">
+	.categoryListBoxContents { background-color: #0ce39f; }.centerBoxContentsProducts { background-color: #0ce39f; }.centerBoxContentsProducts { background: url(images/search_product_bg.gif); }
 </style>
   <a name="very_top"></a>
   <!-- the FEATURING overlay -->
@@ -23,13 +23,13 @@
   <center>
     <script type="text/javascript" src="flash/swfobject.js"></script>
     <div id="layout-header">
-      <div id="layout-header-logo"> <a href="."><img src="images/homepage_dml_logo.gif" alt="Deeply Madly Living Home" title=" Deeply Madly Living Home " width="234" height="70" border=0 /></a> </div>
+      <div id="layout-header-logo"> <a href="."><img src="images/<%="/index.jsp".equals(request.getServletPath())? "homepage_dml_logo.gif" : "header_dml_logo.gif" %>" alt="Deeply Madly Living Home" title=" Deeply Madly Living Home " width="234" height="70" border="0" /></a> </div>
       <div id="layout-header-nav">
-        <table align=right width=100% border=0 cellpadding=0 cellspacing=0 height=34>
+        <table align="right" width="100%" border="0" cellpadding="0" cellspacing="0" height="34">
           <tr>
             <td>&nbsp;&nbsp;</td>
             <td width="140" align="center" background="images/phone_number.gif"><strong>1-646-429-9335</strong></td>
-            <td bgcolor="#333333" align="center" width="40%"><a href="#">my account</a> &nbsp;|&nbsp; <a href="#">login</a> &nbsp;|&nbsp; <a href="#"><img src="images/shopping_cart_empty.gif" alt="" width="20" height="12" align=absbottom /></a> &nbsp;<a href="#" class="green-link">shopping cart</a>
+            <td bgcolor="#333333" align="center" width="40%"><a href="#">my account</a> &nbsp;|&nbsp; <a href="#">login</a> &nbsp;|&nbsp; <a href="#"><img src="images/shopping_cart_empty.gif" alt="" width="20" height="12" align="absbottom" /></a> &nbsp;<a href="#" class="green-link">shopping cart</a>
               <!-- (<?= $items_in_bag ?>) --></td>
             <td align="right" width="230" background="images/search_bg.gif"><b>search</b>
               <form name="quick_find_header" action="" method="get">
