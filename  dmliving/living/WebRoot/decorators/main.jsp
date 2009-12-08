@@ -23,7 +23,7 @@
   <center>
     <script type="text/javascript" src="flash/swfobject.js"></script>
     <div id="layout-header">
-      <div id="layout-header-logo"> <a href="."><img src="images/<%="/index.jsp".equals(request.getServletPath())? "homepage_dml_logo.gif" : "header_dml_logo.gif" %>" alt="Deeply Madly Living Home" title=" Deeply Madly Living Home " width="234" height="70" border="0" /></a> </div>
+      <div id="layout-header-logo"><a href="."><img src="images/<%="/index.jsp".equals(request.getServletPath())? "homepage_dml_logo.gif" : "header_dml_logo.gif" %>" alt="Deeply Madly Living Home" title=" Deeply Madly Living Home " width="234" border="0" /></a> </div>
       <div id="layout-header-nav">
         <table align="right" width="100%" border="0" cellpadding="0" cellspacing="0" height="34">
           <tr>
