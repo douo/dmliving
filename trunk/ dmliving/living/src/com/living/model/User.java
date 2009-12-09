@@ -13,7 +13,6 @@ public class User implements java.io.Serializable {
 	// Fields
 
 	private Long userId;
-	private Country country;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -23,6 +22,7 @@ public class User implements java.io.Serializable {
 	private String suburb;
 	private String city;
 	private String stateProvince;
+	private Long countryId;
 	private String postZipCode;
 	private String phone;
 	private String fax;
@@ -52,14 +52,13 @@ public class User implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public User(Country country, String firstName, String lastName,
-			String email, String password, String companyName,
-			String streetAddress, String suburb, String city,
-			String stateProvince, String postZipCode, String phone, String fax,
-			String isnewsletter, String emailFormat, Date created,
-			Long createdBy, Date upated, Long updateBy, String isactive,
-			Set userRoles, Set addressBooks, Set authorities, Set systemLogs) {
-		this.country = country;
+	public User(String firstName, String lastName, String email,
+			String password, String companyName, String streetAddress,
+			String suburb, String city, String stateProvince, Long countryId,
+			String postZipCode, String phone, String fax, String isnewsletter,
+			String emailFormat, Date created, Long createdBy, Date upated,
+			Long updateBy, String isactive, Set userRoles, Set addressBooks,
+			Set authorities, Set systemLogs) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -69,6 +68,7 @@ public class User implements java.io.Serializable {
 		this.suburb = suburb;
 		this.city = city;
 		this.stateProvince = stateProvince;
+		this.countryId = countryId;
 		this.postZipCode = postZipCode;
 		this.phone = phone;
 		this.fax = fax;
@@ -93,14 +93,6 @@ public class User implements java.io.Serializable {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
-	}
-
-	public Country getCountry() {
-		return this.country;
-	}
-
-	public void setCountry(Country country) {
-		this.country = country;
 	}
 
 	public String getFirstName() {
@@ -173,6 +165,14 @@ public class User implements java.io.Serializable {
 
 	public void setStateProvince(String stateProvince) {
 		this.stateProvince = stateProvince;
+	}
+
+	public Long getCountryId() {
+		return this.countryId;
+	}
+
+	public void setCountryId(Long countryId) {
+		this.countryId = countryId;
 	}
 
 	public String getPostZipCode() {
