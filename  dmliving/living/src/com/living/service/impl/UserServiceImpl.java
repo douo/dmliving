@@ -12,6 +12,11 @@ import com.living.service.UserService;
 public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
 	@Autowired
+	public UserServiceImpl(UserDao defaultDao) {
+		super(defaultDao);
+	}
+
+	@Autowired
 	UserDao userDao;
 	
 	/**
