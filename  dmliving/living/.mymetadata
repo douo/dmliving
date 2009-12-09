@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="dmliving"
+  name="living"
   id="myeclipse.1258702949500"
   context-root="/living"
   j2ee-spec="5.0"
-  archive="dmliving.war">
+  archive="living.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>
