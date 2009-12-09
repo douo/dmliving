@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en">
 <head>
@@ -36,9 +37,10 @@
             </fieldset>
           </form>
           <br class="clearBoth" />
-          <form name="create_account" action="" method="post" onsubmit="return check_form(create_account);">
+          <form name="create_account" action="user/register.action" method="post" onsubmit="return check_form(create_account);">
             <input type="hidden" name="action" value="process" />
             <input type="hidden" name="email_pref_html" value="email_format" />
+            <s:token />
             <br />
             <div class="fieldset-label">New Customer? Please provide your Billing Information</div>
             <!-- <legend>New Customer? Please provide your Billing Information</legend> -->
