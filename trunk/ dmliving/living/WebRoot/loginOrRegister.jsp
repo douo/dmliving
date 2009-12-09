@@ -19,15 +19,15 @@
           <h1 id="loginDefaultHeading">Sign In or Register Below</h1>
           <br />
           <!--BOF normal login-->
-          <form name="login" action="" method="post">
+          <form name="login" action="user/login.action" method="post" onsubmit="return check_login(login);">
             <div class="fieldset-label">Returning Customer? Please Sign In</div>
             <fieldset>
               <!-- <legend>Returning Customer? Please Sign In</legend> -->
               <label class="inputLabel" for="login-email-address">Email Address:</label>
-              <input type="text" name="email_address" size = "41" maxlength= "96" id="login-email-address" />
+              <input type="text" name="user.email" size = "41" maxlength= "96" id="login-email-address" />
               <br class="clearBoth" />
               <label class="inputLabel" for="login-password">Password:</label>
-              <input type="password" name="password" size = "41" maxlength = "40" id="login-password" />
+              <input type="password" name="user.password" size = "41" maxlength = "40" id="login-password" />
               <div class="buttonRow back important"><a href="index.jsp?main_page=password_forgotten">Forgot your password?</a></div>
               <br class="clearBoth" />
               <div class="buttonRow back ">
@@ -52,7 +52,7 @@
               <input type="text" name="user.companyName" size = "33" maxlength = "32" style="width: 270px;" id="company" />
               <div class="account-create-header">Address Details</div>
               <!-- <legend>Address Details</legend> -->
-              <label class="inputLabel" for="firstame">First Name:</label>
+              <label class="inputLabel" for="firstname">First Name:</label>
               <input type="text" name="user.firstName" size = "33" maxlength = "32" style="width: 270px;" id="firstname" />
               <span class="alert">*</span><br class="clearBoth" />
               <label class="inputLabel" for="lastname">Last Name:</label>
@@ -74,7 +74,7 @@
               <input type="text" name="user.postZipCode" size = "11" maxlength = "10" style="width: 270px;" id="postcode" />
               <span class="alert">*</span><br class="clearBoth" />
               <label class="inputLabel" for="country">Country:</label>
-              <select style="width: 276px;"  name="user.country.countryId" id="country" >
+              <select style="width: 276px;"  name="user.countryId" id="country" >
                 <option value="">Please Choose Your Country</option>
                 <option value="1">China</option>
                 <option value="2">America</option>

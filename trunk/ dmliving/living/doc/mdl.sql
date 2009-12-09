@@ -241,7 +241,6 @@ create table system_log
 create table user
 (
    user_id              numeric(10) not null,
-   cou_country_id       numeric(10),
    first_name           varchar(50) not null,
    last_name            varchar(50) not null,
    email                varchar(100) not null,
@@ -251,6 +250,7 @@ create table user
    suburb               varchar(100),
    city                 varchar(100),
    state_province       varchar(100),
+   country_id           numeric(10),
    post_zip_code        varchar(30),
    phone                varchar(20),
    fax                  varchar(50),
@@ -309,9 +309,6 @@ alter table product add constraint FK_Reference_5 foreign key (price_id)
 
 alter table system_log add constraint FK_Reference_12 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
-
-alter table user add constraint FK_Reference_16 foreign key (cou_country_id)
-      references country (country_id) on delete restrict on update restrict;
 
 alter table user_role add constraint FK_Reference_10 foreign key (role_id)
       references role (role_id) on delete restrict on update restrict;
