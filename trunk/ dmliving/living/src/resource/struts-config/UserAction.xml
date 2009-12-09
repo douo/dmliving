@@ -6,13 +6,20 @@
 	<package name="com.living.action.UserAction" extends="struts-default" namespace="/user">
 	
 		<action name="login" class="com.living.action.UserAction" method="login">
-			<result>/index.jsp</result>
+			<result type="redirect">/index.jsp</result>
 			<result name="error">/loginOrRegister.jsp</result>
 		</action>
 		
 		<action name="register" class="com.living.action.UserAction" method="register">
-			<result>/loginOrRegister.jsp</result>
+			<interceptor-ref name="token"/>
+			<interceptor-ref name="params"/>
+			<result type="redirect-action">login</result>
 			<result name="error">/loginOrRegister.jsp</result>
+			<result name="invalid.token" type="redirect">/errorPages/expire.jsp</result>
+		</action>
+		
+		<action name="loginOrRegister" class="com.living.action.UserAction" method="loginOrRegister">
+			<result>/loginOrRegister.jsp</result>
 		</action>
 		
 	</package>
