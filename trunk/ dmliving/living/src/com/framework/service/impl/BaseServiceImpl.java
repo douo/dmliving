@@ -31,7 +31,6 @@ public class BaseServiceImpl {
 	}
 	
 	public Object save(Object domain) {
-		System.out.println("domain: "+domain);
 		return defaultDao.save(domain);
 	}
 }

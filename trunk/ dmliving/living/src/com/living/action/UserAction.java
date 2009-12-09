@@ -2,6 +2,7 @@ package com.living.action;
 
 import java.util.Date;
 
+import com.living.model.Country;
 import com.living.model.User;
 import com.living.webapp.action.BaseAction;
 
@@ -30,9 +31,12 @@ public class UserAction extends BaseAction {
 	public String register() {
 		System.out.println("register invoke!");
 		if (user != null) {
-			System.out.println("registering...");
+//			Country country = new Country();
+//			country.setCountryId(user.getCountry().getCountryId());
+			System.out.println("country id=" + user.getCountry().getCountryId());
 			user.setCreated(new Date());
-			user = (User) userService.save(user);
+			// user.setCountry(country);
+			// user = (User) userService.save(user);
 			return SUCCESS;
 		}
 		return ERROR;
