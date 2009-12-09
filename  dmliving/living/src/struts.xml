@@ -13,6 +13,13 @@
 	    <global-exception-mappings>
 	      <exception-mapping exception="java.lang.Exception" result="globalerror"/>
 	    </global-exception-mappings>
+	    
+	    <!-- 
+	    <action name="*">
+        	<result>/{1}.jsp</result>
+    	</action>
+    	-->
+    	 
  	</package>
  	
  	<!-- Add packages here -->
