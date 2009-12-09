@@ -372,9 +372,9 @@ function check_form(form_name) {
   else if (form.state.disabled) check_select("zone_id", "", "Please select a state from the States pull down menu.");
   */
 
-  check_select("country", "", "You must select a country from the Countries pull down menu.");
+  check_select("user.countryId", "", "You must select a country from the Countries pull down menu.");
 
-  check_input("telephone", 3, "Your Telephone Number must contain a minimum of 3 characters.");
+  check_input("user.telephone", 3, "Your Telephone Number must contain a minimum of 3 characters.");
 
   check_password("user.password", "confirmation", 5, "Your Password must contain a minimum of 5 characters.", "The Password Confirmation must match your Password.");
   check_password_new("password_current", "user.password", "password_confirmation", 5, "Your Password must contain a minimum of 5 characters.", "Your new Password must contain a minimum of 5 characters.", "The Password Confirmation must match your new Password.");
@@ -387,6 +387,29 @@ function check_form(form_name) {
     return true;
   }
 } // 验证表单结束
+
+// 验证登陆
+function check_login(form_name) {
+	form = form_name;
+	if (submitted == true) {
+		alert("This form has already been submitted. Please press OK and wait for this process to be completed.");
+		return false;
+    }
+	
+	error = false;
+	error_message = "Errors have occurred during the processing of your form.\n\nPlease make the following corrections:\n\n";
+	
+	check_input("user.email", 6, "Is your email address correct? It should contain at least 6 characters. Please try again.");
+	check_input("user.password", 5, "Your Password must contain a minimum of 5 characters.");
+	
+	if (error == true) {
+    alert(error_message);
+    	return false;
+	} else {
+		submitted = true;
+		return true;
+	}
+} // 验证登陆结束
 
 function session_win() {
 	window.open("index.jsp?main_page=info_shopping_cart","info_shopping_cart","height=460,width=430,toolbar=no,statusbar=no,scrollbars=yes").focus();
