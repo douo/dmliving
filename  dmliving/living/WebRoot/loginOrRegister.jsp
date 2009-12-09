@@ -7,7 +7,7 @@
 <title>Deeply Madly Living: Sign In or Register Below</title>
 <script type="text/javascript" src="js/login.js"></script>
 </head>
-<body id="loginBody" onload="update_zone(document.create_account); document.login.email_address.focus();">
+<body id="loginBody" onload="update_zone(document.create_account);">
 <div id="layout-content">
   <table width="100%" border="0" cellspacing="0" cellpadding="0" id="contentMainWrapper">
     <tr>
