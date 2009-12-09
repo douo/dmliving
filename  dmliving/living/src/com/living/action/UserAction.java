@@ -17,9 +17,12 @@ public class UserAction extends BaseAction {
 		user = userService.login(user);
 		if (user != null) {
 			System.out.println("login success!");
+			userService.initUser(getRequest(), user);
 			return SUCCESS;
+		} else {
+			System.out.println("login fail!");
+			getSession().setAttribute("loginError", "用户帐号或密码出错");		
 		}
-		System.out.println("login failed!");
 		return ERROR;
 	}
 	
@@ -34,6 +37,13 @@ public class UserAction extends BaseAction {
 			return SUCCESS;
 		}
 		return ERROR;
+	}
+	
+	/**
+	 * 用户登陆或者注册
+	 */
+	public String loginOrRegister() {
+		return SUCCESS;
 	}
 
 	public User getUser() {
