@@ -7,19 +7,23 @@
 	
 		<action name="login" class="com.living.action.UserAction" method="login">
 			<result type="redirect">/index.jsp</result>
-			<result name="error">/loginOrRegister.jsp</result>
+			<result name="error">/user/login.jsp</result>
 		</action>
 		
 		<action name="register" class="com.living.action.UserAction" method="register">
 			<interceptor-ref name="token"/>
 			<interceptor-ref name="params"/>
-			<result type="redirect-action">login</result>
-			<result name="error">/loginOrRegister.jsp</result>
-			<result name="invalid.token" type="redirect">/errorPages/expire.jsp</result>
+			<result>/user/createAccountSuccess.jsp</result>
+			<result name="error">/user/register.jsp</result>
+			<result name="invalid.token">/errorPages/expire.jsp</result>
 		</action>
 		
-		<action name="loginOrRegister" class="com.living.action.UserAction" method="loginOrRegister">
-			<result>/loginOrRegister.jsp</result>
+		<action name="createAccount" class="com.living.action.UserAction" method="createAccount">
+			<result>/user/register.jsp</result>
+		</action>
+		
+		<action name="logout" class="com.living.action.UserAction" method="logoff">
+			<result>/user/logoff.jsp</result>
 		</action>
 		
 	</package>
