@@ -13,9 +13,6 @@
         <many-to-one name="user" class="com.living.model.User" fetch="select">
             <column name="user_id" precision="10" scale="0" />
         </many-to-one>
-        <many-to-one name="country" class="com.living.model.Country" fetch="select">
-            <column name="country_id" precision="10" scale="0" />
-        </many-to-one>
         <property name="firstName" type="java.lang.String">
             <column name="first_name" length="50" />
         </property>
@@ -39,6 +36,9 @@
         </property>
         <property name="postZipCode" type="java.lang.String">
             <column name="post_zip_code" length="30" />
+        </property>
+        <property name="isPrimary" type="java.lang.String">
+            <column name="isPrimary" length="1" />
         </property>
         <property name="isactive" type="java.lang.String">
             <column name="isactive" length="1" />
