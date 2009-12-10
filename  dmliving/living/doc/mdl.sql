@@ -7,12 +7,12 @@ create database living;
 
 use living;
 
-/* 表部分 */
+/*==============================================================*/
+/* Tables below							                        */
+/*==============================================================*/
 drop table if exists address_book;
 
 drop table if exists authority;
-
-drop table if exists country;
 
 drop table if exists image;
 
@@ -45,7 +45,6 @@ create table address_book
 (
    addressbook_id       numeric(10) not null,
    user_id              numeric(10),
-   country_id           numeric(10),
    first_name           varchar(50),
    last_name            varchar(50),
    company_name         varchar(50),
@@ -54,6 +53,7 @@ create table address_book
    city                 varchar(100),
    state_province       varchar(100),
    post_zip_code        varchar(30),
+   isPrimary            char(1),
    isactive             char(1),
    primary key (addressbook_id)
 );
@@ -67,17 +67,6 @@ create table authority
    user_id              numeric(10),
    authority            varchar(50),
    primary key (authority_id)
-);
-
-/*==============================================================*/
-/* Table: country                                               */
-/*==============================================================*/
-create table country
-(
-   country_id           numeric(10) not null,
-   country_code         int,
-   name                 varchar(32),
-   primary key (country_id)
 );
 
 /*==============================================================*/
@@ -250,7 +239,7 @@ create table user
    suburb               varchar(100),
    city                 varchar(100),
    state_province       varchar(100),
-   country_id           numeric(10),
+   country              varchar(30),
    post_zip_code        varchar(30),
    phone                varchar(20),
    fax                  varchar(50),
@@ -279,9 +268,6 @@ create table user_role
 
 alter table address_book add constraint FK_Reference_11 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
-
-alter table address_book add constraint FK_Reference_15 foreign key (country_id)
-      references country (country_id) on delete restrict on update restrict;
 
 alter table authority add constraint FK_Reference_14 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
@@ -315,3 +301,5 @@ alter table user_role add constraint FK_Reference_10 foreign key (role_id)
 
 alter table user_role add constraint FK_Reference_9 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
+
+
