@@ -7,7 +7,7 @@ import com.living.model.User;
 
 public interface UserService extends BaseService {
 	/**
-	 * 用户或管理员登陆
+	 * 用户登陆
 	 * @param user
 	 * @return
 	 */
@@ -19,4 +19,11 @@ public interface UserService extends BaseService {
 	 * @param users
 	 */
 	public void initUser(HttpServletRequest request,User user);
+	
+	/**
+	 * 用户注册
+	 * @param user
+	 * @return
+	 */
+	public User register(User user);
 }

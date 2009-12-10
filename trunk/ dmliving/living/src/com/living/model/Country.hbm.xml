@@ -22,5 +22,11 @@
             </key>
             <one-to-many class="com.living.model.AddressBook" />
         </set>
+        <set name="users" inverse="true">
+            <key>
+                <column name="country_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.living.model.User" />
+        </set>
     </class>
 </hibernate-mapping>

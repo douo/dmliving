@@ -37,8 +37,8 @@
         <property name="stateProvince" type="java.lang.String">
             <column name="state_province" length="100" />
         </property>
-        <property name="countryId" type="java.lang.Long">
-            <column name="country_id" precision="10" scale="0" />
+        <property name="country" type="java.lang.String">
+            <column name="country" length="30" />
         </property>
         <property name="postZipCode" type="java.lang.String">
             <column name="post_zip_code" length="30" />

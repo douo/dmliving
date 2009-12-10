@@ -10,7 +10,6 @@ public class AddressBook implements java.io.Serializable {
 
 	private Long addressbookId;
 	private User user;
-	private Country country;
 	private String firstName;
 	private String lastName;
 	private String companyName;
@@ -19,6 +18,7 @@ public class AddressBook implements java.io.Serializable {
 	private String city;
 	private String stateProvince;
 	private String postZipCode;
+	private String isPrimary;
 	private String isactive;
 
 	// Constructors
@@ -28,12 +28,11 @@ public class AddressBook implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public AddressBook(User user, Country country, String firstName,
-			String lastName, String companyName, String streetAddress,
-			String suburb, String city, String stateProvince,
-			String postZipCode, String isactive) {
+	public AddressBook(User user, String firstName, String lastName,
+			String companyName, String streetAddress, String suburb,
+			String city, String stateProvince, String postZipCode,
+			String isPrimary, String isactive) {
 		this.user = user;
-		this.country = country;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.companyName = companyName;
@@ -42,6 +41,7 @@ public class AddressBook implements java.io.Serializable {
 		this.city = city;
 		this.stateProvince = stateProvince;
 		this.postZipCode = postZipCode;
+		this.isPrimary = isPrimary;
 		this.isactive = isactive;
 	}
 
@@ -61,14 +61,6 @@ public class AddressBook implements java.io.Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public Country getCountry() {
-		return this.country;
-	}
-
-	public void setCountry(Country country) {
-		this.country = country;
 	}
 
 	public String getFirstName() {
@@ -133,6 +125,14 @@ public class AddressBook implements java.io.Serializable {
 
 	public void setPostZipCode(String postZipCode) {
 		this.postZipCode = postZipCode;
+	}
+
+	public String getIsPrimary() {
+		return this.isPrimary;
+	}
+
+	public void setIsPrimary(String isPrimary) {
+		this.isPrimary = isPrimary;
 	}
 
 	public String getIsactive() {
