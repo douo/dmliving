@@ -5,9 +5,24 @@
 <struts>
 	<package name="com.living.action.UserAction" extends="struts-default" namespace="/user">
 	
+		<!-- 登陆转向拦截器 -->
+		<interceptors>
+			<interceptor name="loginInterceptor" class="com.living.util.LoginInterceptor"/>
+		</interceptors>
+	
 		<action name="login" class="com.living.action.UserAction" method="login">
-			<result type="redirect">/index.jsp</result>
 			<result name="error">/user/login.jsp</result>
+			<result name="input">/user/login.jsp</result>
+			<result>/user/loginResult.jsp</result>
+		</action>
+		
+		<action name="loginAccount" class="com.living.action.UserAction" method="loginAccount">
+			<result>/user/login.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="loginInterceptor">
+				<!-- 只拦截这个action中的login方法 -->
+				<param name="includeMethods">loginAccount</param>
+			</interceptor-ref>
 		</action>
 		
 		<action name="register" class="com.living.action.UserAction" method="register">

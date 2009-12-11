@@ -6,5 +6,6 @@ package com.living.util;
  *
  */
 public class Constants {
-	public static  final String SESSION_LOGIN="login";
+	public static final String SESSION_LOGIN="login";
+	public static final String GOTO_URL_KEY = "going_to_url";
 }
