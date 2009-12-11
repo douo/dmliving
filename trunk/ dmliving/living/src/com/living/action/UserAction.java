@@ -29,6 +29,13 @@ public class UserAction extends BaseAction {
 	}
 	
 	/**
+	 * 转向登陆页面
+	 */
+	public String loginAccount() {
+		return SUCCESS;
+	}
+	
+	/**
 	 * 用户注销登陆
 	 */
 	public String logoff(){
