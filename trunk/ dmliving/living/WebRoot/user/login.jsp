@@ -34,7 +34,7 @@
               </div>
               <br class="clearBoth" />
               <div class="buttonRow back ">
-                <input type="image" src="images/buttons/english/button_login2.gif" alt="Login" title=" Login " />
+                <input type="image" src="images/buttons/english/button_login.gif" alt="Login" title=" Login " />
               </div>
               <div class="buttonRow back " style="margin-left: 10px;">
                 <a href="user/createAccount.action"><img src="images/buttons/english/button_register.gif" alt="Register" title=" Register "/></a>
