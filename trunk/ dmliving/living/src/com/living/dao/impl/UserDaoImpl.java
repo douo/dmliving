@@ -24,4 +24,13 @@ public class UserDaoImpl extends BaseHibernateDaoImpl<User> implements UserDao {
 	@Override
 	public void initHibernateTemplate() {
 	}
+
+	@Override
+	public User findByAccount(String account) {
+		List<User> userList = findByProperty(ACCOUNT, account);
+		if (userList != null && userList.size() > 0) {
+			return userList.get(0);
+		}
+		return null;
+	}
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.living.service.AddressBookService;
 import com.living.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -128,5 +129,8 @@ public class BaseAction extends ActionSupport {
 	
 	@Autowired
 	protected UserService userService;
+	
+	@Autowired
+	protected AddressBookService addressBookService;
 	
 }
