@@ -20,7 +20,7 @@
 			<result>/user/login.jsp</result>
 			<interceptor-ref name="defaultStack"/>
 			<interceptor-ref name="loginInterceptor">
-				<!-- 只拦截这个action中的login方法 -->
+				<!-- 只拦截这个action中的login方法 -->	
 				<param name="includeMethods">loginAccount</param>
 			</interceptor-ref>
 		</action>
@@ -30,7 +30,7 @@
 			<interceptor-ref name="params"/>
 			<result>/user/createAccountSuccess.jsp</result>
 			<result name="error">/user/register.jsp</result>
-			<result name="invalid.token">/errorPages/expire.jsp</result>
+			<result name="invalid.token">/errorPages/invalidToken.jsp</result>
 		</action>
 		
 		<action name="createAccount" class="com.living.action.UserAction" method="createAccount">
