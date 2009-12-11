@@ -27,7 +27,7 @@
           <div class="alert forward">* = required</div>
           <br class="clearBoth" />
           <label class="inputLabel" for="firstname">First Name:</label>
-          <input type="text" name="firstname" value="xilin" size = "33" maxlength = "32" style="width: 276px;" id="firstname" />
+          <input type="text" name="firstname" value="${addressBook.firstName }" size = "33" maxlength = "32" style="width: 276px;" id="firstname" />
           <span class="alert">*</span><br class="clearBoth" />
           <label class="inputLabel" for="lastname">Last Name:</label>
           <input type="text" name="lastname" value="chen" size = "33" maxlength = "32" style="width: 276px;" id="lastname" />
