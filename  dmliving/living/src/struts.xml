@@ -23,5 +23,7 @@
  	</package>
  	
  	<!-- Add packages here -->
-	<include file="resource/struts-config/UserAction.xml"></include>
+	<include file="resource/struts-config/UserAction.xml"/>
+	<include file="resource/struts-config/AddressBookAcion.xml"/>
+	
 </struts>
