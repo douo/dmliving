@@ -38,8 +38,7 @@
           <br />
           <div class="fieldset-label">Address Book Entries</div>
           <fieldset>
-            <!-- <legend>Address Book Entries</legend>
- -->
+            <!-- <legend>Address Book Entries</legend> -->
             <div class="alert forward"><span class="coming"><strong>NOTE:</strong></span> A maximum of 5 address book entries allowed.</div>
             <br class="clearBoth" />
             <!--  <h3 class="addressBookDefaultName">xilin chen&nbsp;(primary address)</h3> -->
@@ -56,8 +55,7 @@
             <br class="clearBoth" />
             <div class="buttonRow back"><a href="/index.jsp?main_page=address_book_process"><img src="images/buttons/english/button_add_address.gif" alt="Add Address" title=" Add Address " width="150" height="29" /></a></div>
           </fieldset>
-          <!-- <div class="buttonRow back"><a href="/index.jsp?main_page=account"><img src="images/buttons/english/button_back.gif" alt="Back" title=" Back " width="150" height="29" /></a></div>
- -->
+          <!-- <div class="buttonRow back"><a href="/index.jsp?main_page=account"><img src="images/buttons/english/button_back.gif" alt="Back" title=" Back " width="150" height="29" /></a></div> -->
           <br class="clearBoth" />
         </div></td>
     </tr>
