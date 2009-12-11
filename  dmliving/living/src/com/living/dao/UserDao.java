@@ -8,4 +8,5 @@ public interface UserDao extends BaseHibernateDao {
 	String ACCOUNT = "email";
 	String PASSWORD = "password";
 	User findByAccountPwd(String account, String password);
+	User findByAccount(String account);
 }

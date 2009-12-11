@@ -1,7 +1,5 @@
 package com.living.action;
 
-import java.util.Date;
-
 import com.living.model.User;
 import com.living.webapp.action.BaseAction;
 
@@ -47,14 +45,15 @@ public class UserAction extends BaseAction {
 	 * 用户注册
 	 */
 	public String register() {
-		System.out.println("register invoke!");
 		if (user != null) {
-			user.setCreated(new Date());
 			user = (User) userService.register(user);
-			// 注册成功后在会话里保存用户信息
-			userService.initUser(getRequest(), user); 
-			return SUCCESS;
+			if (user != null) {
+				// 注册成功后在会话里保存用户信息
+				userService.initUser(getRequest(), user); 
+				return SUCCESS;
+			}
 		}
+		getRequest().setAttribute("registerError", "Our system already has a record of that email address - please try logging in with that email address. If you do not use that address any longer you can correct it in the My Account area.");
 		return ERROR;
 	}
 	
