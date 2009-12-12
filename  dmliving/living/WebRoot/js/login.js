@@ -372,7 +372,7 @@ function check_form(form_name) {
   else if (form.state.disabled) check_select("zone_id", "", "Please select a state from the States pull down menu.");
   */
 
-  check_select("user.countryId", "", "You must select a country from the Countries pull down menu.");
+  check_select("user.country", "", "You must select a country from the Countries pull down menu.");
 
   check_input("user.telephone", 3, "Your Telephone Number must contain a minimum of 3 characters.");
 
