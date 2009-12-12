@@ -1,6 +1,9 @@
 package com.living.action;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.living.model.User;
+import com.living.util.Constants;
 import com.living.webapp.action.BaseAction;
 
 public class UserAction extends BaseAction {
@@ -8,7 +11,7 @@ public class UserAction extends BaseAction {
 
 	private User user;
 	
-	private String referer;
+	private String goingToURL;
 
 	/**
 	 * 用户登陆
@@ -16,14 +19,19 @@ public class UserAction extends BaseAction {
 	public String login() {
 		user = userService.login(user);
 		if (user != null) {
-			referer = getRequest().getHeader("Referer");
 			userService.initUser(getRequest(), user);
+			String goingToURL = (String) getSession().getAttribute(Constants.GOTO_URL_KEY);
+			if (StringUtils.isNotBlank(goingToURL)) {
+				setGoingToURL(goingToURL);
+				getSession().removeAttribute(Constants.GOTO_URL_KEY);
+			} else {
+				setGoingToURL("/");
+			}
 			return SUCCESS;
 		} else {
-			System.out.println("login fail!");
-			getRequest().setAttribute("loginError", "用户帐号或密码错误!");		
+			getRequest().setAttribute("loginError", "Account or password is not corrected!");
+			return INPUT;
 		}
-		return ERROR;
 	}
 	
 	/**
@@ -64,6 +72,15 @@ public class UserAction extends BaseAction {
 	public String createAccount() {
 		return SUCCESS;
 	}
+	
+	/**
+	 * 显示用户首要地址
+	 * @return
+	 */
+	public String showPrimaryAdress() {
+		user = (User) getSession().getAttribute(Constants.SESSION_LOGIN);
+		return SUCCESS;
+	}
 
 	public User getUser() {
 		return user;
@@ -73,11 +90,12 @@ public class UserAction extends BaseAction {
 		this.user = user;
 	}
 
-	public String getReferer() {
-		return referer;
+	public String getGoingToURL() {
+		return goingToURL;
 	}
 
-	public void setReferer(String referer) {
-		this.referer = referer;
+	public void setGoingToURL(String goingToURL) {
+		this.goingToURL = goingToURL;
 	}
+
 }

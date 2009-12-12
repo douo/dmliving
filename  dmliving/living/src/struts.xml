@@ -7,9 +7,23 @@
 	<constant name="struts.objectFactory" value="spring" />
 	
 	<package name="default" extends="struts-default">
+	
+		<!-- 登陆拦截器 -->
+		<interceptors>
+			<interceptor name="loginInterceptor" class="com.living.util.LoginInterceptor"/>
+			<interceptor-stack name="loginDefaultStack">
+				<interceptor-ref name="loginInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="loginDefaultStack"/>
+		
 	    <global-results>
 	      <result name="globalerror" type="redirect">/error.html</result>
+	      <result name="login" type="redirect">/user/login.jsp</result>
 	    </global-results>
+	    
 	    <global-exception-mappings>
 	      <exception-mapping exception="java.lang.Exception" result="globalerror"/>
 	    </global-exception-mappings>
@@ -19,7 +33,7 @@
         	<result>/{1}.jsp</result>
     	</action>
     	-->
-    	 
+    	
  	</package>
  	
  	<!-- Add packages here -->
