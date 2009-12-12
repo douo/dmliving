@@ -3,26 +3,13 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="com.living.action.UserAction" extends="struts-default" namespace="/user">
-	
-		<!-- 登陆转向拦截器 -->
-		<interceptors>
-			<interceptor name="loginInterceptor" class="com.living.util.LoginInterceptor"/>
-		</interceptors>
+	<package name="com.living.action.UserAction" extends="default" namespace="/user">
 	
 		<action name="login" class="com.living.action.UserAction" method="login">
 			<result name="error">/user/login.jsp</result>
 			<result name="input">/user/login.jsp</result>
-			<result>/user/loginResult.jsp</result>
-		</action>
-		
-		<action name="loginAccount" class="com.living.action.UserAction" method="loginAccount">
-			<result>/user/login.jsp</result>
+			<result type="redirect">${goingToURL}</result>
 			<interceptor-ref name="defaultStack"/>
-			<interceptor-ref name="loginInterceptor">
-				<!-- 只拦截这个action中的login方法 -->	
-				<param name="includeMethods">loginAccount</param>
-			</interceptor-ref>
 		</action>
 		
 		<action name="register" class="com.living.action.UserAction" method="register">
@@ -31,14 +18,20 @@
 			<result>/user/createAccountSuccess.jsp</result>
 			<result name="error">/user/register.jsp</result>
 			<result name="invalid.token">/errorPages/invalidToken.jsp</result>
+			<interceptor-ref name="defaultStack"/>
 		</action>
 		
 		<action name="createAccount" class="com.living.action.UserAction" method="createAccount">
 			<result>/user/register.jsp</result>
 		</action>
 		
+		<action name="showPrimaryAdress" class="com.living.action.UserAction" method="showPrimaryAdress">
+			<result>/user/addressBookUpdate.jsp</result>
+		</action>
+		
 		<action name="logout" class="com.living.action.UserAction" method="logoff">
 			<result>/user/logoff.jsp</result>
+			<interceptor-ref name="defaultStack"/>
 		</action>
 		
 	</package>
