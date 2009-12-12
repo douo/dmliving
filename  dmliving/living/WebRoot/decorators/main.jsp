@@ -31,7 +31,7 @@
           <tr>
             <td>&nbsp;&nbsp;</td>
             <td width="140" align="center" background="images/phone_number.gif"><strong>1-646-429-9335</strong></td>
-            <td bgcolor="#333333" align="center" width="40%"><a href="#">my account</a> &nbsp;|&nbsp; <%=request.getSession().getAttribute(Constants.SESSION_LOGIN)==null ? "<a href='user/loginAccount.action'>login</a>" : "<a href='user/logout.action'>logout</a>" %> &nbsp;|&nbsp; <a href="#"><img src="images/shopping_cart_empty.gif" alt="" width="20" height="12" align="absbottom" /></a> &nbsp;<a href="#" class="green-link">shopping cart</a>
+            <td bgcolor="#333333" align="center" width="40%"><a href="#">my account</a> &nbsp;|&nbsp; <%=request.getSession().getAttribute(Constants.SESSION_LOGIN)==null ? "<a href='user/login.action'>login</a>" : "<a href='user/logout.action'>logout</a>" %> &nbsp;|&nbsp; <a href="#"><img src="images/shopping_cart_empty.gif" alt="" width="20" height="12" align="absbottom" /></a> &nbsp;<a href="#" class="green-link">shopping cart</a>
               <!-- (<?= $items_in_bag ?>) --></td>
             <td align="right" width="230" background="images/search_bg.gif"><b>search</b>
               <form name="quick_find_header" action="" method="get">
