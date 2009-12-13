@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/includes/jsp-tags.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
@@ -19,15 +20,25 @@
           <h1 id="addressBookDefaultHeading">My Address Book</h1>
           <br />
           <!-- messageStackWarning larger -->
-          <div class="messageStackSuccess larger"><img src="images/icons/success.gif" alt="Success" title=" Success " width="20" height="20" /> Your address book has been successfully updated.</div>
-          <div class="fieldset-label">Primary Address</div>
+          <c:if test="${addressError != null }">
+          <div class="messageStackError larger">
+		  <img height="20" width="20" title=" Error " alt="Error" src="images/icons/error.gif"/>
+		  ${addressError }
+		  </div>
+		  </c:if>
+          <c:if test="${addressMessage != null }">
+          <div class="messageStackSuccess larger"><img src="images/icons/success.gif" alt="Success" title=" Success " width="20" height="20" />${addressMessage }</div>
+          </c:if>
+          <br class="clearBoth" />
+          <!-- <div class="fieldset-label">Primary Address</div> -->
           <fieldset>
+         	<legend>Primary Address</legend>
             <address class="back important" style="width: 200px;">
-            hhit<br />
-            xilin chen<br />
-            zhongshanload No.88<br />
-            guangzhou, 519090<br />
-            guangdong, China
+            ${user.companyName }<br />
+            ${user.firstName } ${user.lastName }<br />
+            ${user.streetAddress }<br />
+            ${user.city }, ${user.postZipCode }<br />
+            ${user.stateProvince }, ${user.country }
             </address>
             <div class="instructions">This address is used as the pre-selected shipping and billing address for orders placed with Deeply Madly Living.<br />
               <br />
@@ -36,24 +47,29 @@
           </fieldset>
           <br />
           <br />
-          <div class="fieldset-label">Address Book Entries</div>
+          <!-- <div class="fieldset-label">Address Book Entries</div> -->
           <fieldset>
-            <!-- <legend>Address Book Entries</legend> -->
+            <legend>Address Book Entries</legend>
             <div class="alert forward"><span class="coming"><strong>NOTE:</strong></span> A maximum of 5 address book entries allowed.</div>
             <br class="clearBoth" />
+            <c:forEach var="addressBook" items="${addressBookList}">
             <!--  <h3 class="addressBookDefaultName">xilin chen&nbsp;(primary address)</h3> -->
-            <div class="back" style="font-size: 14px;">xilin chen&nbsp;(primary address)</div>
+            <div class="back" style="font-size: 14px;">${addressBook.firstName }&nbsp;${addressBook.lastName }&nbsp;<c:if test="${addressBook.isPrimary=='Y'}">(primary address)</c:if></div>
             <br class="clearBoth" />
             <address>
-            hhit<br />
-            xilin chen<br />
-            zhongshanload No.88<br />
-            guangzhou, 519090<br />
-            guangdong, China
+            ${addressBook.companyName }<br />
+            ${addressBook.firstName }&nbsp;${addressBook.lastName }<br />
+            ${addressBook.streetAddress }<br />
+            ${addressBook.city }, ${addressBook.postZipCode }<br />
+            ${addressBook.stateProvince }, ${addressBook.country }
             </address>
-            <div class="buttonRow forward"><a href="/index.jsp?main_page=address_book_process&amp;edit=345"><img src="images/buttons/english/small_edit.gif" alt="Edit" title=" Edit " width="46" height="15" /></a> <a href="/index.jsp?main_page=address_book_process&amp;delete=345"><img src="images/buttons/english/button_delete_small.gif" alt="Delete" title=" Delete " width="46" height="15" /></a></div>
+            <div class="buttonRow forward">
+             <a href="address/editAddress.action?addressBook.addressbookId=${addressBook.addressbookId }"><img src="images/buttons/english/small_edit.gif" alt="Edit" title=" Edit " width="46" height="15" /></a>
+             <a href="address/deleteAddressConfirm.action?addressBook.addressbookId=${addressBook.addressbookId }"><img src="images/buttons/english/button_delete_small.gif" alt="Delete" title=" Delete " width="46" height="15" /></a>
+            </div>
             <br class="clearBoth" />
-            <div class="buttonRow back"><a href="/index.jsp?main_page=address_book_process"><img src="images/buttons/english/button_add_address.gif" alt="Add Address" title=" Add Address " width="150" height="29" /></a></div>
+            </c:forEach>
+            <div class="buttonRow back"><a href="address/NewAddress.action"><img src="images/buttons/english/button_add_address.gif" alt="Add Address" title=" Add Address " width="150" height="29" /></a></div>
           </fieldset>
           <!-- <div class="buttonRow back"><a href="/index.jsp?main_page=account"><img src="images/buttons/english/button_back.gif" alt="Back" title=" Back " width="150" height="29" /></a></div> -->
           <br class="clearBoth" />

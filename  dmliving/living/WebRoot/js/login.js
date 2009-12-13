@@ -346,7 +346,7 @@ function check_password_new(field_name_1, field_name_2, field_name_3, field_size
   }
 }
 
-// 验证表单
+// 验证注册表单
 function check_form(form_name) {
   if (submitted == true) {
     alert("This form has already been submitted. Please press OK and wait for this process to be completed.");
@@ -360,22 +360,16 @@ function check_form(form_name) {
 
   check_input("user.firstName", 2, "Is your first name correct? Our system requires a minimum of 2 characters. Please try again.");
   check_input("user.lastName", 2, "Is your last name correct? Our system requires a minimum of 2 characters. Please try again.");
-
-
   check_input("user.email", 6, "Is your email address correct? It should contain at least 6 characters. Please try again.");
   check_input("user.streetAddress", 5, "Your Street Address must contain a minimum of 5 characters.");
   check_input("user.postZipCode", 4, "Your Post/ZIP Code must contain a minimum of 4 characters.");
   check_input("user.city", 3, "Your City must contain a minimum of 3 characters.");
-
   /*
   if (!form.state.disabled && form.zone_id.value == "") check_input("user.stateProvince", 0, "Your State must contain a minimum of 0 characters.")
   else if (form.state.disabled) check_select("zone_id", "", "Please select a state from the States pull down menu.");
   */
-
   check_select("user.country", "", "You must select a country from the Countries pull down menu.");
-
   check_input("user.telephone", 3, "Your Telephone Number must contain a minimum of 3 characters.");
-
   check_password("user.password", "confirmation", 5, "Your Password must contain a minimum of 5 characters.", "The Password Confirmation must match your Password.");
   check_password_new("password_current", "user.password", "password_confirmation", 5, "Your Password must contain a minimum of 5 characters.", "Your new Password must contain a minimum of 5 characters.", "The Password Confirmation must match your new Password.");
 
@@ -410,6 +404,36 @@ function check_login(form_name) {
 		return true;
 	}
 } // 验证登陆结束
+
+// 验证地址本表单
+function check_addressBook(form_name) {
+	form = form_name;
+	if (submitted == true) {
+		alert("This form has already been submitted. Please press OK and wait for this process to be completed.");
+		return false;
+    }
+	error = false;
+	error_message = "Errors have occurred during the processing of your form.\n\nPlease make the following corrections:\n\n";
+
+    check_input("addressBook.firstName", 2, "Is your first name correct? Our system requires a minimum of 2 characters. Please try again.");
+    check_input("addressBook.lastName", 2, "Is your last name correct? Our system requires a minimum of 2 characters. Please try again.");
+    check_input("addressBook.streetAddress", 5, "Your Street Address must contain a minimum of 5 characters.");
+    check_input("addressBook.postZipCode", 4, "Your Post/ZIP Code must contain a minimum of 4 characters.");
+    check_input("addressBook.city", 3, "Your City must contain a minimum of 3 characters.");
+    /*
+  	if (!form.state.disabled && form.zone_id.value == "") check_input("user.stateProvince", 0, "Your State must contain a minimum of 0 characters.")
+  	else if (form.state.disabled) check_select("zone_id", "", "Please select a state from the States pull down menu.");
+    */
+    check_select("addressBook.country", "", "You must select a country from the Countries pull down menu.");
+	
+	if (error == true) {
+    alert(error_message);
+    	return false;
+	} else {
+		submitted = true;
+		return true;
+	}
+}
 
 function session_win() {
 	window.open("index.jsp?main_page=info_shopping_cart","info_shopping_cart","height=460,width=430,toolbar=no,statusbar=no,scrollbars=yes").focus();
