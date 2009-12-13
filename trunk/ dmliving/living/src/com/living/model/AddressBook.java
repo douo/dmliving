@@ -18,6 +18,7 @@ public class AddressBook implements java.io.Serializable {
 	private String city;
 	private String stateProvince;
 	private String postZipCode;
+	private String country;
 	private String isPrimary;
 	private String isactive;
 
@@ -31,7 +32,7 @@ public class AddressBook implements java.io.Serializable {
 	public AddressBook(User user, String firstName, String lastName,
 			String companyName, String streetAddress, String suburb,
 			String city, String stateProvince, String postZipCode,
-			String isPrimary, String isactive) {
+			String country, String isPrimary, String isactive) {
 		this.user = user;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -41,6 +42,7 @@ public class AddressBook implements java.io.Serializable {
 		this.city = city;
 		this.stateProvince = stateProvince;
 		this.postZipCode = postZipCode;
+		this.country = country;
 		this.isPrimary = isPrimary;
 		this.isactive = isactive;
 	}
@@ -125,6 +127,14 @@ public class AddressBook implements java.io.Serializable {
 
 	public void setPostZipCode(String postZipCode) {
 		this.postZipCode = postZipCode;
+	}
+
+	public String getCountry() {
+		return this.country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public String getIsPrimary() {

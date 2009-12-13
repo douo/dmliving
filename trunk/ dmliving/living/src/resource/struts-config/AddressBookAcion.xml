@@ -3,10 +3,37 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="com.living.action.AddressBookAcion" extends="struts-default" namespace="/address">
+	<package name="com.living.action.AddressBookAcion" extends="default" namespace="/address">
 		
 		<action name="showPrimaryAdress" class="com.living.action.AddressBookAcion" method="showPrimaryAdress">
 			<result>/user/addressBookUpdate.jsp</result>
+		</action>
+		
+		<action name="viewAddressBook" class="com.living.action.AddressBookAcion" method="viewAddressBook">
+			<result>/user/addressBook.jsp</result>
+		</action>
+		
+		<action name="NewAddress" class="com.living.action.AddressBookAcion" method="saveAddress">
+			<result type="chain">viewAddressBook</result>
+			<result name="input">/user/addressBookEdit.jsp</result>
+			<param name="actionForm">New</param>
+		</action>
+		
+		<action name="editAddress" class="com.living.action.AddressBookAcion" method="viewAddress">
+			<result>/user/addressBookEdit.jsp</result>
+			<param name="actionForm">Update</param>
+		</action>
+		
+		<action name="deleteAddressConfirm" class="com.living.action.AddressBookAcion" method="viewAddress">
+			<result>/user/addressDelete.jsp</result>
+		</action>
+		
+		<action name="UpdateAddress" class="com.living.action.AddressBookAcion" method="updateAddress">
+			<result type="chain">viewAddressBook</result>
+		</action>
+		
+		<action name="deleteAddress" class="com.living.action.AddressBookAcion" method="deleteAddress">
+			<result type="chain">viewAddressBook</result>
 		</action>
 		
 	</package>

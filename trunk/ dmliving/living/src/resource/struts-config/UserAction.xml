@@ -16,18 +16,35 @@
 			<interceptor-ref name="token"/>
 			<interceptor-ref name="params"/>
 			<result>/user/createAccountSuccess.jsp</result>
-			<result name="error">/user/register.jsp</result>
+			<result name="input">/user/register.jsp</result>
 			<result name="invalid.token">/errorPages/invalidToken.jsp</result>
 			<interceptor-ref name="defaultStack"/>
 		</action>
 		
 		<action name="createAccount" class="com.living.action.UserAction" method="createAccount">
 			<result>/user/register.jsp</result>
+			<interceptor-ref name="defaultStack"/>
 		</action>
 		
-		<action name="showPrimaryAdress" class="com.living.action.UserAction" method="showPrimaryAdress">
+		<action name="myAccount" class="com.living.action.UserAction" method="myAccount">
+			<result>/user/myAccount.jsp</result>
+		</action>
+		
+		<action name="viewAccount" class="com.living.action.UserAction" method="accountInformation">
+			<result>/user/accountInfomation.jsp</result>
+		</action>
+		
+		<action name="updateAccount" class="com.living.action.UserAction" method="updateAccount">
+			<result>/user/myAccount.jsp</result>
+		</action>
+		
+		<action name="showPrimaryAdress" class="com.living.action.UserAction" method="myAccount">
 			<result>/user/addressBookUpdate.jsp</result>
 		</action>
+		<action name="updatePrimaryAddress" class="com.living.action.UserAction" method="updateAccount">
+			<result>/user/addressBook.jsp</result>
+		</action>
+		
 		
 		<action name="logout" class="com.living.action.UserAction" method="logoff">
 			<result>/user/logoff.jsp</result>

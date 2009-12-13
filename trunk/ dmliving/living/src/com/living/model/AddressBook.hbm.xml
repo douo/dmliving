@@ -37,6 +37,9 @@
         <property name="postZipCode" type="java.lang.String">
             <column name="post_zip_code" length="30" />
         </property>
+        <property name="country" type="java.lang.String">
+            <column name="country" length="50" />
+        </property>
         <property name="isPrimary" type="java.lang.String">
             <column name="isPrimary" length="1" />
         </property>
