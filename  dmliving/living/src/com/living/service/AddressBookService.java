@@ -1,9 +1,11 @@
 package com.living.service;
 
+import java.io.Serializable;
+import java.util.List;
+
 import com.framework.service.BaseService;
 import com.living.model.AddressBook;
-import com.living.model.User;
 
 public interface AddressBookService extends BaseService {
-	AddressBook findByUser(User user);
+	List<AddressBook> findByUserId(Serializable userId);
 }

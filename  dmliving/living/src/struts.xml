@@ -20,7 +20,7 @@
 		<default-interceptor-ref name="loginDefaultStack"/>
 		
 	    <global-results>
-	      <result name="globalerror" type="redirect">/error.html</result>
+	      <result name="globalerror">/errorPages/errors.jsp</result>
 	      <result name="login" type="redirect">/user/login.jsp</result>
 	    </global-results>
 	    

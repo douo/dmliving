@@ -69,9 +69,11 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	//@Transactional(propagation=Propagation.NESTED,rollbackFor=Exception.class)
 	public User register(User user) {
 		if (!hasUser(user)) {
+			// TODO 改成盐值加密
 			user.setPassword(DigestUtils.md5Hex(user.getPassword())); // 简单的MD5加密
 			user.setCreated(new Date());
 			user = (User) userDao.save(user);
+			
 			// 保存地址本信息
 			AddressBook addressBook = new AddressBook();
 			addressBook.setCity(user.getCity());
@@ -82,8 +84,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			addressBook.setStateProvince(user.getPostZipCode());
 			addressBook.setStreetAddress(user.getStreetAddress());
 			addressBook.setSuburb(user.getSuburb());
-			addressBook.setIsPrimary(Constants.IS_PRIMARY_YES);
+			addressBook.setIsPrimary(Constants.ADDRESS_PRIMARY_YES);
 			addressBook.setUser(user);
+			addressBook.setCountry(user.getCountry());
 			addressBookDao.save(addressBook);
 			
 			return user;
