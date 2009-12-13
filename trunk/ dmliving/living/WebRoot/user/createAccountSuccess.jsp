@@ -22,7 +22,7 @@
             You can now take advantage of member privileges to enhance your online shopping experience with us.<br />
             <br />
             A confirmation has been sent to the provided email address. If you have not received it within the hour, please <a href="/index.jsp?main_page=contact_us">Contact Us</a>.</div>
-          <div class="account-header">Primary Address&nbsp;&nbsp;&nbsp; <a href="user/showPrimaryAdress.action"><img src="images/buttons/english/small_edit.gif" alt="Edit" title=" Edit " width="46" height="15" /></a> <a href="https://www.deeplymadlyliving.com/index.jsp?main_page=address_book_process&amp;delete=345"><img src="images/buttons/english/button_delete.gif" alt="Delete" title=" Delete " width="46" height="15" /></a><br class="clearBoth"/>
+          <div class="account-header">Primary Address&nbsp;&nbsp;&nbsp; <a href="address/editAddress.action?addressBook.addressbookId=${addressBook.addressbookId }"><img src="images/buttons/english/small_edit.gif" alt="Edit" title=" Edit " width="46" height="15" /></a> <a href="address/deleteAddressConfirm.action?addressBook.addressbookId=${addressBook.addressbookId }"><img src="images/buttons/english/button_delete.gif" alt="Delete" title=" Delete " width="46" height="15" /></a><br class="clearBoth"/>
           </div>
           <!-- <legend>Primary Address</legend> -->
           <!-- <h3 class="addressBookDefaultName">xilin chen</h3> -->

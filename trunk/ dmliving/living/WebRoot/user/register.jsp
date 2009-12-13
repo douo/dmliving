@@ -26,7 +26,7 @@
             <s:token />
             <br />
             <div class="fieldset-label">New Customer? Please provide your Billing Information</div>
-            <!-- <legend>New Customer? Please provide your Billing Information</legend> -->
+            <legend>Information</legend>
             <fieldset>
             <c:if test="${registerError!=null }">
 	            <div class="messageStackError larger">
