@@ -13,6 +13,7 @@
 <link href="css/admin/stylesheet.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="css/admin/cssjsmenuhover.css" media="all" id="hoverJS" />
 <script language="JavaScript" src="js/menu.js" type="text/JavaScript"></script>
+<script language="javascript" src="js/general.js"></script>
 <script type="text/javascript">
   <!--
   function init()
@@ -121,7 +122,6 @@
 <!-- catalog_eof //-->
 <!-- modules //-->
 <li class="submenu"><a target="_top" href="http://localhost/admin/alt_nav.jsp">模块管理</a><UL>
-
 <li><a href="http://localhost/admin/modules.jsp?set=payment">支付模块</a></li>
 <li><a href="http://localhost/admin/modules.jsp?set=shipping">配送模块</a></li>
 <li><a href="http://localhost/admin/modules.jsp?set=ordertotal">总额计算</a></li>
@@ -219,7 +219,7 @@
 
     <decorator:body />
     
-    <%@ include file="/includes/adminFooter.jsp" %>
+<%@ include file="/includes/adminFooter.jsp" %>
 <script type="text/javascript">window.status = "Done";</script>
 </body>
 </html>
