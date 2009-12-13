@@ -53,6 +53,7 @@ create table address_book
    city                 varchar(100),
    state_province       varchar(100),
    post_zip_code        varchar(30),
+   country              varchar(50),
    isPrimary            char(1),
    isactive             char(1),
    primary key (addressbook_id)
@@ -301,5 +302,4 @@ alter table user_role add constraint FK_Reference_10 foreign key (role_id)
 
 alter table user_role add constraint FK_Reference_9 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
-
 
