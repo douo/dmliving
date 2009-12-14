@@ -12,7 +12,7 @@ use living;
 /*==============================================================*/
 drop table if exists address_book;
 
-drop table if exists authority;
+drop table if exists email;
 
 drop table if exists image;
 
@@ -60,14 +60,18 @@ create table address_book
 );
 
 /*==============================================================*/
-/* Table: authority                                             */
+/* Table: email                                                 */
 /*==============================================================*/
-create table authority
+create table email
 (
-   authority_id         numeric(10) not null,
-   user_id              numeric(10),
-   authority            varchar(50),
-   primary key (authority_id)
+   email_id             numeric(8) not null,
+   title                varchar(50),
+   Column_3             char(10),
+   Column_4             char(10),
+   Column_5             char(10),
+   Column_6             char(10),
+   Column_7             char(10),
+   primary key (email_id)
 );
 
 /*==============================================================*/
@@ -91,8 +95,9 @@ alter table image comment '图片表';
 create table options_name
 (
    options_name_id      numeric(10) not null,
-   options_value_id     numeric(10),
+   product_id           numeric(10),
    name                 varchar(50),
+   value_type           varchar(10),
    description          varchar(1000),
    primary key (options_name_id)
 );
@@ -105,6 +110,7 @@ alter table options_name comment '颜色,大小等属性选项';
 create table options_value
 (
    options_value_id     numeric(10) not null,
+   options_name_id      numeric(10),
    options_value        varchar(100),
    isactive             char(1),
    primary key (options_value_id)
@@ -167,12 +173,11 @@ alter table price comment '价格表';
 create table product
 (
    product_id           numeric(10) not null,
-   options_name_id      numeric(10),
-   product_category_id  numeric(10),
    name                 varchar(50),
    description          varchar(8000),
    item_number          varchar(30),
    price_id             numeric(10),
+   product_category_id  numeric(10),
    image_url            varchar(50),
    isactive             char,
    stock_quantity       numeric,
@@ -270,14 +275,14 @@ create table user_role
 alter table address_book add constraint FK_Reference_11 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
 
-alter table authority add constraint FK_Reference_14 foreign key (user_id)
-      references user (user_id) on delete restrict on update restrict;
-
 alter table image add constraint FK_Reference_13 foreign key (product_id)
       references product (product_id) on delete restrict on update restrict;
 
-alter table options_name add constraint FK_Reference_3 foreign key (options_value_id)
-      references options_value (options_value_id) on delete restrict on update restrict;
+alter table options_name add constraint FK_Reference_15 foreign key (product_id)
+      references product (product_id) on delete restrict on update restrict;
+
+alter table options_value add constraint FK_Reference_16 foreign key (options_name_id)
+      references options_name (options_name_id) on delete restrict on update restrict;
 
 alter table order_from add constraint FK_Reference_8 foreign key (orderline_id)
       references orderline (orderline_id) on delete restrict on update restrict;
@@ -285,10 +290,7 @@ alter table order_from add constraint FK_Reference_8 foreign key (orderline_id)
 alter table orderline add constraint FK_Reference_7 foreign key (product_id)
       references product (product_id) on delete restrict on update restrict;
 
-alter table product add constraint FK_Reference_2 foreign key (options_name_id)
-      references options_name (options_name_id) on delete restrict on update restrict;
-
-alter table product add constraint FK_Reference_4 foreign key (product_category_id)
+alter table product add constraint FK_Reference_17 foreign key (product_category_id)
       references product_category (product_category_id) on delete restrict on update restrict;
 
 alter table product add constraint FK_Reference_5 foreign key (price_id)
@@ -302,4 +304,3 @@ alter table user_role add constraint FK_Reference_10 foreign key (role_id)
 
 alter table user_role add constraint FK_Reference_9 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
-
