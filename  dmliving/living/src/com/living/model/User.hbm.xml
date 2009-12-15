@@ -67,9 +67,18 @@
         <property name="updateBy" type="java.lang.Long">
             <column name="update_by" precision="10" scale="0" />
         </property>
-        <property name="isactive" type="java.lang.String">
-            <column name="isactive" length="1" />
+        <property name="description" type="java.lang.String">
+            <column name="description" length="30" />
         </property>
+        <property name="state" type="java.lang.String">
+            <column name="state" length="1" />
+        </property>
+        <set name="shopingCars" inverse="true">
+            <key>
+                <column name="user_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.living.model.ShopingCar" />
+        </set>
         <set name="userRoles" inverse="true">
             <key>
                 <column name="user_id" precision="10" scale="0" />
@@ -82,11 +91,11 @@
             </key>
             <one-to-many class="com.living.model.AddressBook" />
         </set>
-        <set name="authorities" inverse="true">
+        <set name="orderFroms" inverse="true">
             <key>
                 <column name="user_id" precision="10" scale="0" />
             </key>
-            <one-to-many class="com.living.model.Authority" />
+            <one-to-many class="com.living.model.OrderFrom" />
         </set>
         <set name="systemLogs" inverse="true">
             <key>

@@ -12,6 +12,7 @@ public class OrderFrom implements java.io.Serializable {
 	// Fields
 
 	private Long orderId;
+	private User user;
 	private Orderline orderline;
 	private String isactive;
 	private Date created;
@@ -32,10 +33,11 @@ public class OrderFrom implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public OrderFrom(Orderline orderline, String isactive, Date created,
-			Long createdby, Date updated, Long updatedby, Long postway,
-			Long paymentMethod, String description, String isinvoiced,
-			BigDecimal promotionalNum, String state) {
+	public OrderFrom(User user, Orderline orderline, String isactive,
+			Date created, Long createdby, Date updated, Long updatedby,
+			Long postway, Long paymentMethod, String description,
+			String isinvoiced, BigDecimal promotionalNum, String state) {
+		this.user = user;
 		this.orderline = orderline;
 		this.isactive = isactive;
 		this.created = created;
@@ -58,6 +60,14 @@ public class OrderFrom implements java.io.Serializable {
 
 	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
+	}
+
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Orderline getOrderline() {

@@ -12,10 +12,11 @@ public class OptionsName implements java.io.Serializable {
 	// Fields
 
 	private Long optionsNameId;
-	private OptionsValue optionsValue;
+	private Product product;
 	private String name;
+	private String valueType;
 	private String description;
-	private Set products = new HashSet(0);
+	private Set optionsValues = new HashSet(0);
 
 	// Constructors
 
@@ -24,12 +25,13 @@ public class OptionsName implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public OptionsName(OptionsValue optionsValue, String name,
-			String description, Set products) {
-		this.optionsValue = optionsValue;
+	public OptionsName(Product product, String name, String valueType,
+			String description, Set optionsValues) {
+		this.product = product;
 		this.name = name;
+		this.valueType = valueType;
 		this.description = description;
-		this.products = products;
+		this.optionsValues = optionsValues;
 	}
 
 	// Property accessors
@@ -42,12 +44,12 @@ public class OptionsName implements java.io.Serializable {
 		this.optionsNameId = optionsNameId;
 	}
 
-	public OptionsValue getOptionsValue() {
-		return this.optionsValue;
+	public Product getProduct() {
+		return this.product;
 	}
 
-	public void setOptionsValue(OptionsValue optionsValue) {
-		this.optionsValue = optionsValue;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public String getName() {
@@ -58,6 +60,14 @@ public class OptionsName implements java.io.Serializable {
 		this.name = name;
 	}
 
+	public String getValueType() {
+		return this.valueType;
+	}
+
+	public void setValueType(String valueType) {
+		this.valueType = valueType;
+	}
+
 	public String getDescription() {
 		return this.description;
 	}
@@ -66,12 +76,12 @@ public class OptionsName implements java.io.Serializable {
 		this.description = description;
 	}
 
-	public Set getProducts() {
-		return this.products;
+	public Set getOptionsValues() {
+		return this.optionsValues;
 	}
 
-	public void setProducts(Set products) {
-		this.products = products;
+	public void setOptionsValues(Set optionsValues) {
+		this.optionsValues = optionsValues;
 	}
 
 }
