@@ -10,17 +10,14 @@
             <column name="options_value_id" precision="10" scale="0" />
             <generator class="increment" />
         </id>
+        <many-to-one name="optionsName" class="com.living.model.OptionsName" fetch="select">
+            <column name="options_name_id" precision="10" scale="0" />
+        </many-to-one>
         <property name="optionsValue" type="java.lang.String">
             <column name="options_value" length="100" />
         </property>
         <property name="isactive" type="java.lang.String">
             <column name="isactive" length="1" />
         </property>
-        <set name="optionsNames" inverse="true">
-            <key>
-                <column name="options_value_id" precision="10" scale="0" />
-            </key>
-            <one-to-many class="com.living.model.OptionsName" />
-        </set>
     </class>
 </hibernate-mapping>

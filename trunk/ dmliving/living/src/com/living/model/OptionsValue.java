@@ -1,8 +1,5 @@
 package com.living.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * OptionsValue entity. @author MyEclipse Persistence Tools
  */
@@ -12,9 +9,9 @@ public class OptionsValue implements java.io.Serializable {
 	// Fields
 
 	private Long optionsValueId;
+	private OptionsName optionsName;
 	private String optionsValue;
 	private String isactive;
-	private Set optionsNames = new HashSet(0);
 
 	// Constructors
 
@@ -23,10 +20,11 @@ public class OptionsValue implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public OptionsValue(String optionsValue, String isactive, Set optionsNames) {
+	public OptionsValue(OptionsName optionsName, String optionsValue,
+			String isactive) {
+		this.optionsName = optionsName;
 		this.optionsValue = optionsValue;
 		this.isactive = isactive;
-		this.optionsNames = optionsNames;
 	}
 
 	// Property accessors
@@ -37,6 +35,14 @@ public class OptionsValue implements java.io.Serializable {
 
 	public void setOptionsValueId(Long optionsValueId) {
 		this.optionsValueId = optionsValueId;
+	}
+
+	public OptionsName getOptionsName() {
+		return this.optionsName;
+	}
+
+	public void setOptionsName(OptionsName optionsName) {
+		this.optionsName = optionsName;
 	}
 
 	public String getOptionsValue() {
@@ -53,14 +59,6 @@ public class OptionsValue implements java.io.Serializable {
 
 	public void setIsactive(String isactive) {
 		this.isactive = isactive;
-	}
-
-	public Set getOptionsNames() {
-		return this.optionsNames;
-	}
-
-	public void setOptionsNames(Set optionsNames) {
-		this.optionsNames = optionsNames;
 	}
 
 }

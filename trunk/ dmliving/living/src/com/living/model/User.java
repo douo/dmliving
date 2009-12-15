@@ -32,10 +32,12 @@ public class User implements java.io.Serializable {
 	private Long createdBy;
 	private Date upated;
 	private Long updateBy;
-	private String isactive;
+	private String description;
+	private String state;
+	private Set shopingCars = new HashSet(0);
 	private Set userRoles = new HashSet(0);
 	private Set addressBooks = new HashSet(0);
-	private Set authorities = new HashSet(0);
+	private Set orderFroms = new HashSet(0);
 	private Set systemLogs = new HashSet(0);
 
 	// Constructors
@@ -57,8 +59,8 @@ public class User implements java.io.Serializable {
 			String suburb, String city, String stateProvince, String country,
 			String postZipCode, String phone, String fax, String isnewsletter,
 			String emailFormat, Date created, Long createdBy, Date upated,
-			Long updateBy, String isactive, Set userRoles, Set addressBooks,
-			Set authorities, Set systemLogs) {
+			Long updateBy, String description, String state, Set shopingCars,
+			Set userRoles, Set addressBooks, Set orderFroms, Set systemLogs) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -78,10 +80,12 @@ public class User implements java.io.Serializable {
 		this.createdBy = createdBy;
 		this.upated = upated;
 		this.updateBy = updateBy;
-		this.isactive = isactive;
+		this.description = description;
+		this.state = state;
+		this.shopingCars = shopingCars;
 		this.userRoles = userRoles;
 		this.addressBooks = addressBooks;
-		this.authorities = authorities;
+		this.orderFroms = orderFroms;
 		this.systemLogs = systemLogs;
 	}
 
@@ -247,12 +251,28 @@ public class User implements java.io.Serializable {
 		this.updateBy = updateBy;
 	}
 
-	public String getIsactive() {
-		return this.isactive;
+	public String getDescription() {
+		return this.description;
 	}
 
-	public void setIsactive(String isactive) {
-		this.isactive = isactive;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getState() {
+		return this.state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public Set getShopingCars() {
+		return this.shopingCars;
+	}
+
+	public void setShopingCars(Set shopingCars) {
+		this.shopingCars = shopingCars;
 	}
 
 	public Set getUserRoles() {
@@ -271,12 +291,12 @@ public class User implements java.io.Serializable {
 		this.addressBooks = addressBooks;
 	}
 
-	public Set getAuthorities() {
-		return this.authorities;
+	public Set getOrderFroms() {
+		return this.orderFroms;
 	}
 
-	public void setAuthorities(Set authorities) {
-		this.authorities = authorities;
+	public void setOrderFroms(Set orderFroms) {
+		this.orderFroms = orderFroms;
 	}
 
 	public Set getSystemLogs() {

@@ -10,14 +10,8 @@
             <column name="product_id" precision="10" scale="0" />
             <generator class="increment" />
         </id>
-        <many-to-one name="optionsName" class="com.living.model.OptionsName" fetch="select">
-            <column name="options_name_id" precision="10" scale="0" />
-        </many-to-one>
         <many-to-one name="productCategory" class="com.living.model.ProductCategory" fetch="select">
             <column name="product_category_id" precision="10" scale="0" />
-        </many-to-one>
-        <many-to-one name="price" class="com.living.model.Price" fetch="select">
-            <column name="price_id" precision="10" scale="0" />
         </many-to-one>
         <property name="name" type="java.lang.String">
             <column name="name" length="50" />
@@ -37,6 +31,24 @@
         <property name="stockQuantity" type="java.lang.Long">
             <column name="stock_quantity" precision="10" scale="0" />
         </property>
+        <property name="normalPrice" type="java.lang.Double">
+            <column name="normal_price" precision="10" />
+        </property>
+        <property name="memberPrice" type="java.lang.Double">
+            <column name="member_price" precision="10" />
+        </property>
+        <property name="stockPrice" type="java.lang.Double">
+            <column name="stock_price" precision="10" />
+        </property>
+        <property name="specialPrice" type="java.lang.Double">
+            <column name="special_price" precision="10" />
+        </property>
+        <set name="optionsNames" inverse="true">
+            <key>
+                <column name="product_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.living.model.OptionsName" />
+        </set>
         <set name="images" inverse="true">
             <key>
                 <column name="product_id" precision="10" scale="0" />
@@ -48,6 +60,12 @@
                 <column name="product_id" precision="10" scale="0" />
             </key>
             <one-to-many class="com.living.model.Orderline" />
+        </set>
+        <set name="shopingCars" inverse="true">
+            <key>
+                <column name="product_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.living.model.ShopingCar" />
         </set>
     </class>
 </hibernate-mapping>

@@ -10,6 +10,9 @@
             <column name="order_id" precision="10" scale="0" />
             <generator class="increment" />
         </id>
+        <many-to-one name="user" class="com.living.model.User" fetch="select">
+            <column name="user_id" precision="10" scale="0" />
+        </many-to-one>
         <many-to-one name="orderline" class="com.living.model.Orderline" fetch="select">
             <column name="orderline_id" precision="10" scale="0" />
         </many-to-one>
