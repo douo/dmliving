@@ -260,7 +260,8 @@ create table user
    created_by           numeric(10),
    upated               date,
    update_by            numeric(10),
-   isactive             char(1),
+   description          varchar(30),
+   state                char,
    primary key (user_id)
 );
 
@@ -315,3 +316,12 @@ alter table user_role add constraint FK_Reference_10 foreign key (role_id)
 
 alter table user_role add constraint FK_Reference_9 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
+      
+/*初始化数据*/
+insert into user(user_id, first_name, last_name, email,password,description,state) values(1,'admin','admin','admin','admin','管理员', 'A');
+
+insert into role(role_id,role_name,description,isactive) values(1,'ROLE_ADMIN','管理员角色', 'Y');
+insert into role(role_id,role_name,description,isactive) values(2,'ROLE_USER','用户角色', 'Y');
+
+insert into user_role(user_role_id,user_id,role_id) values(1,1,1);
+insert into user_role(user_role_id,user_id,role_id) values(2,1,2);
