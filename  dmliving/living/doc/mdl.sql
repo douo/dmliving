@@ -24,13 +24,13 @@ drop table if exists order_from;
 
 drop table if exists orderline;
 
-drop table if exists price;
-
 drop table if exists product;
 
 drop table if exists product_category;
 
 drop table if exists role;
+
+drop table if exists shoping_car;
 
 drop table if exists system_log;
 
@@ -125,6 +125,7 @@ create table order_from
 (
    order_id             numeric(10) not null,
    orderline_id         numeric(10),
+   user_id              numeric(10),
    isactive             char(1),
    created              date,
    createdby            numeric(10),
@@ -153,21 +154,6 @@ create table orderline
 );
 
 /*==============================================================*/
-/* Table: price                                                 */
-/*==============================================================*/
-create table price
-(
-   price_id             numeric(10) not null,
-   normal_price         numeric(10,2),
-   member_price         numeric(10,2),
-   stock_price          numeric(10,2),
-   special_price        numeric(10,2),
-   primary key (price_id)
-);
-
-alter table price comment '价格表';
-
-/*==============================================================*/
 /* Table: product                                               */
 /*==============================================================*/
 create table product
@@ -176,11 +162,14 @@ create table product
    name                 varchar(50),
    description          varchar(8000),
    item_number          varchar(30),
-   price_id             numeric(10),
    product_category_id  numeric(10),
    image_url            varchar(50),
    isactive             char,
    stock_quantity       numeric,
+   normal_price         numeric(10,2),
+   member_price         numeric(10,2),
+   stock_price          numeric(10,2),
+   special_price        numeric(10,2),
    primary key (product_id)
 );
 
@@ -211,6 +200,22 @@ create table role
    description          varchar(100),
    isactive             char(1),
    primary key (role_id)
+);
+
+/*==============================================================*/
+/* Table: shoping_car                                           */
+/*==============================================================*/
+create table shoping_car
+(
+   shoping_car_id       numeric(10,0) not null,
+   user_id              numeric(10),
+   product_id           numeric(10),
+   product_number       numeric,
+   remark               varchar(100),
+   created              date,
+   expires              numeric,
+   state                char,
+   primary key (shoping_car_id)
 );
 
 /*==============================================================*/
@@ -284,6 +289,9 @@ alter table options_name add constraint FK_Reference_15 foreign key (product_id)
 alter table options_value add constraint FK_Reference_16 foreign key (options_name_id)
       references options_name (options_name_id) on delete restrict on update restrict;
 
+alter table order_from add constraint FK_Reference_14 foreign key (user_id)
+      references user (user_id) on delete restrict on update restrict;
+
 alter table order_from add constraint FK_Reference_8 foreign key (orderline_id)
       references orderline (orderline_id) on delete restrict on update restrict;
 
@@ -293,8 +301,11 @@ alter table orderline add constraint FK_Reference_7 foreign key (product_id)
 alter table product add constraint FK_Reference_17 foreign key (product_category_id)
       references product_category (product_category_id) on delete restrict on update restrict;
 
-alter table product add constraint FK_Reference_5 foreign key (price_id)
-      references price (price_id) on delete restrict on update restrict;
+alter table shoping_car add constraint FK_Reference_18 foreign key (user_id)
+      references user (user_id) on delete restrict on update restrict;
+
+alter table shoping_car add constraint FK_Reference_19 foreign key (product_id)
+      references product (product_id) on delete restrict on update restrict;
 
 alter table system_log add constraint FK_Reference_12 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
