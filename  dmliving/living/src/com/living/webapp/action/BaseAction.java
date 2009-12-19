@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.living.model.User;
 import com.living.service.AddressBookService;
 import com.living.service.UserService;
+import com.living.util.Constants;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BaseAction extends ActionSupport {
@@ -36,9 +38,9 @@ public class BaseAction extends ActionSupport {
 	protected String nextAction;
 	protected String nameSpace;
 	
-//	public Users getLogin(){
-//		return (Users) getSession().getAttribute(Constant.SESSION_LOGIN);
-//	}
+	public User getLoginUser(){
+		return (User) getSession().getAttribute(Constants.SESSION_LOGIN);
+	}
 	
 	public String getNameSpace() {
 		return nameSpace;
