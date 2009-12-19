@@ -317,7 +317,7 @@ alter table user_role add constraint FK_Reference_10 foreign key (role_id)
 alter table user_role add constraint FK_Reference_9 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
       
-/*初始化数据*/
+/* 初始化管理员和权限数据 */
 insert into user(user_id, first_name, last_name, email,password,description,state) values(1,'admin','admin','admin','admin','管理员', 'A');
 
 insert into role(role_id,role_name,description,isactive) values(1,'ROLE_ADMIN','管理员角色', 'Y');
@@ -325,3 +325,12 @@ insert into role(role_id,role_name,description,isactive) values(2,'ROLE_USER','�
 
 insert into user_role(user_role_id,user_id,role_id) values(1,1,1);
 insert into user_role(user_role_id,user_id,role_id) values(2,1,2);
+
+/* 以下SQL就可以获得当前用户所拥有的权限 */
+select u.email, r.role_name
+from user u
+join user_role ur
+on u.user_id = ur.user_id
+join role r
+on r.role_id = ur.role_id
+where email = 'admin';
