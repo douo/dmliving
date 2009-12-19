@@ -51,5 +51,14 @@
 			<interceptor-ref name="defaultStack"/>
 		</action>
 		
+		<action name="changePasswordPage" class="com.living.action.UserAction" method="changepswPage">
+			<result>/user/changePassword.jsp</result>
+		</action>
+		
+		<action name="changePassword" class="com.living.action.UserAction" method="changePassword">
+			<result>/user/myAccount.jsp</result>
+			<result name="input">/user/changePassword.jsp</result>
+		</action>
+		
 	</package>
 </struts>
