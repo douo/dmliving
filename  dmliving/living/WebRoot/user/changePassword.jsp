@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/includes/jsp-tags.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
@@ -16,12 +17,18 @@
         <!-- eof upload alerts -->
         <img src="images/account_mini_banner.gif" alt="My Account" title=" My Account " width="924" height="31" border="0" />
         <div class="centerColumn" id="accountPassword">
-          <form name="account_password" action="/index.jsp?main_page=account_password" method="post" onsubmit="return check_form(account_password);">
+          <form name="account_password" action="user/changePassword.action" method="post" onsubmit="return check_changePsw(account_password);">
             <input type="hidden" name="action" value="process" />
             <h1>My Account Password</h1>
+            <c:if test="${passwordChageError != null}">
+            <div class="messageStackError larger">
+			<img height="20" width="20" title=" Error " alt="Error" src="images/icons/error.gif"/>
+			${passwordChageError }
+			</div>
+			<br/>
+			</c:if>
             <fieldset>
-              <!-- <legend>My Account Password</legend>
- -->
+              <!-- <legend>My Account Password</legend> -->
               <div class="alert back">* = required</div>
               <br class="clearBoth" />
               <label class="inputLabel" for="password-current" style="padding-bottom: 9px;">Current Password:</label>
