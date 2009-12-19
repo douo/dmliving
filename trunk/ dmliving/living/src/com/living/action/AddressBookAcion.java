@@ -59,7 +59,7 @@ public class AddressBookAcion extends BaseAction {
 		addressBook.setUser(user);
 		addressBook = (AddressBook) addressBookService.update(addressBook);
 		if (addressBook != null) {
-			getRequest().setAttribute("addressMessage", "Your address book has been successfully added.");
+			getRequest().setAttribute("addressMessage", "Your address book has been successfully updated.");
 			return SUCCESS;
 		}
 		return INPUT;

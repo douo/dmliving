@@ -103,6 +103,41 @@ public class UserAction extends BaseAction {
 		return SUCCESS;
 	}
 
+	/**
+	 * 用户密码修改页面
+	 * @author C.donglin
+	 * @since 2009-12-19
+	 * @return
+	 */
+	public String changepswPage() {
+		return SUCCESS;
+	}
+	
+	/**
+	 * 修改用户密码
+	 * @author C.donglin
+	 * @since 2009-12-19
+	 * @return
+	 */
+	public String changePassword() {
+		String passwordNew = getRequest().getParameter("password_new");
+		String passwordCurrent = getRequest().getParameter("password_current");
+		User user = getLoginUser();
+		if (user != null) {
+			if (userService.isCorrectPassword(user, passwordCurrent)) {
+				if (userService.changePassword(user, passwordNew)) {
+					getRequest().setAttribute("accountMessage", "Your password has been successfully updated.");
+					return SUCCESS;
+				}
+			} else {
+				getRequest().setAttribute("passwordChageError", "Your Current Password did not match the password in our records. Please try again.");
+				return INPUT;
+			}
+		}
+		return ERROR;
+	}
+	
+	
 	public User getUser() {
 		return user;
 	}
