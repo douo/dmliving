@@ -312,6 +312,8 @@ function check_select(field_name, field_default, message) {
   }
 }
 
+// 检查密码 field_name_1:密码.  field_name_2:确认密码.
+// message_1:密码长度错误信息.  message_2: 确认密码不匹配错误信息
 function check_password(field_name_1, field_name_2, field_size, message_1, message_2) {
   if (form.elements[field_name_1] && (form.elements[field_name_1].type != "hidden")) {
     var password = form.elements[field_name_1].value;
@@ -327,6 +329,9 @@ function check_password(field_name_1, field_name_2, field_size, message_1, messa
   }
 }
 
+// 检查新密码
+// field_name_1:当前密码. field_name_2:新密码. field_name_3:确认密码
+// message_1:当前密码长度错误.  message_2:新密码长度错误. message_3:确认密码和新密码不匹配
 function check_password_new(field_name_1, field_name_2, field_name_3, field_size, message_1, message_2, message_3) {
   if (form.elements[field_name_1] && (form.elements[field_name_1].type != "hidden")) {
     var password_current = form.elements[field_name_1].value;
@@ -425,6 +430,29 @@ function check_addressBook(form_name) {
   	else if (form.state.disabled) check_select("zone_id", "", "Please select a state from the States pull down menu.");
     */
     check_select("addressBook.country", "", "You must select a country from the Countries pull down menu.");
+	
+	if (error == true) {
+    alert(error_message);
+    	return false;
+	} else {
+		submitted = true;
+		return true;
+	}
+}
+
+// 修改密码表单
+function check_changePsw(form_name) {
+	form = form_name;
+	if (submitted == true) {
+		alert("This form has already been submitted. Please press OK and wait for this process to be completed.");
+		return false;
+    }
+	error = false;
+	error_message = "Errors have occurred during the processing of your form.\n\nPlease make the following corrections:\n\n";
+	// 检查新密码
+	// field_name_1:当前密码. field_name_2:新密码. field_name_3:确认密码
+	// message_1:当前密码长度错误.  message_2:新密码长度错误. message_3:确认密码和新密码不匹配
+	check_password_new("password_current", "password_new", "password_confirmation", 5, "Your Password must contain a minimum of 5 characters.", "Your new Password must contain a minimum of 5 characters.", "The Password Confirmation must match your new Password.");
 	
 	if (error == true) {
     alert(error_message);

@@ -32,7 +32,7 @@
           <!-- <h2>My Account</h2> -->
           <a href="user/viewAccount.action">View or change my account information.</a><br />
           <a href="address/viewAddressBook.action">View or change entries in my address book.</a><br />
-          <a href="/index.jsp?main_page=account_password">Change my account password.</a><br />
+          <a href="user/changePasswordPage.action">Change my account password.</a><br />
           <br />
           <br />
           <div class="account-header">Newsletter</div>
