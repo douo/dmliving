@@ -99,6 +99,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	 * @param user
 	 * @return
 	 */
+	@Override
 	public boolean hasUser(User user) {
 		return userDao.findByAccount(user.getEmail()) != null;
 	}
@@ -107,9 +108,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	 * @see com.living.service.UserService#changePassword(com.living.model.User, java.lang.String)
 	 */
 	@Override
-	public boolean changePassword(User user, String newPassword) {
+	public boolean changePassword(User user,  String newPassword) {
 		if (user != null && newPassword != null) {
-			user.setPassword(newPassword);
+			user.setPassword(DigestUtils.md5Hex(newPassword));
 			user = (User) userDao.update(user);
 			if (user != null) {
 				return true;
