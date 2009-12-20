@@ -137,6 +137,33 @@ public class UserAction extends BaseAction {
 		return ERROR;
 	}
 	
+	/**
+	 * 找回密码页面
+	 * @author C.donglin
+	 * @since 2009-12-20
+	 * @return
+	 */
+	public String forgotPassword() {
+		return INPUT;
+	}
+	
+	/**
+	 * 找回密码
+	 * @author C.donglin
+	 * @since 2009-12-20
+	 * @return
+	 */
+	public String findPassword() {
+		if (userService.hasUser(user)) {
+			getRequest().setAttribute("loginMsg", "A new password has been sent to your email address.");
+		} else {
+			getRequest().setAttribute("getPswError", "Error: The Email Address was not found in our records; please try again. ");
+			return INPUT;
+		}
+		return ERROR;
+	}
+	
+	// Setter and Getters below
 	
 	public User getUser() {
 		return user;

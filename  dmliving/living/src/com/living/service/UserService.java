@@ -48,4 +48,12 @@ public interface UserService extends BaseService {
 	 */
 	public boolean isCorrectPassword(User user, String currentPassword);
 	
+	/**
+	 * 是否存在此用户
+	 * @author C.donglin
+	 * @since 2009-12-20
+	 * @param user
+	 * @return
+	 */
+	public boolean hasUser(User user);
 }
