@@ -131,5 +131,14 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 		}
 		return false;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.living.service.UserService#adminLogin(com.living.model.User)
+	 */
+	@Override
+	public User adminLogin(User user) {
+		
+		return null;
+	}
 	
 }

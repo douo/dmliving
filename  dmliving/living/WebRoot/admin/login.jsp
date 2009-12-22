@@ -13,13 +13,15 @@
   <fieldset>
     <legend>Admin Login</legend>
     <label class="loginLabel" for="admin_name">Admin Username:</label>
-<input style="float: left" type="text" id="admin_name" name="user.email" value="" />
-<br class="clearBoth" />
+    <input style="float: left" type="text" id="admin_name" name="user.email" value="" />
+    <br class="clearBoth" />
     <label  class="loginLabel" for="admin_pass">Admin Password:</label>
-<input style="float: left" type="password" id="admin_pass" name="user.password" value="" />
-<br class="clearBoth" />
-        <input type="submit" name="submit" class="button" value="Login" />
-    <a style="float: right;" href="#">Resend Password</a>  </fieldset>
+    <input style="float: left" type="password" id="admin_pass" name="user.password" value="" />
+    <br class="clearBoth" />
+    <span style="color:#F00">${loginError }</span>
+    <input type="submit" name="submit" class="button" value="Login" />
+    <a style="float: right;" href="#">Resend Password</a>
+  </fieldset>
 </form>
 </body>
 </html>

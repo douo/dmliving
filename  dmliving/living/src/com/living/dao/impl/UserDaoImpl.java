@@ -33,4 +33,13 @@ public class UserDaoImpl extends BaseHibernateDaoImpl<User> implements UserDao {
 		}
 		return null;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.living.dao.UserDao#adminLogin(com.living.model.User)
+	 */
+	@Override
+	public User adminLogin(User user) {
+		//getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(User.class)
+		return null;
+	}
 }

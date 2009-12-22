@@ -99,7 +99,7 @@
 </li>
 <!-- configuration_eof //--><!-- catalog //-->
 <li class="submenu"><a target="_top" href="http://localhost/admin/alt_nav.jsp">商品管理</a><UL>
-<li><a href="http://localhost/admin/categories.jsp">商品分类</a></li>
+<li><a href="admin/product/categoriesPage.action">商品分类</a></li>
 
 <li><a href="http://localhost/admin/product_types.jsp">商品类型</a></li>
 <li><a href="http://localhost/admin/products_price_manager.jsp">价格管理</a></li>

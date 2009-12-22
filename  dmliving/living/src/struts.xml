@@ -22,6 +22,7 @@
 	    <global-results>
 	      <result name="globalerror">/errorPages/errors.jsp</result>
 	      <result name="login" type="redirect">/user/login.jsp</result>
+	      <result name="adminLogin" type="redirect">/admin/login.jsp</result>
 	    </global-results>
 	    
 	    <global-exception-mappings>
@@ -39,5 +40,6 @@
  	<!-- Add packages here -->
 	<include file="resource/struts-config/UserAction.xml"/>
 	<include file="resource/struts-config/AddressBookAcion.xml"/>
+	<include file="resource/struts-config/ProductAction.xml"/>
 	
 </struts>

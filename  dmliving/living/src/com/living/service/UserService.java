@@ -56,4 +56,13 @@ public interface UserService extends BaseService {
 	 * @return
 	 */
 	public boolean hasUser(User user);
+	
+	/**
+	 * 管理员登陆接口
+	 * @author C.donglin
+	 * @since 2009-12-22
+	 * @param user
+	 * @return
+	 */
+	public User adminLogin(User user);
 }
