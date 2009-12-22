@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/includes/jsp-tags.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
@@ -15,7 +16,13 @@
         <!-- bof upload alerts -->
         <!-- eof upload alerts -->
         <div class="centerColumn" id="passwordForgotten">
-          <form name="password_forgotten" action="" method="post">
+          <form name="password_forgotten" action="user/findPassword.action" method="post">
+          <c:if test="${getPswError != null}">
+          <div class="messageStackError larger">
+			<img height="20" width="20" title=" Error " alt="Error" src="images/icons/error.gif"/>
+			${getPswError }
+			</div>
+			</c:if>
             <br />
             <span class='fieldset-label'>Forgot your Password?</span>
             <fieldset>
@@ -23,9 +30,9 @@
               <!-- <div class="alert forward">* = required</div> -->
               <br class="clearBoth" />
               <label for="email-address">Email Address:</label>
-              <input type="text" name="email_address" size = "41" maxlength= "96" id="email-address" />
+              <input type="text" name="user.email" size = "41" maxlength= "96" id="email-address" />
               &nbsp;<span class="alert">*</span><br class="clearBoth" />
-              <BR />
+              <br />
               <div class="buttonRow back">
                 <input type="image" src="images/buttons/english/button_submit.gif" alt="Submit" title=" Submit " />
               </div>

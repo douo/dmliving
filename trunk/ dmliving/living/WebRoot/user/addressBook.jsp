@@ -71,7 +71,9 @@
             </c:forEach>
             <div class="buttonRow back"><a href="address/NewAddress.action"><img src="images/buttons/english/button_add_address.gif" alt="Add Address" title=" Add Address " width="150" height="29" /></a></div>
           </fieldset>
-          <!-- <div class="buttonRow back"><a href="/index.jsp?main_page=account"><img src="images/buttons/english/button_back.gif" alt="Back" title=" Back " width="150" height="29" /></a></div> -->
+          <!-- <div class="buttonRow back">
+          <a href="/index.jsp?main_page=account">
+			img src="images/buttons/english/button_back.gif" alt="Back" title=" Back " width="150" height="29" /></a></div> -->
           <br class="clearBoth" />
         </div></td>
     </tr>

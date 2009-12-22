@@ -163,6 +163,36 @@ public class UserAction extends BaseAction {
 		return ERROR;
 	}
 	
+	/**
+	 * 管理员登陆
+	 * @author C.donglin
+	 * @since 2009-12-22
+	 * @return
+	 */
+	public String adminLogin() {
+		// TODO 需要加入权限控制
+		if (user != null) {
+			user = userService.login(user);
+			if (user != null) {
+				userService.initUser(getRequest(), user);
+				String goingToURL = (String) getSession().getAttribute(Constants.GOTO_URL_KEY);
+				if (StringUtils.isNotBlank(goingToURL)) {
+					setGoingToURL(goingToURL);
+					getSession().removeAttribute(Constants.GOTO_URL_KEY);
+				} else {
+					setGoingToURL("/admin/");
+				}
+				return SUCCESS;
+			} else {
+				getRequest().setAttribute("loginError", "Error: Invalid username and/or password.");
+				return INPUT;
+			}
+		}
+		return INPUT;
+	}
+	
+	
+	
 	// Setter and Getters below
 	
 	public User getUser() {

@@ -19,6 +19,11 @@
         <div class="centerColumn" id="loginDefault"> <br />
           <h1 id="loginDefaultHeading">Sign In  Below</h1>
           <br />
+          <c:if test="${loginMsg != null}">
+          <div class="messageStackSuccess larger">
+          <img src="images/icons/success.gif" alt="Success" title=" Success " width="20" height="20" />
+          ${loginMsg }</div>
+          </c:if>
           <c:if test="${loginError != null }">
           <div class="messageStackError larger">
 		  <img height="20" width="20" title=" Error " alt="Error" src="images/icons/error.gif"/>
@@ -37,7 +42,7 @@
               <label class="inputLabel" for="login-password">Password:</label>
               <input type="password" name="user.password" size = "41" maxlength = "40" id="login-password" />
               <div class="buttonRow back important" style="width: 600px;">
-              <a href="index.jsp?main_page=password_forgotten">Forgot your password?</a>
+              <a href="user/forgotPassword.action">Forgot your password?</a>
               </div>
               <br class="clearBoth" />
               <div class="buttonRow back ">

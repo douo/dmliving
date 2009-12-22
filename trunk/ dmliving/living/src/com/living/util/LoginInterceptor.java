@@ -66,6 +66,13 @@ public class LoginInterceptor extends MethodFilterInterceptor {
 		// setGoingToURL(request, session, invocation);
 		log.info("Going to login...");
 		setGoingToURL(request, session, invocation);
+		String nameSpace = invocation.getProxy().getNamespace();
+		log.info("nameSpace is: " + nameSpace);
+		String adminURL = "/" + Constants.NAMESPACE_ADMIN + "/";
+		if (nameSpace != null && StringUtils.contains(nameSpace, adminURL)) {
+			log.info("the URL contains: " + adminURL);
+			return "adminLogin";
+		}
 		return "login";
 	}
 	
@@ -101,8 +108,6 @@ public class LoginInterceptor extends MethodFilterInterceptor {
 			}
 			log.info("完整URL:" + url);
 		}
-		
-		// TODO 在这里写例外URL
 		
 		log.info("待转向URL: " + url);
 		session.setAttribute(Constants.GOTO_URL_KEY, url);*/

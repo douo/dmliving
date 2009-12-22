@@ -10,4 +10,6 @@ public class Constants {
 	public static final String GOTO_URL_KEY = "going_to_url";
 	public static final String ADDRESS_PRIMARY_YES = "Y";
 	public static final String IS_PRIMARY_NO = "N";
+	
+	public static final String NAMESPACE_ADMIN = "admin";
 }
