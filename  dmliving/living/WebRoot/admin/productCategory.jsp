@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/includes/jsp-tags.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh">
 <head>
@@ -27,24 +28,6 @@
       </table></td>
   </tr>
   <tr>
-    <td class="smallText" width="100%" align="right"> 文本编辑器
-      <form name="set_editor_form" action="http://localhost/admin/categories.php" method="get">
-        <input type="hidden" name="securityToken" value="8c996b0fd1b9d07e4155e42400b3cdf6" />
-        &nbsp;&nbsp;
-        <select rel="dropdown" name="reset_editor" onChange="this.form.submit();">
-          <option value="1">纯文本</option>
-          <option value="2" selected="selected">HTMLarea</option>
-          <option value="3">FCKeditor</option>
-          <option value="4">TinyMCE</option>
-        </select>
-        <input type="hidden" name="cID" />
-        <input type="hidden" name="cPath" value="" />
-        <input type="hidden" name="pID" />
-        <input type="hidden" name="page" />
-        <input type="hidden" name="action" value="set_editor" />
-      </form></td>
-  </tr>
-  <tr>
     <td class="smallText" width="100%" align="right"> 显示顺序
       <form name="set_categories_products_sort_order_form" action="http://localhost/admin/categories.php" method="get">
         <input type="hidden" name="securityToken" value="8c996b0fd1b9d07e4155e42400b3cdf6" />
@@ -66,7 +49,7 @@
         <tr>
           <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
               <tr>
-                <td class="pageHeading">商品分类&nbsp;-&nbsp;首页</td>
+                <td class="pageHeading">商品分类&nbsp;-&nbsp;${CategoryName }</td>
                 <td class="pageHeading" align="right"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="40"></td>
                 <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
                     <tr>
@@ -106,24 +89,33 @@
                       <td class="dataTableHeadingContent" align="right">排序</td>
                       <td class="dataTableHeadingContent" align="right">操作&nbsp;</td>
                     </tr>
-                    <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href='http://localhost/admin/categories.php?cPath=65'">
-                      <td class="dataTableContent" width="20" align="right">65</td>
-                      <td class="dataTableContent"><a href="http://localhost/admin/categories.php?cPath=65"><img src="images/icons/folder.gif" border="0" alt="目录" title=" 目录 "></a>&nbsp;<b>杯具</b></td>
+                    <c:forEach var="category" items="${categories }" varStatus="count">
+                    <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href='${basePath}admin/category/childCategoryList.action?category.productCategoryId=${category.productCategoryId }'">
+                      <td class="dataTableContent" width="20" align="right">${category.productCategoryId }</td>
+                      <td class="dataTableContent"><a href="http://localhost/admin/categories.php?cPath=65"><img src="images/icons/folder.gif" border="0" alt="目录" title=" 目录 "></a>&nbsp;<b>${category.name }</b></td>
                       <td class="dataTableContent" align="center">&nbsp;</td>
                       <td class="dataTableContent" align="right">&nbsp;</td>
                       <td class="dataTableContent" align="center">&nbsp;</td>
                       <td class="dataTableContent" align="right" valign="bottom"> 0 / 0 开启                   &nbsp;&nbsp; </td>
                       <td class="dataTableContent" width="50" align="left"><a href="http://localhost/admin/categories.php?action=setflag_categories&flag=0&cID=65&cPath="><img src="images/icon_green_on.gif" border="0" alt="状态 - 开启" title=" 状态 - 开启 "></a></td>
-                      <td class="dataTableContent" align="right">1</td>
+                      <td class="dataTableContent" align="right">${category.orderLevel }</td>
                       <td class="dataTableContent" align="right"><a href="http://localhost/admin/categories.php?cPath=&cID=65&action=edit_category"><img src="images/icon_edit.gif" border="0" alt="编辑" title=" 编辑 "></a> <a href="http://localhost/admin/categories.php?cPath=&cID=65&action=delete_category"><img src="images/icon_delete.gif" border="0" alt="删除" title=" 删除 "></a> <a href="http://localhost/admin/categories.php?cPath=&cID=65&action=move_category"><img src="images/icon_move.gif" border="0" alt="移动" title=" 移动 "></a><a href="http://localhost/admin/categories.php?cPath=&cID=65&action=edit_category_meta_tags"><img src="images/icon_edit_metatags_off.gif" border="0" alt="Meta标签未定义" title=" Meta标签未定义 "></a></td>
                     </tr>
+                    </c:forEach>
                     <tr>
                       <td colspan="3"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                           <tr>
-                            <td class="smallText">分类:&nbsp;19<br />
+                            <td class="smallText">分类:&nbsp;${count}<br />
                               商品:&nbsp;0</td>
-                            <td align="right" class="smallText"><a href="http://localhost/admin/categories.php?cPath=&action=new_category"><img src="images/buttons/schinese/button_new_category.gif" border="0" alt="新分类" title=" 新分类 "></a>&nbsp;
-                              说明: 本分类中已有子分类，不能添加商品          &nbsp;</td>
+                            <td align="right" class="smallText">
+                            <a href="http://localhost/admin/categories.php?cID=65">
+<img border="0" title=" 返回 " alt="返回" src="images/buttons/schinese/button_back.gif"/>
+</a>
+                            <a href="admin/category/newCategory.action?category.productCategoryId=${category.productCategoryId }&category.level=${category.level}"><img src="images/buttons/schinese/button_new_category.gif" border="0" alt="新分类" title=" 新分类 "></a>
+                            <a href="http://localhost/admin/categories.php?cID=65">
+<img border="0" title=" 新商品 " alt="新商品" src="images/buttons/schinese/button_new_product.gif"/>
+</a>&nbsp;
+                              说明: 本分类中若有子分类，则不能添加商品          &nbsp;</td>
                           </tr>
                         </table></td>
                     </tr>
