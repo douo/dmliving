@@ -2,3 +2,5 @@
 001.http://localhost:8080/living/user/showPrimaryAdress.action 国家下拉列表值为当前用户国家值
 002.转身登陆前页面应排除注销页面(已经解决)2009-12-13 2:28
 003.框架打包命令: jar cvf magicalboy.jar *
+004.用户找回密码未完成, 邮件模块开发中
+005.管理员登陆的权限问题, HQL语句
