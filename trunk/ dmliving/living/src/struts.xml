@@ -41,5 +41,6 @@
 	<include file="resource/struts-config/UserAction.xml"/>
 	<include file="resource/struts-config/AddressBookAcion.xml"/>
 	<include file="resource/struts-config/ProductAction.xml"/>
+	<include file="resource/struts-config/ProductCategoryAction.xml"/>
 	
 </struts>

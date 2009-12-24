@@ -137,8 +137,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	 */
 	@Override
 	public User adminLogin(User user) {
-		
-		return null;
+		return userDao.adminLogin(user);
 	}
 	
 }

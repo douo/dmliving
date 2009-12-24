@@ -12,4 +12,6 @@ public class Constants {
 	public static final String IS_PRIMARY_NO = "N";
 	
 	public static final String NAMESPACE_ADMIN = "admin";
+	
+	public static final Long TOP_LEVEL = 0L;
 }
