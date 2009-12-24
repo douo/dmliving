@@ -28,7 +28,7 @@
   // -->
 </script>
 </head>
-<body onload="init()">
+<body onload="init();">
 <!-- header //-->
 <!-- All HEADER_ definitions in the columns below are defined in includes/languages/english.jsp //-->
 <table border="0" width="100%" cellspacing="0" cellpadding="0" class="header">
@@ -99,7 +99,7 @@
 </li>
 <!-- configuration_eof //--><!-- catalog //-->
 <li class="submenu"><a target="_top" href="http://localhost/admin/alt_nav.jsp">商品管理</a><UL>
-<li><a href="admin/product/categoriesPage.action">商品分类</a></li>
+<li><a href="admin/category/topCategoryList.action">商品分类</a></li>
 
 <li><a href="http://localhost/admin/product_types.jsp">商品类型</a></li>
 <li><a href="http://localhost/admin/products_price_manager.jsp">价格管理</a></li>
