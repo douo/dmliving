@@ -318,7 +318,7 @@ alter table user_role add constraint FK_Reference_9 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
       
 /* 初始化管理员和权限数据 */
-insert into user(user_id, first_name, last_name, email,password,description,state) values(1,'admin','admin','admin','admin','管理员', 'A');
+insert into user(user_id, first_name, last_name, email,password,description,state) values(1,'admin','admin','admin','21232f297a57a5a743894a0e4a801fc3','管理员', 'A');
 
 insert into role(role_id,role_name,description,isactive) values(1,'ROLE_ADMIN','管理员角色', 'Y');
 insert into role(role_id,role_name,description,isactive) values(2,'ROLE_USER','用户角色', 'Y');
@@ -334,3 +334,4 @@ on u.user_id = ur.user_id
 join role r
 on r.role_id = ur.role_id
 where email = 'admin';
+
