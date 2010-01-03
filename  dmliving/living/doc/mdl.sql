@@ -16,6 +16,8 @@ drop table if exists email;
 
 drop table if exists image;
 
+drop table if exists manufacturer;
+
 drop table if exists options_name;
 
 drop table if exists options_value;
@@ -88,6 +90,21 @@ create table image
 );
 
 alter table image comment '图片表';
+
+/*==============================================================*/
+/* Table: manufacturer                                          */
+/*==============================================================*/
+create table manufacturer
+(
+   manufacturer_id      numeric(10) not null,
+   name                 varchar(50),
+   picture              varchar(120),
+   loc                  varchar(50),
+   url                  varchar(255),
+   add_date             date,
+   state                char,
+   primary key (manufacturer_id)
+);
 
 /*==============================================================*/
 /* Table: options_name                                          */
@@ -163,6 +180,7 @@ create table product
    description          varchar(8000),
    item_number          varchar(30),
    product_category_id  numeric(10),
+   manufacturer_id      numeric(10),
    image_url            varchar(50),
    isactive             char,
    stock_quantity       numeric,
@@ -170,6 +188,20 @@ create table product
    member_price         numeric(10,2),
    stock_price          numeric(10,2),
    special_price        numeric(10,2),
+   ptype                varchar(30),
+   free_ship            char,
+   is_free              char,
+   is_virtual           char,
+   add_date             date,
+   updated              date,
+   date_available       date,
+   least_buy            numeric,
+   most_buy             numeric,
+   buy_unit             numeric,
+   weight               numeric(10,2),
+   is_call              char,
+   is_number_box        char,
+   sort_order           char,
    primary key (product_id)
 );
 
@@ -183,10 +215,12 @@ create table product_category
    product_category_id  numeric(10) not null,
    parent_category_id   numeric(10),
    name                 varchar(50),
-   description          varchar(500),
+   description          varchar(2000),
    level                numeric,
    order_level          numeric,
+   curren_level         varchar(100),
    isactive             char,
+   image_url            varchar(200),
    primary key (product_category_id)
 );
 
@@ -302,6 +336,9 @@ alter table orderline add constraint FK_Reference_7 foreign key (product_id)
 alter table product add constraint FK_Reference_17 foreign key (product_category_id)
       references product_category (product_category_id) on delete restrict on update restrict;
 
+alter table product add constraint FK_Reference_20 foreign key (manufacturer_id)
+      references manufacturer (manufacturer_id) on delete restrict on update restrict;
+
 alter table shoping_car add constraint FK_Reference_18 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
 
@@ -316,6 +353,8 @@ alter table user_role add constraint FK_Reference_10 foreign key (role_id)
 
 alter table user_role add constraint FK_Reference_9 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
+
+
       
 /* 初始化管理员和权限数据 */
 insert into user(user_id, first_name, last_name, email,password,description,state) values(1,'admin','admin','admin','21232f297a57a5a743894a0e4a801fc3','管理员', 'A');
