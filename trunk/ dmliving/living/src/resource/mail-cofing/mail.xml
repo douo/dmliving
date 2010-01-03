@@ -8,7 +8,7 @@
 					http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
 	<!-- 邮件服务器信息 -->
-	<context:property-placeholder location="resource/email-cofing/mail.properties"/>
+	<context:property-placeholder location="resource/mail-cofing/mail.properties"/>
 
 	<bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -25,14 +25,12 @@
 		</property>
 	</bean>
 
-	<!-- 
 	<bean id="mailMessage"
 		class="org.springframework.mail.SimpleMailMessage">
 		<property name="from">
-			<value><![CDATA[openv test user<${mail.from}>]]></value>
+			<value><![CDATA[Deeply Madly Living<${mail.from}>]]></value>
 		</property>
 		<property name="to" value="${mail.to}"/>
 	</bean>
-	 -->
 
 </beans>
