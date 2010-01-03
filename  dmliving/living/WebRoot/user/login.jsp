@@ -42,7 +42,7 @@
               <label class="inputLabel" for="login-password">Password:</label>
               <input type="password" name="user.password" size = "41" maxlength = "40" id="login-password" />
               <div class="buttonRow back important" style="width: 600px;">
-              <a href="user/forgotPassword.action">Forgot your password?</a>
+              <a href="user/forgetPassword.jsp">Forgot your password?</a>
               </div>
               <br class="clearBoth" />
               <div class="buttonRow back ">
