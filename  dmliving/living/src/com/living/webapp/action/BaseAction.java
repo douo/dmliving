@@ -13,7 +13,10 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.living.model.User;
 import com.living.service.AddressBookService;
+import com.living.service.ManufecturerService;
 import com.living.service.ProductCategoryService;
+import com.living.service.ProductService;
+import com.living.service.ShopingCarService;
 import com.living.service.UserService;
 import com.living.util.Constants;
 import com.opensymphony.xwork2.ActionSupport;
@@ -138,4 +141,13 @@ public class BaseAction extends ActionSupport {
 	
 	@Autowired
 	protected ProductCategoryService categoryService;
+	
+	@Autowired
+	protected ManufecturerService manufecturerService;
+	
+	@Autowired
+	protected ProductService productService;
+	
+	@Autowired
+	protected ShopingCarService carService;
 }

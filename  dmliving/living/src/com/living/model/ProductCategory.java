@@ -17,7 +17,9 @@ public class ProductCategory implements java.io.Serializable {
 	private String description;
 	private Long level;
 	private Long orderLevel;
+	private String currenLevel;
 	private String isactive;
+	private String imageUrl;
 	private Set products = new HashSet(0);
 
 	// Constructors
@@ -28,14 +30,16 @@ public class ProductCategory implements java.io.Serializable {
 
 	/** full constructor */
 	public ProductCategory(Long parentCategoryId, String name,
-			String description, Long level, Long orderLevel, String isactive,
-			Set products) {
+			String description, Long level, Long orderLevel,
+			String currenLevel, String isactive, String imageUrl, Set products) {
 		this.parentCategoryId = parentCategoryId;
 		this.name = name;
 		this.description = description;
 		this.level = level;
 		this.orderLevel = orderLevel;
+		this.currenLevel = currenLevel;
 		this.isactive = isactive;
+		this.imageUrl = imageUrl;
 		this.products = products;
 	}
 
@@ -89,12 +93,28 @@ public class ProductCategory implements java.io.Serializable {
 		this.orderLevel = orderLevel;
 	}
 
+	public String getCurrenLevel() {
+		return this.currenLevel;
+	}
+
+	public void setCurrenLevel(String currenLevel) {
+		this.currenLevel = currenLevel;
+	}
+
 	public String getIsactive() {
 		return this.isactive;
 	}
 
 	public void setIsactive(String isactive) {
 		this.isactive = isactive;
+	}
+
+	public String getImageUrl() {
+		return this.imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public Set getProducts() {

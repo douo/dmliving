@@ -28,5 +28,11 @@ public class ProductCategoryDaoImpl extends BaseHibernateDaoImpl<ProductCategory
 	public List<ProductCategory> findByParentId(Serializable pid) {
 		return findByProperty(PARENT_ID, pid);
 	}
+	
+	@Override
+	public List<ProductCategory> findAll() {
+		orderPropertyName = LEVEL;
+		return super.findAll();
+	}
 
 }
