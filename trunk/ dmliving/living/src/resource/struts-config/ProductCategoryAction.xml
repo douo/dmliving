@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="com.living.action.ProductCategoryAction" extends="default" namespace="/admin/category">
+	
+		<action name="saveCategory" class="com.living.action.ProductCategoryAction" method="saveCategory">
+			<result type="redirect-action">categoryList</result>
+			<result name="input">/admin/categoryEdit.jsp</result>
+		</action>
+		
+		<action name="topCategoryList" class="com.living.action.ProductCategoryAction" method="listTopCategory">
+			<result>/admin/productCategory.jsp</result>
+		</action>
+		
+		<action name="categoryList" class="com.living.action.ProductCategoryAction" method="listCategory">
+			<result>/admin/productCategory.jsp</result>
+		</action>
+		
+		<action name="newCategory" class="com.living.action.ProductCategoryAction" method="newCategory">
+			<result>/admin/categoryEdit.jsp</result>
+		</action>
+		
+		<action name="showCategory" class="com.living.action.ProductCategoryAction" method="showCategory">
+			<result>/admin/categoryEdit.jsp</result>
+		</action>
+		
+		<action name="updateCategory" class="com.living.action.ProductCategoryAction" method="updateCategory">
+			<result type="redirect-action">categoryList</result>
+			<result name="input">/admin/categoryEdit.jsp</result>
+		</action>
+		
+		<action name="deleteCategory" class="com.living.action.ProductCategoryAction" method="deleteCategory">
+			<result type="redirect-action">categoryList</result>
+		</action>
+		
+		<!-- 保存商品 -->
+		<action name="saveProduct" class="com.living.action.ProductCategoryAction" method="saveProduct">
+			<result type="redirect-action">categoryList</result>
+			<result name="input">/admin/productEdit.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package name="com.living.action.ProductCategoryAction2" extends="default" namespace="/category">
+		<action name="categoryList" class="com.living.action.ProductCategoryAction" method="listCategories">
+			<result>/decorators/main.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		
+		<action name="showCategory" class="com.living.action.ProductCategoryAction" method="listSubCategory">
+			<result>/product/categoryList.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		
+	</package>
+	
+</struts>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="com.living.action.ManufacturerAction" extends="default" namespace="/admin/manufacture">
+	
+		<action name="saveManufacture" class="com.living.action.ManufacturerAction" method="saveManufacture">
+			<result type="redirect-action">manufactureList</result>
+			<result name="input">/admin/manufacturer.jsp</result>
+		</action>
+		
+		<action name="manufactureList" class="com.living.action.ManufacturerAction" method="manufactureList">
+			<result>/admin/manufacturer.jsp</result>
+			<param name="action">list</param>
+		</action>
+		
+		<action name="manufactureUpdate" class="com.living.action.ManufacturerAction" method="manufactureUpdate">
+			<result type="redirect-action">manufactureList</result>
+		</action>
+		
+		<action name="manufactureView" class="com.living.action.ManufacturerAction" method="manufactureView">
+			<result>/admin/manufacturer.jsp</result>
+			<param name="action">list</param>
+		</action>
+		
+		<action name="manufactureEdit" class="com.living.action.ManufacturerAction" method="manufactureView">
+			<result>/admin/manufacturer.jsp</result>
+			<param name="action">edit</param>
+		</action>
+		
+		<action name="manufactureNew" class="com.living.action.ManufacturerAction" method="manufactureNew">
+			<result>/admin/manufacturer.jsp</result>
+		</action>
+		
+		<action name="manufactureUpdate" class="com.living.action.ManufacturerAction" method="manufactureUpdate">
+			<result>/admin/manufacturer.jsp</result>
+			<param name="action">list</param>
+		</action>
+		
+	</package>
+</struts>
