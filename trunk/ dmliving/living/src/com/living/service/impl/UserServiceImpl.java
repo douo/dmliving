@@ -139,5 +139,10 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	public User adminLogin(User user) {
 		return userDao.adminLogin(user);
 	}
+
+	@Override
+	public User findByAccount(String account) {
+		return userDao.findByAccount(account);
+	}
 	
 }

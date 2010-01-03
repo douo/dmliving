@@ -65,4 +65,6 @@ public interface UserService extends BaseService {
 	 * @return
 	 */
 	public User adminLogin(User user);
+	
+	User findByAccount(String account);
 }

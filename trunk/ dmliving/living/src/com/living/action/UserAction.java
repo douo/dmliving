@@ -5,6 +5,8 @@ import org.apache.commons.lang.StringUtils;
 import com.living.model.AddressBook;
 import com.living.model.User;
 import com.living.util.Constants;
+import com.living.util.GenerateNewPassword;
+import com.living.util.mail.EmailSender;
 import com.living.webapp.action.BaseAction;
 
 public class UserAction extends BaseAction {
@@ -138,29 +140,29 @@ public class UserAction extends BaseAction {
 	}
 	
 	/**
-	 * 找回密码页面
-	 * @author C.donglin
-	 * @since 2009-12-20
-	 * @return
-	 */
-	public String forgotPassword() {
-		return INPUT;
-	}
-	
-	/**
 	 * 找回密码
 	 * @author C.donglin
 	 * @since 2009-12-20
 	 * @return
 	 */
 	public String findPassword() {
-		if (userService.hasUser(user)) {
-			getRequest().setAttribute("loginMsg", "A new password has been sent to your email address.");
+		user = userService.findByAccount(user.getEmail());
+		if (user != null) {
+			String newRandPsw = GenerateNewPassword.generatePsw(5);
+			if (userService.changePassword(user, newRandPsw)) {
+				EmailSender emailSender = new EmailSender();
+				emailSender.sendMail("cdlmagical@vip.qq.com", "New Password", "Your new password to 'Deeply Madly Living' is: " + newRandPsw +
+						"\nAfter you have logged in using the new password, you may change it by going to the 'My Account' page.");
+				getRequest().setAttribute("loginMsg", "A new password has been sent to your email address.");
+				return SUCCESS;
+			} else {
+				getRequest().setAttribute("getPswError", "Error: System Error; please try again. ");
+				return INPUT;
+			}
 		} else {
 			getRequest().setAttribute("getPswError", "Error: The Email Address was not found in our records; please try again. ");
 			return INPUT;
 		}
-		return ERROR;
 	}
 	
 	/**

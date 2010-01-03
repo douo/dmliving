@@ -1,5 +1,6 @@
 package com.living.model;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,7 @@ public class Product implements java.io.Serializable {
 	// Fields
 
 	private Long productId;
+	private Manufacturer manufacturer;
 	private ProductCategory productCategory;
 	private String name;
 	private String description;
@@ -23,6 +25,20 @@ public class Product implements java.io.Serializable {
 	private Double memberPrice;
 	private Double stockPrice;
 	private Double specialPrice;
+	private String ptype;
+	private String freeShip;
+	private String isFree;
+	private String isVirtual;
+	private Date addDate;
+	private Date updated;
+	private Date dateAvailable;
+	private Long leastBuy;
+	private Long mostBuy;
+	private Long buyUnit;
+	private Double weight;
+	private String isCall;
+	private String isNumberBox;
+	private String sortOrder;
 	private Set optionsNames = new HashSet(0);
 	private Set images = new HashSet(0);
 	private Set orderlines = new HashSet(0);
@@ -35,11 +51,16 @@ public class Product implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Product(ProductCategory productCategory, String name,
-			String description, String itemNumber, String imageUrl,
-			String isactive, Long stockQuantity, Double normalPrice,
-			Double memberPrice, Double stockPrice, Double specialPrice,
+	public Product(Manufacturer manufacturer, ProductCategory productCategory,
+			String name, String description, String itemNumber,
+			String imageUrl, String isactive, Long stockQuantity,
+			Double normalPrice, Double memberPrice, Double stockPrice,
+			Double specialPrice, String ptype, String freeShip, String isFree,
+			String isVirtual, Date addDate, Date updated, Date dateAvailable,
+			Long leastBuy, Long mostBuy, Long buyUnit, Double weight,
+			String isCall, String isNumberBox, String sortOrder,
 			Set optionsNames, Set images, Set orderlines, Set shopingCars) {
+		this.manufacturer = manufacturer;
 		this.productCategory = productCategory;
 		this.name = name;
 		this.description = description;
@@ -51,6 +72,20 @@ public class Product implements java.io.Serializable {
 		this.memberPrice = memberPrice;
 		this.stockPrice = stockPrice;
 		this.specialPrice = specialPrice;
+		this.ptype = ptype;
+		this.freeShip = freeShip;
+		this.isFree = isFree;
+		this.isVirtual = isVirtual;
+		this.addDate = addDate;
+		this.updated = updated;
+		this.dateAvailable = dateAvailable;
+		this.leastBuy = leastBuy;
+		this.mostBuy = mostBuy;
+		this.buyUnit = buyUnit;
+		this.weight = weight;
+		this.isCall = isCall;
+		this.isNumberBox = isNumberBox;
+		this.sortOrder = sortOrder;
 		this.optionsNames = optionsNames;
 		this.images = images;
 		this.orderlines = orderlines;
@@ -65,6 +100,14 @@ public class Product implements java.io.Serializable {
 
 	public void setProductId(Long productId) {
 		this.productId = productId;
+	}
+
+	public Manufacturer getManufacturer() {
+		return this.manufacturer;
+	}
+
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
 	}
 
 	public ProductCategory getProductCategory() {
@@ -153,6 +196,118 @@ public class Product implements java.io.Serializable {
 
 	public void setSpecialPrice(Double specialPrice) {
 		this.specialPrice = specialPrice;
+	}
+
+	public String getPtype() {
+		return this.ptype;
+	}
+
+	public void setPtype(String ptype) {
+		this.ptype = ptype;
+	}
+
+	public String getFreeShip() {
+		return this.freeShip;
+	}
+
+	public void setFreeShip(String freeShip) {
+		this.freeShip = freeShip;
+	}
+
+	public String getIsFree() {
+		return this.isFree;
+	}
+
+	public void setIsFree(String isFree) {
+		this.isFree = isFree;
+	}
+
+	public String getIsVirtual() {
+		return this.isVirtual;
+	}
+
+	public void setIsVirtual(String isVirtual) {
+		this.isVirtual = isVirtual;
+	}
+
+	public Date getAddDate() {
+		return this.addDate;
+	}
+
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
+	}
+
+	public Date getUpdated() {
+		return this.updated;
+	}
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
+
+	public Date getDateAvailable() {
+		return this.dateAvailable;
+	}
+
+	public void setDateAvailable(Date dateAvailable) {
+		this.dateAvailable = dateAvailable;
+	}
+
+	public Long getLeastBuy() {
+		return this.leastBuy;
+	}
+
+	public void setLeastBuy(Long leastBuy) {
+		this.leastBuy = leastBuy;
+	}
+
+	public Long getMostBuy() {
+		return this.mostBuy;
+	}
+
+	public void setMostBuy(Long mostBuy) {
+		this.mostBuy = mostBuy;
+	}
+
+	public Long getBuyUnit() {
+		return this.buyUnit;
+	}
+
+	public void setBuyUnit(Long buyUnit) {
+		this.buyUnit = buyUnit;
+	}
+
+	public Double getWeight() {
+		return this.weight;
+	}
+
+	public void setWeight(Double weight) {
+		this.weight = weight;
+	}
+
+	public String getIsCall() {
+		return this.isCall;
+	}
+
+	public void setIsCall(String isCall) {
+		this.isCall = isCall;
+	}
+
+	public String getIsNumberBox() {
+		return this.isNumberBox;
+	}
+
+	public void setIsNumberBox(String isNumberBox) {
+		this.isNumberBox = isNumberBox;
+	}
+
+	public String getSortOrder() {
+		return this.sortOrder;
+	}
+
+	public void setSortOrder(String sortOrder) {
+		this.sortOrder = sortOrder;
 	}
 
 	public Set getOptionsNames() {

@@ -8,8 +8,11 @@
     <class name="com.living.model.Product" table="product" catalog="living">
         <id name="productId" type="java.lang.Long">
             <column name="product_id" precision="10" scale="0" />
-            <generator class="increment" />
+            <generator class="increment"></generator>
         </id>
+        <many-to-one name="manufacturer" class="com.living.model.Manufacturer" fetch="select">
+            <column name="manufacturer_id" precision="10" scale="0" />
+        </many-to-one>
         <many-to-one name="productCategory" class="com.living.model.ProductCategory" fetch="select">
             <column name="product_category_id" precision="10" scale="0" />
         </many-to-one>
@@ -42,6 +45,48 @@
         </property>
         <property name="specialPrice" type="java.lang.Double">
             <column name="special_price" precision="10" />
+        </property>
+        <property name="ptype" type="java.lang.String">
+            <column name="ptype" length="30" />
+        </property>
+        <property name="freeShip" type="java.lang.String">
+            <column name="free_ship" length="1" />
+        </property>
+        <property name="isFree" type="java.lang.String">
+            <column name="is_free" length="1" />
+        </property>
+        <property name="isVirtual" type="java.lang.String">
+            <column name="is_virtual" length="1" />
+        </property>
+        <property name="addDate" type="java.util.Date">
+            <column name="add_date" length="10" />
+        </property>
+        <property name="updated" type="java.util.Date">
+            <column name="updated" length="10" />
+        </property>
+        <property name="dateAvailable" type="java.util.Date">
+            <column name="date_available" length="10" />
+        </property>
+        <property name="leastBuy" type="java.lang.Long">
+            <column name="least_buy" precision="10" scale="0" />
+        </property>
+        <property name="mostBuy" type="java.lang.Long">
+            <column name="most_buy" precision="10" scale="0" />
+        </property>
+        <property name="buyUnit" type="java.lang.Long">
+            <column name="buy_unit" precision="10" scale="0" />
+        </property>
+        <property name="weight" type="java.lang.Double">
+            <column name="weight" precision="10" />
+        </property>
+        <property name="isCall" type="java.lang.String">
+            <column name="is_call" length="1" />
+        </property>
+        <property name="isNumberBox" type="java.lang.String">
+            <column name="is_number_box" length="1" />
+        </property>
+        <property name="sortOrder" type="java.lang.String">
+            <column name="sort_order" length="1" />
         </property>
         <set name="optionsNames" inverse="true">
             <key>

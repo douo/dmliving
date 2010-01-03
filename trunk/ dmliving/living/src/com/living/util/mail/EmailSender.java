@@ -27,11 +27,26 @@ public class EmailSender {
 	 * 发送邮件
 	 * @author C.donglin
 	 * @since 2009-12-22
-	 * @param to 收件人(可多个)
+	 * @param to 收件人(多个)
 	 * @param subject 主题
 	 * @param text 内容
 	 */
 	public void sendMail(String[] to, String subject, String text){
+		simpleMailMessage.setTo(to);
+		simpleMailMessage.setSubject(subject);
+		simpleMailMessage.setText(text);
+		mailSender.send(simpleMailMessage);
+	}
+	
+	/**
+	 * 发送邮件
+	 * @author C.donglin
+	 * @since 2010-1-3
+	 * @param to 收件人
+	 * @param subject
+	 * @param text
+	 */
+	public void sendMail(String to, String subject, String text){
 		simpleMailMessage.setTo(to);
 		simpleMailMessage.setSubject(subject);
 		simpleMailMessage.setText(text);

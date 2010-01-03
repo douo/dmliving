@@ -1,17 +1,25 @@
 package com.living.action;
 
+import java.util.Date;
 import java.util.List;
 
+import com.living.model.Manufacturer;
+import com.living.model.Product;
 import com.living.model.ProductCategory;
 import com.living.util.Constants;
-import com.living.webapp.action.BaseAction;
+import com.living.util.TreeNode;
+import com.living.util.upload.FileUploadAction;
 
-public class ProductCategoryAction extends BaseAction {
+public class ProductCategoryAction extends FileUploadAction {
 	private static final long serialVersionUID = 741479505733303793L;
 	
 	private ProductCategory category;
 	private List<ProductCategory> categories;
-
+	private Product product;
+	private List<Product> products;
+	private Manufacturer manufacturer;
+	private List<Manufacturer> manufacturers;
+	
 	/**
 	 * 保存产品类别
 	 * @author C.donglin
@@ -20,10 +28,19 @@ public class ProductCategoryAction extends BaseAction {
 	 */
 	public String saveCategory() {
 		if (category != null) {
+			if (category.getParentCategoryId() == null) {
+				category.setParentCategoryId(Constants.TOP_LEVEL);
+			}
 			if (category.getLevel() == null) {
 				category.setLevel(0L); // 根类别为0
 			} else {
 				category.setLevel(category.getLevel()+1);
+			}
+			try {
+				category.setImageUrl(upload());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return ERROR;
 			}
 			categoryService.save(category);
 			if (category != null) {
@@ -34,9 +51,54 @@ public class ProductCategoryAction extends BaseAction {
 	}
 	
 	/**
+	 * 更新类别
+	 * @author C.donglin
+	 * @since 2010-1-2
+	 * @return
+	 */
+	public String updateCategory() {
+		if (category != null) {
+			if (categoryService.update(category) != null) {
+				return SUCCESS;
+			}
+		}
+		return ERROR;
+	}
+	
+	/**
+	 * 显示某一类别
+	 * @author C.donglin
+	 * @since 2010-1-2
+	 * @return
+	 */
+	public String listSubCategory() {
+		if (category != null) {
+			categories = categoryService.findByParentId(category.getProductCategoryId());
+			return SUCCESS;
+		}
+		return ERROR;
+	}
+	
+	/**
+	 * 删除类别
+	 * @author C.donglin
+	 * @since 2010-1-3
+	 * @return
+	 */
+	public String deleteCategory() {
+		if (category != null) {
+			if (categoryService.delete(category)) {
+				return SUCCESS;
+			}
+		}
+		return ERROR;
+	}
+	
+	/**
 	 * 产品类别列表
 	 * @author C.donglin
 	 * @since 2009-12-23
+	 * @deprecated
 	 * @return
 	 */
 	public String listTopCategory() {
@@ -52,25 +114,27 @@ public class ProductCategoryAction extends BaseAction {
 	}
 	
 	/**
-	 * 子类别列表
+	 * 类别列表
 	 * @author C.donglin
 	 * @since 2009-12-23
 	 * @return
 	 */
 	public String listCategory() {
-		if (category != null) {
-			categories = categoryService.findByParentId(category.getProductCategoryId());
-			category = (ProductCategory) categoryService.findById(category.getProductCategoryId());
-			int count = 0;
-			if (categories != null) {
-				count = categories.size();
-			}
-			getRequest().setAttribute("CategoryName", category.getName());
-			getRequest().setAttribute("count", count);
-			return SUCCESS;
+		if (category == null) {
+			category = new ProductCategory();
+			category.setProductCategoryId(Constants.TOP_LEVEL);
 		}
-		
-		return ERROR;
+		categories = categoryService.findByParentId(category.getProductCategoryId());
+		List<ProductCategory> list = categoryService.findByTree(category.getProductCategoryId());
+		getRequest().setAttribute("categoryTree", list);
+		products = productService.findByCategory(category.getProductCategoryId());
+		category = (ProductCategory) categoryService.findById(category.getProductCategoryId());
+		int count = 0;
+		if (categories != null) {
+			count = categories.size();
+		}
+		getRequest().setAttribute("count", count);
+		return SUCCESS;
 	}
 	
 	/**
@@ -80,12 +144,51 @@ public class ProductCategoryAction extends BaseAction {
 	 * @return
 	 */
 	public String newCategory() {
-		if (category == null) {
-			category = new ProductCategory();
-			category.setProductCategoryId(0L);
-		} else if (category.getProductCategoryId() == null) {
-			category.setProductCategoryId(0L);
+		return SUCCESS;
+	}
+	
+	/**
+	 * 保存产品
+	 * @author C.donglin
+	 * @since 2010-1-1
+	 * @return
+	 */
+	public String saveProduct() {
+		if (product != null) {
+			try {
+				//String availableDate = (String) getRequest().getAttribute("products_date_available");
+				//DateFormat myDateFormat = new SimpleDateFormat();
+				product.setImageUrl(upload()); // 上传商品图片
+				product.setAddDate(new Date());
+				//product.setDateAvailable(myDateFormat.parse(availableDate));
+				product.setManufacturer(manufacturer);
+				product.setProductCategory(category);
+				if (productService.save(product) != null) {
+					return SUCCESS;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return ERROR;
+			}
 		}
+		return INPUT;
+	}
+	
+	/**
+	 * 列出所有类别，包括其子类别，用于首页显示等
+	 * @author C.donglin
+	 * @since 2010-1-3
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public String listCategories() {
+		categories = categoryService.findAll();
+		TreeNode node =TreeNode.createCategoryTree(categories);
+		StringBuffer out =new StringBuffer();
+		TreeNode.treeToString(node, out);
+//		System.out.println("out:");
+//		System.out.println(out);
+		getRequest().setAttribute("treeNode", out);
 		return SUCCESS;
 	}
 	
@@ -111,4 +214,37 @@ public class ProductCategoryAction extends BaseAction {
 	public void setCategories(List<ProductCategory> categories) {
 		this.categories = categories;
 	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+	public List<Manufacturer> getManufacturers() {
+		return manufacturers;
+	}
+
+	public void setManufacturers(List<Manufacturer> manufacturers) {
+		this.manufacturers = manufacturers;
+	}
+
+	public Manufacturer getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
 }
