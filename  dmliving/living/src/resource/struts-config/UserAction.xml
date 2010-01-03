@@ -60,5 +60,19 @@
 			<result name="input">/user/changePassword.jsp</result>
 		</action>
 		
+		<action name="findPassword" class="com.living.action.UserAction" method="findPassword">
+			<result>/user/login.jsp</result>
+			<result name="input">/user/forgetPassword.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		
+	</package>
+	
+	<package name="com.living.action.AdminAction" extends="default" namespace="/admin">
+		<action name="adminLogin" class="com.living.action.UserAction" method="adminLogin">
+			<result type="redirect">${goingToURL}</result>
+			<result name="input">/admin/login.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+		</action>
 	</package>
 </struts>
