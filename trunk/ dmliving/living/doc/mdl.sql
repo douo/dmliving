@@ -221,6 +221,8 @@ create table product_category
    curren_level         varchar(100),
    isactive             char,
    image_url            varchar(200),
+   banner_url           varchar(200),
+   css_style            varchar(50),
    primary key (product_category_id)
 );
 
@@ -353,7 +355,6 @@ alter table user_role add constraint FK_Reference_10 foreign key (role_id)
 
 alter table user_role add constraint FK_Reference_9 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
-
 
       
 /* 初始化管理员和权限数据 */
