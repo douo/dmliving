@@ -8,6 +8,15 @@
 		<action name="saveCategory" class="com.living.action.ProductCategoryAction" method="saveCategory">
 			<result type="redirect-action">categoryList</result>
 			<result name="input">/admin/categoryEdit.jsp</result>
+			<interceptor-ref name="fileUpload">
+              <!-- 配置允许上传的文件类型，多个用","分隔 -->
+              <param name="allowedTypes">
+    　　　　　　	image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/x-png, image/pjpeg
+              </param>
+              <!-- 配置允许上传的文件大小，单位字节 -->
+              <param name="maximumSize">102400</param>
+           </interceptor-ref>
+           <interceptor-ref name="defaultStack" />
 		</action>
 		
 		<action name="topCategoryList" class="com.living.action.ProductCategoryAction" method="listTopCategory">
@@ -24,6 +33,7 @@
 		
 		<action name="showCategory" class="com.living.action.ProductCategoryAction" method="showCategory">
 			<result>/admin/categoryEdit.jsp</result>
+			<result name="input" type="redirect-action">categoryList</result>
 		</action>
 		
 		<action name="updateCategory" class="com.living.action.ProductCategoryAction" method="updateCategory">
@@ -51,6 +61,11 @@
 		
 		<action name="showCategory" class="com.living.action.ProductCategoryAction" method="listSubCategory">
 			<result>/product/categoryList.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		
+		<action name="homeCategories" class="com.living.action.ProductCategoryAction" method="listCategory">
+			<result>/welcome.jsp</result>
 			<interceptor-ref name="defaultStack"/>
 		</action>
 		
