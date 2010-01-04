@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="com.living.action.ShoppingCartAcion" extends="default" namespace="/car">
+		<!-- 查看购物车 -->
+		<action name="viewCar" class="com.living.action.ShoppingCartAcion" method="viewCar">
+			<result>/order/orderCar.jsp</result>
+		</action>
+		
+		<!-- 增加商品到购物车 -->
+		<action name="addToCar" class="com.living.action.ShoppingCartAcion" method="addToCar">
+			<result type="redirect-action">viewCar</result>
+		</action>
+		
+		<!-- 从购物车删除商品 -->
+		<action name="removeFromCar" class="com.living.action.ShoppingCartAcion" method="removeFromCar">
+			<result type="redirect-action">viewCar</result>
+		</action>
+		<!-- 更新购物车 -->
+		<action name="updateCar" class="com.living.action.ShoppingCartAcion" method="updateCar">
+			<result type="redirect-action">viewCar</result>
+		</action>
+	</package>
+</struts>

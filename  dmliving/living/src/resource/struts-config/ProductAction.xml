@@ -9,6 +9,14 @@
 			<result>/admin/productEdit.jsp</result>
 		</action>
 		
+		<action name="showProduct" class="com.living.action.ProductAction" method="showProduct">
+			<result>/admin/productEdit.jsp</result>
+		</action>
+		
+		<action name="deleteProduct" class="com.living.action.ProductAction" method="deleteProduct">
+			<result type="redirect">/admin/category/categoryList.action</result>
+		</action>
+		
 	</package>
 	
 	<package name="com.living.action.ProductAction2" extends="default" namespace="/product">
