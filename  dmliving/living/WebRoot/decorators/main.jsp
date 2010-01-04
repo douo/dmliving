@@ -17,9 +17,6 @@
 </head>
 <body id="indexBody">
 <div id="mainWrapper">
-<style type="text/css" media="screen">
-	.categoryListBoxContents { background-color: #0ce39f; }.centerBoxContentsProducts { background-color: #0ce39f; }.centerBoxContentsProducts { background: url(images/search_product_bg.gif); }
-</style>
   <a name="very_top"></a>
   <!-- the FEATURING overlay -->
   <!-- <div id="featuring-overlay"><a href="index.php?main_page=index&cPath=2"><img  alt="Featuring Products" src="/images/featuring_nav.gif"></a></div> -->
@@ -32,7 +29,11 @@
           <tr>
             <td>&nbsp;&nbsp;</td>
             <td width="140" align="center" background="images/phone_number.gif"><strong>UA-12191306-1</strong></td>
-            <td bgcolor="#333333" align="center" width="40%"><a href="user/myAccount.action">my account</a> &nbsp;|&nbsp; <%=request.getSession().getAttribute(Constants.SESSION_LOGIN)==null ? "<a href='user/login.action'>login</a>" : "<a href='user/logout.action'>logout</a>" %> &nbsp;|&nbsp; <a href="#"><img src="images/shopping_cart_empty.gif" alt="" width="20" height="12" align="absbottom" /></a> &nbsp;<a href="#" class="green-link">shopping cart</a>
+            <td bgcolor="#333333" align="center" width="40%"><a href="user/myAccount.action">my account</a> &nbsp;|&nbsp; <%=request.getSession().getAttribute(Constants.SESSION_LOGIN)==null ? "<a href='user/login.action'>login</a>" : "<a href='user/logout.action'>logout</a>" %> &nbsp;|&nbsp; 
+            <a href="car/viewCar.action">
+            <c:if test="${not hasProduct}"><img src="images/shopping_cart_empty.gif" alt="" width="20" height="12" align="absbottom" /></c:if>
+            <c:if test="${hasProduct}"><img src="images/shopping_cart_full.gif" alt="" width="20" height="12" align="absbottom" /></c:if>
+            </a> &nbsp;<a href="car/viewCar.action" class="green-link">shopping cart</a>
               <!-- (<?= $items_in_bag ?>) --></td>
             <td align="right" width="230" background="images/search_bg.gif"><b>search</b>
               <form name="quick_find_header" action="product/searchProduct.action" method="get">
@@ -52,63 +53,7 @@
             <div id="dropMenu">
               <ul class="level1">
               ${treeNode }
-                <%--<li class="submenu-blue"><a href="category/showCategory.action">FEATURING</a></li>
-                <li class="submenu"><a href="#">BATHING</a>
-                  <ul class="level2">
-                    <li> <a href="#">BATH ACCESSORIES</a></li>
-                    <li> <a href="#">BATH LINEN</a></li>
-                    <li> <a href="#">BATHROOM FIXTURES</a></li>
-                  </ul>
-                </li>
-                <li class="submenu"> <a href="#">COOKING</a>
-                  <ul class="level2">
-                    <li> <a href="#">CUTLERY</a></li>
-                    <li> <a href="#">DINNERWARE</a></li>
-                    <li> <a href="#">GLASSWARE</a></li>
-                  </ul>
-                </li>
-                <li class="submenu"> <a href="#">DECORATING</a>
-                  <ul class="level2">
-                    <li> <a href="#">ACCESSORIES</a></li>
-                    <li> <a href="#">CENTERPIECES & VASES</a></li>
-                    <li> <a href="#">PILLOWS & THROWS</a></li>
-                    <li> <a href="#">WALL DECORATIONS</a></li>
-                  </ul>
-                </li>
-                <li class="submenu"> <a href="#">DINING</a>
-                  <ul class="level2">
-                    <li> <a href="#">CHAIRS & STOOLS</a></li>
-                    <li> <a href="#">COMMODES & SIDE TABLES</a></li>
-                    <li> <a href="#">TABLES</a></li>
-                  </ul>
-                </li>
-                <li class="submenu"> <a href="#">LIGHTING</a>
-                  <ul class="level2">
-                    <li> <a href="#">CEILING & WALL LIGHTS</a></li>
-                    <li> <a href="#">FLOOR & TABLE LAMPS</a></li>
-                  </ul>
-                </li>
-                <li class="submenu"> <a href="#">LIVING</a>
-                  <ul class="level2">
-                    <li> <a href="#">BENCHES & SHELVES</a></li>
-                    <li> <a href="#">CHAIRS</a></li>
-                    <li> <a href="#">COFFEE TABLES</a></li>
-                    <li> <a href="#">COMMODES & SIDE TABLES</a></li>
-                    <li> <a href="#">SOFAS</a></li>
-                  </ul>
-                </li>
-                <li class="submenu"> <a href="#">SLEEPING</a>
-                  <ul class="level2">
-                    <li> <a href="#">BEDROOM ACCESSORIES</a></li>
-                    <li> <a href="#">BEDROOM FURNITURE</a></li>
-                  </ul>
-                </li>
-                <li class="submenu"> <a href="#">WORKING</a>
-                  <ul class="level2">
-                    <li> <a href="#">FURNITURE</a></li>
-                  </ul>
-                </li>
-                --%><li class="submenu-purple"><a href="." target="_blank"><img src="images/dmlnav_dmd_design_link.jpg" border="0" /></a></li>
+                <li class="submenu-purple"><a href="." target="_blank"><img src="images/dmlnav_dmd_design_link.jpg" border="0" /></a></li>
               </ul>
             </div>
           </div>

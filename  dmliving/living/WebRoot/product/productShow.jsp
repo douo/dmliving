@@ -10,7 +10,7 @@
 <script type="text/javascript" src="js/modalbox/modalbox.js"></script>
 </head>
 <body id="indexBody">
-<div style="padding-bottom: 12px;"><a href="#"><img src="${category.imageUrl }" alt="${category.name }"/></a></div>
+<div style="padding-bottom: 12px;"><a href="#"><img src="${category.bannerUrl }" alt="${category.name }"/></a></div>
 <div id="layout-content">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="contentMainWrapper">
   <tr>
@@ -20,7 +20,8 @@
       <!-- eof upload alerts -->
       <div class="centerColumn" id="productGeneral">
         <!--bof Form start-->
-        <form name="cart_quantity" action="/index.jsp?main_page=product_info&amp;cPath=1_32&amp;products_id=98&amp;action=add_product" method="post" enctype="multipart/form-data">
+        <form name="cart_quantity" action="car/addToCar.action" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="product.productId" value="${product.productId }"/>
           <!--eof Form start-->
           <!--bof Category Icon -->
           <!--eof Category Icon -->
@@ -77,7 +78,9 @@
           <br class="clearBoth" />
           <!--bof Product Price block xxx -->
           Item #: ${product.ptype }
-          <div class="product-price"> $${product.normalPrice }</div>
+          <div class="product-price">
+		 	<span class="normalprice">$${product.normalPrice } </span> <span class="productSpecialPrice">$${product.memberPrice }</span>
+		  </div>
           <br />
           <br />
           <!--eof Product Price block -->
@@ -87,10 +90,9 @@
           <!--bof Add to Cart Box -->
           <!--eof Add to Cart Box-->
           <div class="back" style="width: 110px;">Quantity: </div>
-          <input type="text" name="cart_quantity" value="1" maxlength="6" size="4" />
+          <input type="text" name="shoppingCart.productNumber" value="1" maxlength="6" size="4" />
           <br />
           <br />
-          <input type="hidden" name="product.productId" value="${product.productId }" />
           <input type="image" src="images/button_in_cart.gif" alt="Add to Cart" title=" Add to Cart " />
           <!--bof Product details list  -->
           <ul id="productDetailsList" class="floatingBox back">

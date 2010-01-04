@@ -5,9 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
 <title>Deeply Madly Living: ${category.name }</title>
+<style type="text/css" media="screen">
+	.categoryListBoxContents { background-color: ${category.cssStyle }}.centerBoxContentsProducts { background-color: ${category.cssStyle } }.centerBoxContentsProducts { background: ${category.cssStyle } }
+</style>
 </head>
 <body id="indexBody">
-<div style="padding-bottom: 12px;"><a href="#"><img src="${category.imageUrl }" alt="${category.name }"/></a></div>
+<div style="padding-bottom: 12px;"><a href="#"><img src="${category.bannerUrl }" alt="${category.name }"/></a></div>
 <div id="layout-content">
   <table width="100%" border="0" cellspacing="0" cellpadding="0" id="contentMainWrapper">
     <tr>
@@ -28,10 +31,13 @@
             <br class="clearBoth" />
             <c:forEach var="product" items="${products}">
             <div class="centerBoxContentsProducts back" style="width: 300px;">
-              <div class="imgWrapper"><a href="product/showProduct.action?productId=${product.productId }"><img src="${product.imageUrl }" alt="${product.name }" title=" ${product.name } " width="116" height="116" /></a></div>
+              <div class="imgWrapper"><a href="product/showProduct.action?product.productId=${product.productId }"><img src="${product.imageUrl }" alt="${product.name }" title=" ${product.name } " width="116" height="116" /></a></div>
               <br />
-              <a class="product-list-name" href="product/showProduct.action?productId=${product.productId }">${product.name }</a><br />
-              <strong>$${product.normalPrice }</strong><br />
+              <img width="51" height="21" border="0" title=" On sale! " alt="On sale!" src="images/icon_listing_on_sale.gif"/>
+              <br />
+              <a class="product-list-name" href="product/showProduct.action?product.productId=${product.productId }">${product.name }</a><br />
+              <strong><span class="normalprice">$${product.normalPrice } </span> <span class="productSpecialPrice">$${product.memberPrice }</span></strong>
+              <br />
             </div>
             </c:forEach>
             <br class="clearBoth" />

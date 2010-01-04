@@ -56,7 +56,7 @@
 </form>
 	</td>
     <td class="headerBarContent" align="center"><b><%=new Date() %>&nbsp;[<%=request.getRemoteAddr() %> ]&nbsp;</b></td>
-    <td class="headerBarContent" align="right"><a href="admin/index.jsp" class="headerLink">管理首页</a>&nbsp;|&nbsp;<a href="index.jsp?main_page=" class="headerLink" target="_blank">商店首页</a>&nbsp;|&nbsp;<a href="http://www.zen-cart.cn/" class="headerLink" target="_blank">支持网站</a>&nbsp;|&nbsp;<a href="admin/server_info.jsp" class="headerLink">版本</a>&nbsp;|&nbsp;<a href="admin/logoff.jsp" class="headerLink">退出</a>&nbsp;</td>
+    <td class="headerBarContent" align="right"><a href="admin/" class="headerLink">管理首页</a>&nbsp;|&nbsp;<a href="index.jsp?main_page=" class="headerLink" target="_blank">商店首页</a>&nbsp;|&nbsp;<a href="http://www.zen-cart.cn/" class="headerLink" target="_blank">支持网站</a>&nbsp;|&nbsp;<a href="admin/server_info.jsp" class="headerLink">版本</a>&nbsp;|&nbsp;<a href="user/logout.action" class="headerLink">退出</a>&nbsp;</td>
   </tr>
 </table>
 <!-- Menu bar #2. -->

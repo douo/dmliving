@@ -5,7 +5,7 @@
 <head>
 <base href="${basePath }" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Zen Cart!</title>
+<title>Admin Login</title>
 <link href="css/admin.css" rel="stylesheet" type="text/css" />
 </head>
 <body id="login" onload="document.getElementById('admin_name').focus()">
