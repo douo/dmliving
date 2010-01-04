@@ -6,6 +6,7 @@ import java.util.List;
 import com.living.model.Manufacturer;
 import com.living.model.Product;
 import com.living.model.ProductCategory;
+import com.living.model.ShopingCar;
 import com.living.util.Constants;
 import com.living.util.TreeNode;
 import com.living.util.upload.FileUploadAction;
@@ -37,7 +38,17 @@ public class ProductCategoryAction extends FileUploadAction {
 				category.setLevel(category.getLevel()+1);
 			}
 			try {
-				category.setImageUrl(upload());
+				List<String> imgUrls = upload();
+				
+				if (imgUrls != null) {
+					if (imgUrls.size() ==2) {
+						category.setBannerUrl(imgUrls.get(0));
+						category.setImageUrl(imgUrls.get(1));
+					} else {
+						category.setImageUrl(imgUrls.get(0));
+					}
+					
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 				return ERROR;
@@ -58,8 +69,20 @@ public class ProductCategoryAction extends FileUploadAction {
 	 */
 	public String updateCategory() {
 		if (category != null) {
-			if (categoryService.update(category) != null) {
-				return SUCCESS;
+			List<String> imgUrls;
+			try {
+				imgUrls = upload();
+				if (imgUrls != null) {
+					category.setBannerUrl(imgUrls.get(0));
+					if (imgUrls.size() > 1)
+						category.setImageUrl(imgUrls.get(1));
+				}
+				if (categoryService.update(category) != null) {
+					return SUCCESS;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return ERROR;
 			}
 		}
 		return ERROR;
@@ -73,6 +96,7 @@ public class ProductCategoryAction extends FileUploadAction {
 	 */
 	public String listSubCategory() {
 		if (category != null) {
+			category = (ProductCategory) categoryService.findById(category.getProductCategoryId());
 			categories = categoryService.findByParentId(category.getProductCategoryId());
 			return SUCCESS;
 		}
@@ -114,7 +138,7 @@ public class ProductCategoryAction extends FileUploadAction {
 	}
 	
 	/**
-	 * 类别列表
+	 * 主类别列表
 	 * @author C.donglin
 	 * @since 2009-12-23
 	 * @return
@@ -158,12 +182,16 @@ public class ProductCategoryAction extends FileUploadAction {
 			try {
 				//String availableDate = (String) getRequest().getAttribute("products_date_available");
 				//DateFormat myDateFormat = new SimpleDateFormat();
-				product.setImageUrl(upload()); // 上传商品图片
-				product.setAddDate(new Date());
+				List<String> imgUrls = upload();
+				if (imgUrls != null)
+					product.setImageUrl(imgUrls.get(0));
+				if (product.getProductId() == null) {
+					product.setAddDate(new Date());
+				}
 				//product.setDateAvailable(myDateFormat.parse(availableDate));
 				product.setManufacturer(manufacturer);
 				product.setProductCategory(category);
-				if (productService.save(product) != null) {
+				if (productService.saveOrUpdate(product) != null) {
 					return SUCCESS;
 				}
 			} catch (Exception e) {
@@ -176,13 +204,21 @@ public class ProductCategoryAction extends FileUploadAction {
 	
 	/**
 	 * 列出所有类别，包括其子类别，用于首页显示等
-	 * @author C.donglin
+	 * @author C.donglin, L.Cao
 	 * @since 2010-1-3
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
 	public String listCategories() {
 		categories = categoryService.findAll();
+		boolean hasProduct = false;
+		if (getLoginUser() != null) {
+			List<ShopingCar> shopingCars = carService.findByUserId(getLoginUser().getUserId());
+			if (shopingCars != null && shopingCars.size() > 0) {
+				hasProduct = true;
+			}
+		}
+		getRequest().setAttribute("hasProduct", hasProduct);
 		TreeNode node =TreeNode.createCategoryTree(categories);
 		StringBuffer out =new StringBuffer();
 		TreeNode.treeToString(node, out);
@@ -191,6 +227,21 @@ public class ProductCategoryAction extends FileUploadAction {
 		getRequest().setAttribute("treeNode", out);
 		return SUCCESS;
 	}
+	
+	/**
+	 * 展示类别
+	 * @author C.donglin
+	 * @since 2010-1-4
+	 * @return
+	 */
+	public String showCategory() {
+		if (category != null) {
+			category = (ProductCategory) categoryService.findById(category.getProductCategoryId());
+			return SUCCESS;
+		}
+		return INPUT;
+	}
+	
 	
 	// setter and getters
 	public ProductCategory getCategory() {

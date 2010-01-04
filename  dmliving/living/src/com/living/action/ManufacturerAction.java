@@ -38,7 +38,9 @@ public class ManufacturerAction extends FileUploadAction {
 			try {
 				String imageManual = (String) getRequest().getAttribute("image_manual");
 				if (imageManual == null) {
-					imageManual = upload();
+					List<String> imgUrls = upload();
+					if (imgUrls != null)
+						imageManual = upload().get(0);
 				}
 				manufacturer.setPicture(imageManual);
 				manufacturer.setAddDate(new Date());

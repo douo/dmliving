@@ -56,16 +56,17 @@ public class ProductAction extends FileUploadAction {
 	 * @since 2010-1-2
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public String showProduct() {
-		String pid = getRequest().getParameter("productId");
-		if (pid != null) {
-			Long productId = Long.valueOf(pid);
-			product = (Product) productService.findById(productId);
+		if (product != null) {
+			product = (Product) productService.findById(product.getProductId());
 			List<ProductCategory> list = categoryService.findByTree(product.getProductCategory().getProductCategoryId());
 			getRequest().setAttribute("categoryTree", list);
 			category = (ProductCategory) categoryService.findById(product.getProductCategory().getProductCategoryId());
+			manufacturers = manufecturerService.findAll();
+			return SUCCESS;
 		}
-		return SUCCESS;
+		return INPUT;
 	}
 	
 	/**
@@ -86,6 +87,21 @@ public class ProductAction extends FileUploadAction {
 			return SUCCESS;
 		}
 		return SUCCESS;
+	}
+	
+	/**
+	 * 删除产品
+	 * @author C.donglin
+	 * @since 2010-1-4
+	 * @return
+	 */
+	public String deleteProduct() {
+		if (product != null) {
+			if (productService.delete(product)) {
+				return SUCCESS;
+			}
+		}
+		return ERROR;
 	}
 
 	public void setProduct(Product product) {
