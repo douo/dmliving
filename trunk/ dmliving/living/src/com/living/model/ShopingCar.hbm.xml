@@ -13,7 +13,8 @@
         <many-to-one name="user" class="com.living.model.User" fetch="select">
             <column name="user_id" precision="10" scale="0" />
         </many-to-one>
-        <many-to-one name="product" class="com.living.model.Product" fetch="select">
+        <!-- 设置二级缓存，在需要时再加载数据，提高服务器性能 -->
+        <many-to-one name="product" class="com.living.model.Product" fetch="select" lazy="false">
             <column name="product_id" precision="10" scale="0" />
         </many-to-one>
         <property name="productNumber" type="java.lang.Long">

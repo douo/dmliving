@@ -20,6 +20,8 @@ public class ProductCategory implements java.io.Serializable {
 	private String currenLevel;
 	private String isactive;
 	private String imageUrl;
+	private String bannerUrl;
+	private String cssStyle;
 	private Set products = new HashSet(0);
 
 	// Constructors
@@ -31,7 +33,8 @@ public class ProductCategory implements java.io.Serializable {
 	/** full constructor */
 	public ProductCategory(Long parentCategoryId, String name,
 			String description, Long level, Long orderLevel,
-			String currenLevel, String isactive, String imageUrl, Set products) {
+			String currenLevel, String isactive, String imageUrl,
+			String bannerUrl, String cssStyle, Set products) {
 		this.parentCategoryId = parentCategoryId;
 		this.name = name;
 		this.description = description;
@@ -40,6 +43,8 @@ public class ProductCategory implements java.io.Serializable {
 		this.currenLevel = currenLevel;
 		this.isactive = isactive;
 		this.imageUrl = imageUrl;
+		this.bannerUrl = bannerUrl;
+		this.cssStyle = cssStyle;
 		this.products = products;
 	}
 
@@ -115,6 +120,22 @@ public class ProductCategory implements java.io.Serializable {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public String getBannerUrl() {
+		return this.bannerUrl;
+	}
+
+	public void setBannerUrl(String bannerUrl) {
+		this.bannerUrl = bannerUrl;
+	}
+
+	public String getCssStyle() {
+		return this.cssStyle;
+	}
+
+	public void setCssStyle(String cssStyle) {
+		this.cssStyle = cssStyle;
 	}
 
 	public Set getProducts() {

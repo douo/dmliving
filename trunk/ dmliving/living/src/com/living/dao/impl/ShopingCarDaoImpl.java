@@ -1,5 +1,8 @@
 package com.living.dao.impl;
 
+import java.io.Serializable;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.framework.dao.impl.BaseHibernateDaoImpl;
@@ -12,6 +15,11 @@ public class ShopingCarDaoImpl extends BaseHibernateDaoImpl<ShopingCar> implemen
 	
 	@Override
 	public void initHibernateTemplate() {
+	}
+
+	@Override
+	public List<ShopingCar> findByUserId(Serializable uid) {
+		return findByProperty(USER_ID, uid);
 	}
 
 }
