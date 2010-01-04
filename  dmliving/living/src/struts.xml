@@ -43,5 +43,6 @@
 	<include file="resource/struts-config/ProductAction.xml"/>
 	<include file="resource/struts-config/ProductCategoryAction.xml"/>
 	<include file="resource/struts-config/ManufacturerAction.xml"/>
+	<include file="resource/struts-config/ShoppingCartAcion.xml"/>
 	
 </struts>
