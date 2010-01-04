@@ -111,7 +111,7 @@
                     </c:if>
                     <c:if test="${products != '[]'}">
                     <c:forEach var="product" items="${products}">
-                    <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href='#'">
+                    <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href='admin/product/showProduct.action?product.productId=${product.productId }'">
                       <td class="dataTableContent" width="20" align="right">${product.productId }</td>
                       <td class="dataTableContent"><a href="http://localhost/admin/categories.jsp?cPath=65"><img src="images/icons/preview.gif" border="0" alt="商品" title=" 商品 "/></a>&nbsp;<b>${product.name }</b></td>
                       <td class="dataTableContent" align="left">${product.ptype }</td>
@@ -120,8 +120,8 @@
                       <td class="dataTableContent" align="center">${product.stockQuantity }</td>
                       <td class="dataTableContent" width="50" align="center"><a href="http://localhost/admin/categories.jsp?action=setflag_categories&flag=0&cID=65&cPath="><img src="images/icon_green_on.gif" border="0" alt="状态 - 开启" title=" 状态 - 开启 "/></a></td>
                       <td class="dataTableContent" align="right">${product.sortOrder }</td>
-                      <td class="dataTableContent" align="right"><a href="http://localhost/admin/categories.jsp?cPath=&cID=65&action=edit_category"><img src="images/icon_edit.gif" border="0" alt="编辑" title=" 编辑 "/></a>
-                      <a href=""><img src="images/icon_delete.gif" border="0" alt="删除" title=" 删除 "/></a>
+                      <td class="dataTableContent" align="right"><a href="admin/product/showProduct.action?product.productId=${product.productId }"><img src="images/icon_edit.gif" border="0" alt="编辑" title=" 编辑 "/></a>
+                      <a href="admin/product/deleteProduct.action?product.productId=${product.productId }"><img src="images/icon_delete.gif" border="0" alt="删除" title=" 删除 "/></a>
                       <a href="http://localhost/admin/categories.jsp?cPath=&cID=65&action=move_category"><img src="images/icon_move.gif" border="0" alt="移动" title=" 移动 "/></a>
                       <a href="http://localhost/admin/categories.jsp?cPath=&cID=65&action=edit_category_meta_tags"><img src="images/icon_edit_metatags_off.gif" border="0" alt="Meta标签未定义" title=" Meta标签未定义 "/></a>
                       </td>

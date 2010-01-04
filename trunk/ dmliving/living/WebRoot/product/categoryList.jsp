@@ -5,6 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
 <title>Deeply Madly Living: ${category.name }</title>
+<style type="text/css" media="screen">
+	.categoryListBoxContents { background-color: ${category.cssStyle }}.centerBoxContentsProducts { background-color: ${category.cssStyle } }.centerBoxContentsProducts { background: ${category.cssStyle } }
+</style>
 </head>
 <body id="indexBody">
 <div style="padding-bottom: 12px;"><a href="index.jsp?main_page=index&cPath=1"><img src="images/category/catbanner_bathing.jpg" alt="Bathing Products" /></a></div>
@@ -21,9 +24,9 @@
           <c:forEach items="${categories}" var="category">
           <div class="categoryListBoxContents" style="width:100%;">
             <div class="categoryListBoxContents2">
-              <div class="imgWrapper"><a href="/index.jsp?main_page=index&amp;cPath=1_32"><img src="${category.imageUrl }" alt="${category.name }" title=" ${category.name } " width="116" height="116" /></a></div>
+              <div class="imgWrapper"><a href="product/listProduct.action?category.productCategoryId=${category.productCategoryId }"><img src="${category.imageUrl }" alt="${category.name }" title=" ${category.name } " width="116" height="116" /></a></div>
             </div>
-            <div class="categoryListBoxContents3"><a href="/index.jsp?main_page=index&amp;cPath=1_32">${category.name }</a></div>
+            <div class="categoryListBoxContents3"><a href="product/listProduct.action?category.productCategoryId=${category.productCategoryId }">${category.name }</a></div>
           </div>
           <br class="clearBoth" />
           </c:forEach>

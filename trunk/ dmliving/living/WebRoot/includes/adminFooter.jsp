@@ -8,18 +8,18 @@
 	</head>
 	<body>
 		<div class="copyrightrow">
-			<a href="http://www.zen-cart.cn" target="_blank"><img
-					src="images/small_zen_logo.gif" alt="Zen Cart:: 电子商务的艺术" border="0" />
+			<a href="/" target="_blank"><img
+					src="images/small_zen_logo.jpg" title="07网编 1班 No.10 :: 电子商务的艺术" alt="07网编 1班 No.10:: 电子商务的艺术" border="0" />
 			</a>
 			<br />
 			<br />
-			版权所有 &copy; 2003-2009
-			<a href="http://www.zen-cart.cn" target="_blank">Zen Cart中文版</a>
+			版权所有 &copy; 2009-2010
+			<a href="/" target="_blank">07网编 1班 No.10</a>
 		</div>
 		<div class="warrantyrow">
 			<br />
 			<br />
-			Zen Cart is derived from: Copyright &copy; 2003 osCommerce
+			Deeply Madly Living management platform is derived from: Copyright &copy; 2009 07WEB1-No.10
 			<br />
 			This program is distributed in the hope that it will be useful, but
 			WITHOUT ANY WARRANTY;
@@ -28,7 +28,7 @@
 			PARTICULAR PURPOSE
 			<br />
 			and is redistributable under the
-			<a href="http://www.zen-cart.com/license/2_0.txt" target="_blank">GNU
+			<a href="/" target="_blank">GNU
 				General Public License</a>
 			<br />
 		</div>

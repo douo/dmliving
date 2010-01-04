@@ -11,9 +11,14 @@
 <link rel="stylesheet" type="text/css" href="includes/javascript/spiffyCal/spiffyCal_v2_1.css"></link>
 <script language="JavaScript" src="includes/javascript/spiffyCal/spiffyCal_v2_1.js"></script>
 <script type="text/javascript" src="includes/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
 <script language="javascript">
 <!--
-  var dateAvailable = new ctlSpiffyCalendarBox("dateAvailable", "new_product", "products_date_available","btnDate1","",scBTNMODE_CUSTOMBLUE);
+	var dateAvailable = new ctlSpiffyCalendarBox("dateAvailable", "new_product", "products_date_available","btnDate1","",scBTNMODE_CUSTOMBLUE);
+	$(document).ready(function() {
+		// do stuff when DOM is ready
+		$("#manufacture").get(0).selectedIndex=${product.manufacturer.manufacturerId };
+	});
 //--></script>
 </head>
 <body>
@@ -83,7 +88,7 @@
           <tr>
             <td class="main">商品厂商:</td>
             <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;
-            <select rel="dropdown" name="manufacturer.manufacturerId">
+            <select id="manufacture" rel="dropdown" name="manufacturer.manufacturerId">
               <option value="" selected="selected">无</option>
               <c:forEach var="manufacturer" items="${manufacturers}">
 			  <option value="${manufacturer.manufacturerId }">${manufacturer.name }</option>
@@ -97,7 +102,7 @@
           <tr>
             <td class="main">商品名称:</td>
 
-            <td class="main">&nbsp;<input type="text" name="product.name" size = "51" maxlength= "192" /></td>
+            <td class="main">&nbsp;<input type="text" name="product.name" value="${product.name }" size = "51" maxlength= "192" /></td>
           </tr>
 
           <tr>
@@ -134,12 +139,12 @@
            -->
           <tr bgcolor="#ebebff">
             <td class="main">价格(基本价):</td>
-            <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="text" name="product.normalPrice" /></td>
+            <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="text" name="product.normalPrice" value="${product.normalPrice }" /></td>
           </tr>
           <tr bgcolor="#ebebff">
 
-            <td class="main">价格(含税价):</td>
-            <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="text" name="products_price_gross" /></td>
+            <td class="main">价格(会员价):</td>
+            <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="text" name="product.memberPrice" value="${product.memberPrice }" /></td>
           </tr>
           <tr>
             <td colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="10"/></td>
@@ -204,7 +209,7 @@
               <tr>
                 <td class="main" width="25" valign="top">&nbsp;</td>
                 <td class="main" width="100%">
-        		<textarea name="product.description" wrap="soft" cols="100%" rows="30"></textarea>
+        		<textarea name="product.description" wrap="soft" cols="100%" rows="30">${product.description }</textarea>
         		<script type="text/javascript">
 					CKEDITOR.replace( 'product.description',
 					{
@@ -225,7 +230,7 @@
           </tr>
           <tr>
             <td class="main">商品数量:</td>
-            <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="text" name="product.stockQuantity" /></td>
+            <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="text" name="product.stockQuantity" value="${product.stockQuantity }" /></td>
 
           </tr>
           <tr>
@@ -233,7 +238,7 @@
           </tr>
           <tr>
             <td class="main">商品型号:</td>
-            <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="text" name="product.ptype" size = "51" maxlength= "96" /></td>
+            <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="text" name="product.ptype" size = "51" maxlength= "96" value="${product.ptype }"/></td>
           </tr>
 
           <tr>
@@ -249,12 +254,12 @@
 
               <tr>
                 <td class="main">商品图像:</td>
-                <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="file" name="doc"  size="50"  />&nbsp;图像名称: &nbsp;NONE</td>
+                <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="file" name="doc"  size="50"  />&nbsp;</td>
                 <td valign = "center" class="main">上传目录:&nbsp;<select rel="dropdown" name="directory">
 				 <option value="/">Main Directory</option>
                  <option value="uploads">uploads</option>
                  <option value="manufacturer">manufacturer</option>
-                 <option value="product">product</option>
+                 <option value="product" selected="selected">product</option>
                  <option value="category">categoyr</option>
 				</select>
 				</td>
@@ -262,12 +267,11 @@
               <%--<tr>
                 <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/></td>
                 <td class="main" valign="top"><strong>删除图像吗?</strong> 说明: 从商品中删除，但不删除图像文件: <input type="radio" name="image_delete" value="0" checked="checked" />&nbsp;否 <input type="radio" name="image_delete" value="1" />&nbsp;是</td>
-
 	  	      </tr>
 			--%>
               <tr>
                 <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/></td>
-                <td colspan="3" class="main" valign="top"><br /><strong>或从服务器上选择已有图像文件，文件名:</strong>&nbsp;<input type="text" name="products_image_manual" /></td>
+                <td colspan="3" class="main" valign="top"><br /><strong>或从服务器上选择已有图像文件，文件名:</strong>&nbsp;<input type="text" name="product.imageUrl" value="${product.imageUrl }"/></td>
               </tr>
             </table></td>
 
@@ -288,7 +292,7 @@
           <tr>
 
             <td class="main">商品重量:</td>
-            <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="text" name="product.weight" /></td>
+            <td class="main"><img src="images/pixel_trans.gif" border="0" alt="" width="24" height="15"/>&nbsp;<input type="text" name="product.weight" value="${product.weight }" /></td>
           </tr>
           <tr>
             <td colspan="2"><img src="images/pixel_trans.gif" border="0" alt="" width="1" height="10"/></td>

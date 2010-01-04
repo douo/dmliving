@@ -83,7 +83,19 @@
 								customConfig : 'js/custom/ckeditor_config.js'
 							});
 						  </script>
+					<c:if test="${category.parentCategoryId==null }">
+						<tr>
+                        <td class="infoBoxContent"><br />
+                          分类Banner图像:<br />
+                          <input type="file" name="doc"  size="50"  /></td>
+                      </tr>
                       <tr>
+                        <td class="infoBoxContent"><br />
+                          <strong>或从服务器上选择已有图像文件，文件名:</strong>&nbsp;
+                          <input type="text" name="category.bannerUrl" value="${category.bannerUrl }" /></td>
+                      </tr>
+					</c:if>
+					<tr>
                         <td class="infoBoxContent"><br />
                           分类图像:<br />
                           <input type="file" name="doc"  size="50"  /></td>
@@ -95,7 +107,7 @@
                             <option value="uploads">uploads</option>
                             <option value="manufacturer">manufacturer</option>
                             <option value="product">product</option>
-                            <option value="category">categoyr</option>
+                            <option value="category" selected="selected">categoyr</option>
                           </select></td>
                       </tr>
                       <tr>
@@ -105,8 +117,13 @@
                       </tr>
                       <tr>
                         <td class="infoBoxContent"><br />
+                          页面风格(CSS):<br />
+                          <input type="text" name="category.cssStyle" size="6" value="${category.cssStyle }"/></td>
+                      </tr>
+                      <tr>
+                        <td class="infoBoxContent"><br />
                           排序:<br />
-                          <input type="text" name="category.orderLevel" size="6" /></td>
+                          <input type="text" name="category.orderLevel" size="6" value="${category.orderLevel }" /></td>
                       </tr>
                       <tr>
                         <td align="center" class="infoBoxContent"><br />
@@ -119,7 +136,7 @@
 		                  	</c:otherwise>
 		                  </c:choose>
                           
-                          <a href="http://localhost/admin/categories.jsp?cPath="><img src="images/buttons/schinese/button_cancel.gif" border="0" alt="取消" title=" 取消 "/></a></td>
+                          <a href="" onclick="javascript:history.back(-1);return false;"><img src="images/buttons/schinese/button_cancel.gif" border="0" alt="取消" title=" 取消 "/></a></td>
                       </tr>
                     </table>
                   </form></td>
