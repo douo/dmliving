@@ -60,6 +60,7 @@ public class ProductAction extends FileUploadAction {
 	public String showProduct() {
 		if (product != null) {
 			product = (Product) productService.findById(product.getProductId());
+			products = productService.findByKeyword(product.getName());
 			List<ProductCategory> list = categoryService.findByTree(product.getProductCategory().getProductCategoryId());
 			getRequest().setAttribute("categoryTree", list);
 			category = (ProductCategory) categoryService.findById(product.getProductCategory().getProductCategoryId());
