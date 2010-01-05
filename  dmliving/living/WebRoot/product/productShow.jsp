@@ -129,10 +129,9 @@
     <p />
     <div class="centerBoxWrapper" id="crossSell">
       <!-- <h2 class="centerBoxHeading">TEXT_XSELL_PRODUCTS</h2> -->
-      <div class="centerBoxContentsCrossSell back" style="width:100%;"><a href="/index.jsp?main_page=product_info&amp;products_id=126"><img src="bmz_cache/2/24d3565d8a57eaf15c97664c72f59481.image.115x115.jpg" alt="OULA-LA VASE" title=" OULA-LA VASE " width="115" height="115" /></a><br />
-        <a class="categoryListBoxContents4" href="/index.jsp?main_page=product_info&amp;products_id=126">OULA-LA VASE</a> - $79</div>
-      <div class="centerBoxContentsCrossSell back" style="width:100%;"><a href="/index.jsp?main_page=product_info&amp;products_id=186"><img src="bmz_cache/1/14996d4c91aa31b3b8fff7f51f8d69ee.image.115x115.jpg" alt="LIGHTAIR IONFLOW 50 STYLE" title=" LIGHTAIR IONFLOW 50 STYLE " width="115" height="115" /></a><br />
-        <a class="categoryListBoxContents4" href="/index.jsp?main_page=product_info&amp;products_id=186">LIGHTAIR IONFLOW 50 STYLE</a> - $495</div>
+      <c:forEach var="product" items="${products}"></c:forEach>
+      <div class="centerBoxContentsCrossSell back" style="width:100%;"><a href="product/showProduct.action?productId=${product.productId }"><img src="${product.imageUrl }" alt="${product.name }" title=" ${product.name } " width="115" height="115" /></a><br />
+        <a class="categoryListBoxContents4" href="product/showProduct.action?productId=${product.productId }">${product.name }</a> - $${product.normalPrice }</div>
       <br class="clearBoth" />
     </div>
   </div>
