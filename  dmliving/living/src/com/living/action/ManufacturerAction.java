@@ -40,7 +40,7 @@ public class ManufacturerAction extends FileUploadAction {
 				if (imageManual == null) {
 					List<String> imgUrls = upload();
 					if (imgUrls != null)
-						imageManual = upload().get(0);
+						imageManual = imgUrls.get(0);
 				}
 				manufacturer.setPicture(imageManual);
 				manufacturer.setAddDate(new Date());
