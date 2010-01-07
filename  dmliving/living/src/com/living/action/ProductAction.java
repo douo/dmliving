@@ -64,6 +64,7 @@ public class ProductAction extends FileUploadAction {
 			List<ProductCategory> list = categoryService.findByTree(product.getProductCategory().getProductCategoryId());
 			getRequest().setAttribute("categoryTree", list);
 			category = (ProductCategory) categoryService.findById(product.getProductCategory().getProductCategoryId());
+			getRequest().setAttribute("pcategory", category);
 			manufacturers = manufecturerService.findAll();
 			return SUCCESS;
 		}
@@ -79,6 +80,12 @@ public class ProductAction extends FileUploadAction {
 	public String listProduct() {
 		if (category != null) {
 			category = (ProductCategory) categoryService.findById(category.getProductCategoryId());
+			if (category.getLevel() != 0) {
+				ProductCategory productCategory = (ProductCategory) categoryService.findById(category.getParentCategoryId());
+				getRequest().setAttribute("pcategory", productCategory);
+			} else {
+				getRequest().setAttribute("pcategory", category);
+			}
 			products = productService.findByCategory(category.getProductCategoryId());
 			int count = 0;
 			if (products != null) {
