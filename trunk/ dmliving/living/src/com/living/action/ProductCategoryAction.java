@@ -97,6 +97,7 @@ public class ProductCategoryAction extends FileUploadAction {
 	public String listSubCategory() {
 		if (category != null) {
 			category = (ProductCategory) categoryService.findById(category.getProductCategoryId());
+			getRequest().setAttribute("pcategory", category);
 			categories = categoryService.findByParentId(category.getProductCategoryId());
 			return SUCCESS;
 		}
