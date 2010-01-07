@@ -129,9 +129,12 @@
     <p />
     <div class="centerBoxWrapper" id="crossSell">
       <!-- <h2 class="centerBoxHeading">TEXT_XSELL_PRODUCTS</h2> -->
-      <c:forEach var="product" items="${products}"></c:forEach>
-      <div class="centerBoxContentsCrossSell back" style="width:100%;"><a href="product/showProduct.action?productId=${product.productId }"><img src="${product.imageUrl }" alt="${product.name }" title=" ${product.name } " width="115" height="115" /></a><br />
-        <a class="categoryListBoxContents4" href="product/showProduct.action?productId=${product.productId }">${product.name }</a> - $${product.normalPrice }</div>
+      <c:forEach var="product2" items="${products}">
+      <c:if test="${product.productId != product2.productId}">
+      <div class="centerBoxContentsCrossSell back" style="width:100%;"><a href="product/showProduct.action?productId=${product2.productId }"><img src="${product2.imageUrl }" alt="${product.name }" title=" ${product.name } " width="115" height="115" /></a><br />
+        <a class="categoryListBoxContents4" href="product/showProduct.action?productId=${product2.productId }">${product2.name }</a> - $${product2.normalPrice }</div>
+        </c:if>
+      </c:forEach>
       <br class="clearBoth" />
     </div>
   </div>
