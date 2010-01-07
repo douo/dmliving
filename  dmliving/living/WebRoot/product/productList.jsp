@@ -4,13 +4,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
-<title>Deeply Madly Living: ${category.name }</title>
+<title>Deeply Madly Living: ${pcategory.name }</title>
 <style type="text/css" media="screen">
-	.categoryListBoxContents { background-color: ${category.cssStyle }}.centerBoxContentsProducts { background-color: ${category.cssStyle } }.centerBoxContentsProducts { background: ${category.cssStyle } }
+	.categoryListBoxContents { background-color: ${pcategory.cssStyle }}.centerBoxContentsProducts { background-color: ${pcategory.cssStyle } }.centerBoxContentsProducts { background: ${pcategory.cssStyle } }
 </style>
 </head>
 <body id="indexBody">
-<div style="padding-bottom: 12px;"><a href="#"><img src="${category.bannerUrl }" alt="${category.name }"/></a></div>
+<div style="padding-bottom: 12px;"><a href="#"><img src="${pcategory.bannerUrl }" alt="${pcategory.name }"/></a></div>
 <div id="layout-content">
   <table width="100%" border="0" cellspacing="0" cellpadding="0" id="contentMainWrapper">
     <tr>
